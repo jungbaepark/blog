@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Deep-Learning on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/deep-learning/</link>
+    <description>Recent content in Deep-Learning on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🗣️ Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>http://localhost:1313/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/speech-scoring-interspeech/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start problem by incorporating prompt (text and image) awareness. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Accepted to &lt;strong&gt;InterSpeech 2023&lt;/strong&gt; (top conference on audio &amp;amp; signal processing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Production Deployment&lt;/strong&gt;: Integrated into SANTA Say TOEIC Speaking App&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cold-Start Robustness&lt;/strong&gt;: Achieved reliable performance even with limited training data for new prompts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-World Impact&lt;/strong&gt;: Helping thousands of language learners improve their speaking skills&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;innovation&#34;&gt;Innovation&lt;/h2&gt;
+&lt;p&gt;Traditional speech scoring systems struggle when encountering new prompts (questions) they haven&amp;rsquo;t seen during training. Our system incorporates both text and image information from the prompts, allowing it to:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>📚 Knowledge Tracing with Contrastive Learning (SOTA)</title>
+      <link>http://localhost:1313/blog/projects/knowledge-tracing-contrastive/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/knowledge-tracing-contrastive/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Research project achieving state-of-the-art (SOTA) performance on knowledge tracing and student dropout prediction using patch-level contrastive loss. This work significantly improved our ability to predict student performance and identify at-risk learners.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SOTA Performance&lt;/strong&gt;: Improved AUC from 77% to 88% on knowledge tracing benchmarks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Novel Method&lt;/strong&gt;: Applied patch-level contrastive learning to sequential student data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multiple Datasets&lt;/strong&gt;: Validated approach across 6 different datasets&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment Ready&lt;/strong&gt;: Attempted deployment to SANTA TOEIC App using BentoML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-approach&#34;&gt;Technical Approach&lt;/h2&gt;
+&lt;h3 id=&#34;knowledge-tracing&#34;&gt;Knowledge Tracing&lt;/h3&gt;
+&lt;p&gt;Predicting whether a student will correctly answer a question based on their historical interaction patterns.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🎙️ Emotional Text-to-Speech (TTS) System</title>
+      <link>http://localhost:1313/blog/projects/emotional-tts-humelo/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/emotional-tts-humelo/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;As Research Lead and COO at Humelo, I led the development of next-generation emotional Text-to-Speech systems that could convey nuanced emotions and expressions in synthesized speech. This project was funded by the Ministry of SMEs and startups.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Government Grant&lt;/strong&gt;: Secured TIPS R&amp;amp;D grant from Ministry of SMEs (S2644149)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publications&lt;/strong&gt;: Multiple papers accepted to &lt;strong&gt;ICASSP&lt;/strong&gt; (top conference on audio &amp;amp; signal processing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-speaker&lt;/strong&gt;: Developed systems supporting multiple voices and speaking styles&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emotional Control&lt;/strong&gt;: Fine-grained control over emotional expression in synthesized speech&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-innovations&#34;&gt;Technical Innovations&lt;/h2&gt;
+&lt;h3 id=&#34;1-factorized-hierarchical-vae&#34;&gt;1. Factorized Hierarchical VAE&lt;/h3&gt;
+&lt;p&gt;Developed multi-speaker and multi-domain emotional voice conversion using hierarchical variational autoencoders.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🔊 Polyphonic Sound Event Detection with Transfer Learning</title>
+      <link>http://localhost:1313/blog/projects/sound-event-detection-transfer-learning/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/sound-event-detection-transfer-learning/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Research on detecting multiple simultaneous sound events using convolutional bidirectional LSTMs and synthetic data-based transfer learning. This work addressed the challenge of learning from limited real-world audio data.&lt;/p&gt;
+&lt;h2 id=&#34;key-innovation&#34;&gt;Key Innovation&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Synthetic Data-Based Transfer Learning&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generated synthetic audio data for pre-training&lt;/li&gt;
+&lt;li&gt;Transferred knowledge to real-world sound event detection&lt;/li&gt;
+&lt;li&gt;Achieved robust performance with limited labeled data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-approach&#34;&gt;Technical Approach&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: Convolutional Bidirectional LSTM&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Augmentation&lt;/strong&gt;: Synthetic audio generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transfer Learning&lt;/strong&gt;: Pre-train on synthetic data, fine-tune on real data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;publication&#34;&gt;Publication&lt;/h2&gt;
+&lt;p&gt;Seokwon Jeong, *Jungbae Park, *Sang Wan Lee - &amp;ldquo;Polyphonic sound event detection using convolutional bidirectional LSTM and Synthetic data-based transfer learning&amp;rdquo; (ICASSP 2019)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🧠 Attentional Control for Time-Series Data (Master&#39;s Thesis)</title>
+      <link>http://localhost:1313/blog/projects/attentional-control-timeseries/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/attentional-control-timeseries/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;My Master&amp;rsquo;s thesis research at KAIST exploring attentional control methods for time-series data classification and synthesis. This work investigated how attention mechanisms can improve deep learning models&amp;rsquo; ability to process sequential data.&lt;/p&gt;
+&lt;h2 id=&#34;research-focus&#34;&gt;Research Focus&lt;/h2&gt;
+&lt;p&gt;Developed novel attention-based approaches for:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Time-series Classification&lt;/strong&gt;: Identifying patterns and categories in sequential data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time-series Synthesis&lt;/strong&gt;: Generating realistic sequential data with desired characteristics&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;key-contributions&#34;&gt;Key Contributions&lt;/h2&gt;
+&lt;h3 id=&#34;eeg-signal-classification&#34;&gt;EEG Signal Classification&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Applied reinforcement learning for adaptive EEG signal processing&lt;/li&gt;
+&lt;li&gt;Solved the memory-based vs. memoryless trade-off problem&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Jungbae Park, *Sang Wan Lee - &amp;ldquo;Solving the Memory-based-Memoryless Trade-off Problem for EEG Signal Classification&amp;rdquo; (IEEE SMC 2018, Oral)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;attention-mechanisms-for-sequential-data&#34;&gt;Attention Mechanisms for Sequential Data&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Investigated how attention can focus on relevant time steps&lt;/li&gt;
+&lt;li&gt;Balanced model capacity with interpretability&lt;/li&gt;
+&lt;li&gt;Applications in neuroscience and signal processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;: LSTM, Attention mechanisms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signal Processing&lt;/strong&gt;: EEG analysis, time-series processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks&lt;/strong&gt;: TensorFlow, PyTorch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;applications&#34;&gt;Applications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Brain-Computer Interfaces (BCI)&lt;/li&gt;
+&lt;li&gt;Medical signal analysis&lt;/li&gt;
+&lt;li&gt;Sequential pattern recognition&lt;/li&gt;
+&lt;li&gt;Temporal data synthesis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;period&#34;&gt;Period&lt;/h2&gt;
+&lt;p&gt;March 2017 - February 2019&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

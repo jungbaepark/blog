@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Attention-Mechanism on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/attention-mechanism/</link>
+    <description>Recent content in Attention-Mechanism on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/attention-mechanism/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🧠 Attentional Control for Time-Series Data (Master&#39;s Thesis)</title>
+      <link>http://localhost:1313/blog/projects/attentional-control-timeseries/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/attentional-control-timeseries/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;My Master&amp;rsquo;s thesis research at KAIST exploring attentional control methods for time-series data classification and synthesis. This work investigated how attention mechanisms can improve deep learning models&amp;rsquo; ability to process sequential data.&lt;/p&gt;
+&lt;h2 id=&#34;research-focus&#34;&gt;Research Focus&lt;/h2&gt;
+&lt;p&gt;Developed novel attention-based approaches for:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Time-series Classification&lt;/strong&gt;: Identifying patterns and categories in sequential data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time-series Synthesis&lt;/strong&gt;: Generating realistic sequential data with desired characteristics&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;key-contributions&#34;&gt;Key Contributions&lt;/h2&gt;
+&lt;h3 id=&#34;eeg-signal-classification&#34;&gt;EEG Signal Classification&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Applied reinforcement learning for adaptive EEG signal processing&lt;/li&gt;
+&lt;li&gt;Solved the memory-based vs. memoryless trade-off problem&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Jungbae Park, *Sang Wan Lee - &amp;ldquo;Solving the Memory-based-Memoryless Trade-off Problem for EEG Signal Classification&amp;rdquo; (IEEE SMC 2018, Oral)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;attention-mechanisms-for-sequential-data&#34;&gt;Attention Mechanisms for Sequential Data&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Investigated how attention can focus on relevant time steps&lt;/li&gt;
+&lt;li&gt;Balanced model capacity with interpretability&lt;/li&gt;
+&lt;li&gt;Applications in neuroscience and signal processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;: LSTM, Attention mechanisms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signal Processing&lt;/strong&gt;: EEG analysis, time-series processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks&lt;/strong&gt;: TensorFlow, PyTorch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;applications&#34;&gt;Applications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Brain-Computer Interfaces (BCI)&lt;/li&gt;
+&lt;li&gt;Medical signal analysis&lt;/li&gt;
+&lt;li&gt;Sequential pattern recognition&lt;/li&gt;
+&lt;li&gt;Temporal data synthesis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;period&#34;&gt;Period&lt;/h2&gt;
+&lt;p&gt;March 2017 - February 2019&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

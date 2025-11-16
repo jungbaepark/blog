@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>⚙️ MOHPER: Multi-Objective Hyperparameter Optimization for E-commerce | Jungbae Park&#39;s Blogs</title>
+<meta name="keywords" content="industrial, automl, optimization, published, bucketplace, cikm">
+<meta name="description" content="Overview
+MOHPER is a multi-objective hyperparameter optimization framework designed specifically for e-commerce retrieval systems. This project tackles the challenge of optimizing multiple business metrics simultaneously (CTR, CVR) without harming other guardrail metrics.
+Key Achievements
+
+Production Impact: Launched tuned parameters 5&#43; times on Search Result Page (SERP) and 3&#43; times on Category Product List Page (CPLP)
+Business Metrics: Each A/B test targeted either CTR or CVR improvements without degrading other metrics
+Publication: Accepted to CIKM&#39;25 Applied Science Track (top conference on information retrieval)
+Patent: Patent application filed
+Team Expansion: Framework now expanded to AD domain and adopted as common stack for Search Team
+
+Tech Stack
+
+AutoML: Optuna, Ray Tune
+Optimization: Evolutionary Strategies (ES)
+Configuration: Hydra-core
+Infrastructure: Existing search stack
+
+Problem Statement
+E-commerce ranking systems need to balance multiple objectives:">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/blog/projects/mohper-automl-ecommerce/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.343cc480b9ffc8f04ccbe5e968ad674880cab773ec19905e93033065c1e7a804.css" integrity="sha256-NDzEgLn/yPBMy&#43;XpaK1nSIDKt3PsGZBekwMwZcHnqAQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/projects/mohper-automl-ecommerce/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Jungbae Park&#39;s Blogs (Alt + H)">Jungbae Park&#39;s Blogs</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/articles/" title="Articles">
+                    <span>Articles</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      ⚙️ MOHPER: Multi-Objective Hyperparameter Optimization for E-commerce
+    </h1>
+    <div class="post-meta"><span title='2025-01-15 00:00:00 +0000 UTC'>January 15, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>MOHPER is a multi-objective hyperparameter optimization framework designed specifically for e-commerce retrieval systems. This project tackles the challenge of optimizing multiple business metrics simultaneously (CTR, CVR) without harming other guardrail metrics.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>Production Impact</strong>: Launched tuned parameters <strong>5+ times</strong> on Search Result Page (SERP) and <strong>3+ times</strong> on Category Product List Page (CPLP)</li>
+<li><strong>Business Metrics</strong>: Each A/B test targeted either CTR or CVR improvements without degrading other metrics</li>
+<li><strong>Publication</strong>: Accepted to <strong>CIKM'25 Applied Science Track</strong> (top conference on information retrieval)</li>
+<li><strong>Patent</strong>: Patent application filed</li>
+<li><strong>Team Expansion</strong>: Framework now expanded to AD domain and adopted as common stack for Search Team</li>
+</ul>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>AutoML</strong>: Optuna, Ray Tune</li>
+<li><strong>Optimization</strong>: Evolutionary Strategies (ES)</li>
+<li><strong>Configuration</strong>: Hydra-core</li>
+<li><strong>Infrastructure</strong>: Existing search stack</li>
+</ul>
+<h2 id="problem-statement">Problem Statement<a hidden class="anchor" aria-hidden="true" href="#problem-statement">#</a></h2>
+<p>E-commerce ranking systems need to balance multiple objectives:</p>
+<ul>
+<li>Click-Through Rate (CTR)</li>
+<li>Conversion Rate (CVR)</li>
+<li>User engagement metrics</li>
+<li>Business constraints (guardrails)</li>
+</ul>
+<p>Traditional single-objective optimization often improves one metric while degrading others. MOHPER solves this through multi-objective optimization.</p>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>The framework has become a critical tool for the Search Team, enabling data-driven optimization of ranking systems across multiple product surfaces and business domains.</p>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>October 2023 - January 2025</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="http://localhost:1313/blog/tags/automl/">Automl</a></li>
+      <li><a href="http://localhost:1313/blog/tags/optimization/">Optimization</a></li>
+      <li><a href="http://localhost:1313/blog/tags/published/">Published</a></li>
+      <li><a href="http://localhost:1313/blog/tags/bucketplace/">Bucketplace</a></li>
+      <li><a href="http://localhost:1313/blog/tags/cikm/">Cikm</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/blog/">Jungbae Park&#39;s Blogs</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

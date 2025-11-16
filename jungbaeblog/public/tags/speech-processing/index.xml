@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Speech-Processing on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/speech-processing/</link>
+    <description>Recent content in Speech-Processing on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/speech-processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🗣️ Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>http://localhost:1313/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/speech-scoring-interspeech/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start problem by incorporating prompt (text and image) awareness. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Accepted to &lt;strong&gt;InterSpeech 2023&lt;/strong&gt; (top conference on audio &amp;amp; signal processing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Production Deployment&lt;/strong&gt;: Integrated into SANTA Say TOEIC Speaking App&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cold-Start Robustness&lt;/strong&gt;: Achieved reliable performance even with limited training data for new prompts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-World Impact&lt;/strong&gt;: Helping thousands of language learners improve their speaking skills&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;innovation&#34;&gt;Innovation&lt;/h2&gt;
+&lt;p&gt;Traditional speech scoring systems struggle when encountering new prompts (questions) they haven&amp;rsquo;t seen during training. Our system incorporates both text and image information from the prompts, allowing it to:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

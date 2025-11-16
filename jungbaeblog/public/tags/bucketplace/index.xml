@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Bucketplace on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/bucketplace/</link>
+    <description>Recent content in Bucketplace on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/bucketplace/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🎯 Personalized Multimodal Retrieval with VLM Distillation</title>
+      <link>http://localhost:1313/blog/projects/multimodal-retrieval-vlm/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/multimodal-retrieval-vlm/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Research and development project exploring personalized multimodal retrieval systems by combining sequential recommendation models with vision-language models and knowledge distillation techniques.&lt;/p&gt;
+&lt;h2 id=&#34;key-components&#34;&gt;Key Components&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sequential Modeling&lt;/strong&gt;: Implemented SASRec (Self-Attentive Sequential Recommendation) for user behavior modeling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multimodal Embeddings&lt;/strong&gt;: Integrated Jina-CLIP-V2 for joint vision-language representations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Distillation&lt;/strong&gt;: Applied distillation techniques to create efficient models&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demo Development&lt;/strong&gt;: Built interactive demo using Streamlit and BentoML&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;: PyTorch, HuggingFace, DeepSpeed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training&lt;/strong&gt;: Lightning AI, QLoRA&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Metric Learning&lt;/strong&gt;: PyTorch-Metric-Learning&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: BentoML, Streamlit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;research-goals&#34;&gt;Research Goals&lt;/h2&gt;
+&lt;p&gt;Combining user interaction history with multimodal understanding to provide more personalized and context-aware product recommendations for e-commerce platforms.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>⚙️ MOHPER: Multi-Objective Hyperparameter Optimization for E-commerce</title>
+      <link>http://localhost:1313/blog/projects/mohper-automl-ecommerce/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/mohper-automl-ecommerce/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;MOHPER is a multi-objective hyperparameter optimization framework designed specifically for e-commerce retrieval systems. This project tackles the challenge of optimizing multiple business metrics simultaneously (CTR, CVR) without harming other guardrail metrics.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Production Impact&lt;/strong&gt;: Launched tuned parameters &lt;strong&gt;5+ times&lt;/strong&gt; on Search Result Page (SERP) and &lt;strong&gt;3+ times&lt;/strong&gt; on Category Product List Page (CPLP)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Metrics&lt;/strong&gt;: Each A/B test targeted either CTR or CVR improvements without degrading other metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Accepted to &lt;strong&gt;CIKM&#39;25 Applied Science Track&lt;/strong&gt; (top conference on information retrieval)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Patent&lt;/strong&gt;: Patent application filed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Team Expansion&lt;/strong&gt;: Framework now expanded to AD domain and adopted as common stack for Search Team&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AutoML&lt;/strong&gt;: Optuna, Ray Tune&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Evolutionary Strategies (ES)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: Hydra-core&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure&lt;/strong&gt;: Existing search stack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
+&lt;p&gt;E-commerce ranking systems need to balance multiple objectives:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🔍 CLIP-based E-Commerce Multimodal Search and Classification</title>
+      <link>http://localhost:1313/blog/projects/clip-ecommerce-multimodal/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/clip-ecommerce-multimodal/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Designed and developed CLIP-based solutions for e-commerce downstream tasks, including multimodal retrieval and product classification, significantly improving search performance and product categorization.&lt;/p&gt;
+&lt;h2 id=&#34;key-projects&#34;&gt;Key Projects&lt;/h2&gt;
+&lt;h3 id=&#34;1-multimodal-retrieval&#34;&gt;1. Multimodal Retrieval&lt;/h3&gt;
+&lt;p&gt;Enabled users to search for products using both text and images through CLIP embeddings.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Results&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Query CTR&lt;/strong&gt;: +3.03% improvement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Query CTCVR&lt;/strong&gt;: +16.39% improvement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quantization&lt;/strong&gt;: 2x speed improvement, 4x disk memory reduction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-product-category--attributes-classification&#34;&gt;2. Product Category &amp;amp; Attributes Classification&lt;/h3&gt;
+&lt;p&gt;Automated product categorization using CLIP-based models for a large-scale product catalog.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

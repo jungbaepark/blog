@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Audio-Processing on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/audio-processing/</link>
+    <description>Recent content in Audio-Processing on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/audio-processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🔊 Polyphonic Sound Event Detection with Transfer Learning</title>
+      <link>http://localhost:1313/blog/projects/sound-event-detection-transfer-learning/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/sound-event-detection-transfer-learning/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Research on detecting multiple simultaneous sound events using convolutional bidirectional LSTMs and synthetic data-based transfer learning. This work addressed the challenge of learning from limited real-world audio data.&lt;/p&gt;
+&lt;h2 id=&#34;key-innovation&#34;&gt;Key Innovation&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Synthetic Data-Based Transfer Learning&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generated synthetic audio data for pre-training&lt;/li&gt;
+&lt;li&gt;Transferred knowledge to real-world sound event detection&lt;/li&gt;
+&lt;li&gt;Achieved robust performance with limited labeled data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-approach&#34;&gt;Technical Approach&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: Convolutional Bidirectional LSTM&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Augmentation&lt;/strong&gt;: Synthetic audio generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transfer Learning&lt;/strong&gt;: Pre-train on synthetic data, fine-tune on real data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;publication&#34;&gt;Publication&lt;/h2&gt;
+&lt;p&gt;Seokwon Jeong, *Jungbae Park, *Sang Wan Lee - &amp;ldquo;Polyphonic sound event detection using convolutional bidirectional LSTM and Synthetic data-based transfer learning&amp;rdquo; (ICASSP 2019)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

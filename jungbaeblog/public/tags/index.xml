@@ -2,10 +2,263 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Jungbae Park&#39;s Blogs</title>
-    <link>http://localhost:60410/blog/tags/</link>
+    <link>http://localhost:1313/blog/tags/</link>
     <description>Recent content in Tags on Jungbae Park&#39;s Blogs</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:60410/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bucketplace</title>
+      <link>http://localhost:1313/blog/tags/bucketplace/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/bucketplace/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Industrial</title>
+      <link>http://localhost:1313/blog/tags/industrial/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/industrial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Knowledge-Distillation</title>
+      <link>http://localhost:1313/blog/tags/knowledge-distillation/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/knowledge-distillation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multimodal-Retrieval</title>
+      <link>http://localhost:1313/blog/tags/multimodal-retrieval/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/multimodal-retrieval/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Recommendation</title>
+      <link>http://localhost:1313/blog/tags/recommendation/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/recommendation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automl</title>
+      <link>http://localhost:1313/blog/tags/automl/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/automl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cikm</title>
+      <link>http://localhost:1313/blog/tags/cikm/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/cikm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimization</title>
+      <link>http://localhost:1313/blog/tags/optimization/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Published</title>
+      <link>http://localhost:1313/blog/tags/published/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/published/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CLIP</title>
+      <link>http://localhost:1313/blog/tags/clip/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/clip/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>E-Commerce</title>
+      <link>http://localhost:1313/blog/tags/e-commerce/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/e-commerce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multimodal-Ai</title>
+      <link>http://localhost:1313/blog/tags/multimodal-ai/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/multimodal-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep-Learning</title>
+      <link>http://localhost:1313/blog/tags/deep-learning/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Interspeech</title>
+      <link>http://localhost:1313/blog/tags/interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/interspeech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Riiid</title>
+      <link>http://localhost:1313/blog/tags/riiid/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/riiid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Speech-Processing</title>
+      <link>http://localhost:1313/blog/tags/speech-processing/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/speech-processing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Contrastive-Learning</title>
+      <link>http://localhost:1313/blog/tags/contrastive-learning/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/contrastive-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Knowledge-Tracing</title>
+      <link>http://localhost:1313/blog/tags/knowledge-tracing/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/knowledge-tracing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Humelo</title>
+      <link>http://localhost:1313/blog/tags/humelo/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/humelo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Speech-Synthesis</title>
+      <link>http://localhost:1313/blog/tags/speech-synthesis/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/speech-synthesis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Startup</title>
+      <link>http://localhost:1313/blog/tags/startup/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/startup/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TTS</title>
+      <link>http://localhost:1313/blog/tags/tts/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/tts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Academic</title>
+      <link>http://localhost:1313/blog/tags/academic/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/academic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Audio-Processing</title>
+      <link>http://localhost:1313/blog/tags/audio-processing/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/audio-processing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Icassp</title>
+      <link>http://localhost:1313/blog/tags/icassp/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/icassp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transfer-Learning</title>
+      <link>http://localhost:1313/blog/tags/transfer-learning/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/transfer-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Creative-Ai</title>
+      <link>http://localhost:1313/blog/tags/creative-ai/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/creative-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Generative-Ai</title>
+      <link>http://localhost:1313/blog/tags/generative-ai/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/generative-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Music</title>
+      <link>http://localhost:1313/blog/tags/music/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/music/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sxsw</title>
+      <link>http://localhost:1313/blog/tags/sxsw/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/sxsw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Attention-Mechanism</title>
+      <link>http://localhost:1313/blog/tags/attention-mechanism/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/attention-mechanism/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kaist</title>
+      <link>http://localhost:1313/blog/tags/kaist/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/kaist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Time-Series</title>
+      <link>http://localhost:1313/blog/tags/time-series/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/time-series/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cognitive-Science</title>
+      <link>http://localhost:1313/blog/tags/cognitive-science/</link>
+      <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/cognitive-science/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multi-Agent</title>
+      <link>http://localhost:1313/blog/tags/multi-agent/</link>
+      <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/multi-agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reinforcement-Learning</title>
+      <link>http://localhost:1313/blog/tags/reinforcement-learning/</link>
+      <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

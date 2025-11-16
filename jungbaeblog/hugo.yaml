@@ -2,3 +2,15 @@ baseURL: https://jungbaepark.github.io/blog/
 languageCode: en-us
 title: Jungbae Park's Blogs
 theme: ["PaperMod"]
+
+menu:
+  main:
+    - name: Projects
+      url: /projects/
+      weight: 20
+    - name: Articles
+      url: /articles/
+      weight: 30
+    - name: Contact
+      url: /contact/
+      weight: 40

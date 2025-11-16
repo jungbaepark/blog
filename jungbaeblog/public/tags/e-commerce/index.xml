@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>E-Commerce on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/e-commerce/</link>
+    <description>Recent content in E-Commerce on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/e-commerce/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🔍 CLIP-based E-Commerce Multimodal Search and Classification</title>
+      <link>http://localhost:1313/blog/projects/clip-ecommerce-multimodal/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/clip-ecommerce-multimodal/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Designed and developed CLIP-based solutions for e-commerce downstream tasks, including multimodal retrieval and product classification, significantly improving search performance and product categorization.&lt;/p&gt;
+&lt;h2 id=&#34;key-projects&#34;&gt;Key Projects&lt;/h2&gt;
+&lt;h3 id=&#34;1-multimodal-retrieval&#34;&gt;1. Multimodal Retrieval&lt;/h3&gt;
+&lt;p&gt;Enabled users to search for products using both text and images through CLIP embeddings.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Results&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Query CTR&lt;/strong&gt;: +3.03% improvement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Query CTCVR&lt;/strong&gt;: +16.39% improvement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quantization&lt;/strong&gt;: 2x speed improvement, 4x disk memory reduction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-product-category--attributes-classification&#34;&gt;2. Product Category &amp;amp; Attributes Classification&lt;/h3&gt;
+&lt;p&gt;Automated product categorization using CLIP-based models for a large-scale product catalog.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

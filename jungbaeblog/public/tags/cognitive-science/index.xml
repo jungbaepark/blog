@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cognitive-Science on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/cognitive-science/</link>
+    <description>Recent content in Cognitive-Science on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/cognitive-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🤖 Multi-Agent Cognitive Policy Learning through Competition</title>
+      <link>http://localhost:1313/blog/projects/multi-agent-reinforcement-learning/</link>
+      <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/multi-agent-reinforcement-learning/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Undergraduate research project exploring how artificial agents can learn cognitive policies through competitive multi-agent reinforcement learning. This work was inspired by how humans develop cognitive abilities through social interaction and competition.&lt;/p&gt;
+&lt;h2 id=&#34;research-question&#34;&gt;Research Question&lt;/h2&gt;
+&lt;p&gt;Can AI agents develop sophisticated cognitive strategies by competing with each other, similar to how humans learn through social competition and cooperation?&lt;/p&gt;
+&lt;h2 id=&#34;key-contributions&#34;&gt;Key Contributions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Developed multi-agent RL framework for cognitive policy learning&lt;/li&gt;
+&lt;li&gt;Demonstrated emergence of complex behaviors through agent competition&lt;/li&gt;
+&lt;li&gt;Explored connections between computational models and cognitive science&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;recognition&#34;&gt;Recognition&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Best Paper Award&lt;/strong&gt;: 2016 Fall Korea Intelligent Information System Conference&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

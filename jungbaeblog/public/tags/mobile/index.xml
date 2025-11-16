@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mobile on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/mobile/</link>
+    <description>Recent content in Mobile on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/mobile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sample Project - Mobile App</title>
+      <link>http://localhost:1313/blog/projects/project-2/</link>
+      <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/project-2/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This sample project demonstrates a mobile application with advanced features.&lt;/p&gt;
+&lt;h2 id=&#34;key-features&#34;&gt;Key Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cross-platform compatibility&lt;/li&gt;
+&lt;li&gt;Offline functionality&lt;/li&gt;
+&lt;li&gt;Push notifications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technologies-used&#34;&gt;Technologies Used&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;React Native&lt;/li&gt;
+&lt;li&gt;Firebase&lt;/li&gt;
+&lt;li&gt;Redux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;demo--resources&#34;&gt;Demo &amp;amp; Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://apps.apple.com/yourapp&#34;&gt;Download on App Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/yourapp&#34;&gt;Download on Google Play&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://drive.google.com/file/d/YOUR_DOC_ID/view&#34;&gt;Project Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;audio-demo&#34;&gt;Audio Demo&lt;/h2&gt;
+&lt;p&gt;You can add audio demonstrations here:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://your-audio-link.com&#34;&gt;Listen to Audio Walkthrough&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;impact&#34;&gt;Impact&lt;/h2&gt;
+&lt;p&gt;This project reached X users and achieved Y impact&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

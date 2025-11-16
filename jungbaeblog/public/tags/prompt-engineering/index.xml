@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Prompt-Engineering on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/prompt-engineering/</link>
+    <description>Recent content in Prompt-Engineering on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/prompt-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interior Agent Bot using Vision-Language Models</title>
+      <link>http://localhost:1313/blog/projects/project-1/</link>
+      <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/project-1/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Developing an intelligent Interior Agent Bot for OHouse AI (오늘의집) that leverages Vision-Language Models to help users with interior design decisions through natural conversations and visual understanding.&lt;/p&gt;
+&lt;h2 id=&#34;key-responsibilities&#34;&gt;Key Responsibilities&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Pipeline Development&lt;/strong&gt;: Built end-to-end VLM pipeline for interior design assistance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prompt Optimization&lt;/strong&gt;: Engineered context-aware prompts for accurate and helpful responses&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Editing Integration&lt;/strong&gt;: Optimized ImageEdit service with advanced context engineering&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG Service&lt;/strong&gt;: Implemented Retrieval-Augmented Generation for knowledge-grounded responses&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Evaluation System&lt;/strong&gt;: Created evaluation pipeline using LLM-as-a-judge methodology&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Open Source Contribution&lt;/strong&gt;: Built and shared ImageEdit tools with the community&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks&lt;/strong&gt;: LangGraph, LangChain, LangFuse&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API&lt;/strong&gt;: FastAPI&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Orchestration&lt;/strong&gt;: Apache Airflow&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data&lt;/strong&gt;: AWS Athena&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Models&lt;/strong&gt;: Vision-Language Models (VLM)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;impact&#34;&gt;Impact&lt;/h2&gt;
+&lt;p&gt;Enabling users to get personalized interior design assistance through natural language and image-based interactions, improving the overall user experience on the OHouse platform.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

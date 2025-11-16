@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Optimization on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/optimization/</link>
+    <description>Recent content in Optimization on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>⚙️ MOHPER: Multi-Objective Hyperparameter Optimization for E-commerce</title>
+      <link>http://localhost:1313/blog/projects/mohper-automl-ecommerce/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/mohper-automl-ecommerce/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;MOHPER is a multi-objective hyperparameter optimization framework designed specifically for e-commerce retrieval systems. This project tackles the challenge of optimizing multiple business metrics simultaneously (CTR, CVR) without harming other guardrail metrics.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Production Impact&lt;/strong&gt;: Launched tuned parameters &lt;strong&gt;5+ times&lt;/strong&gt; on Search Result Page (SERP) and &lt;strong&gt;3+ times&lt;/strong&gt; on Category Product List Page (CPLP)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Metrics&lt;/strong&gt;: Each A/B test targeted either CTR or CVR improvements without degrading other metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Accepted to &lt;strong&gt;CIKM&#39;25 Applied Science Track&lt;/strong&gt; (top conference on information retrieval)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Patent&lt;/strong&gt;: Patent application filed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Team Expansion&lt;/strong&gt;: Framework now expanded to AD domain and adopted as common stack for Search Team&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AutoML&lt;/strong&gt;: Optuna, Ray Tune&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Evolutionary Strategies (ES)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: Hydra-core&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure&lt;/strong&gt;: Existing search stack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
+&lt;p&gt;E-commerce ranking systems need to balance multiple objectives:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

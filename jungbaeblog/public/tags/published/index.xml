@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Published on Jungbae Park&#39;s Blogs</title>
+    <link>http://localhost:1313/blog/tags/published/</link>
+    <description>Recent content in Published on Jungbae Park&#39;s Blogs</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/published/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>⚙️ MOHPER: Multi-Objective Hyperparameter Optimization for E-commerce</title>
+      <link>http://localhost:1313/blog/projects/mohper-automl-ecommerce/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/mohper-automl-ecommerce/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;MOHPER is a multi-objective hyperparameter optimization framework designed specifically for e-commerce retrieval systems. This project tackles the challenge of optimizing multiple business metrics simultaneously (CTR, CVR) without harming other guardrail metrics.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Production Impact&lt;/strong&gt;: Launched tuned parameters &lt;strong&gt;5+ times&lt;/strong&gt; on Search Result Page (SERP) and &lt;strong&gt;3+ times&lt;/strong&gt; on Category Product List Page (CPLP)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Metrics&lt;/strong&gt;: Each A/B test targeted either CTR or CVR improvements without degrading other metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Accepted to &lt;strong&gt;CIKM&#39;25 Applied Science Track&lt;/strong&gt; (top conference on information retrieval)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Patent&lt;/strong&gt;: Patent application filed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Team Expansion&lt;/strong&gt;: Framework now expanded to AD domain and adopted as common stack for Search Team&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AutoML&lt;/strong&gt;: Optuna, Ray Tune&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Evolutionary Strategies (ES)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: Hydra-core&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure&lt;/strong&gt;: Existing search stack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
+&lt;p&gt;E-commerce ranking systems need to balance multiple objectives:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🗣️ Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>http://localhost:1313/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/speech-scoring-interspeech/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start problem by incorporating prompt (text and image) awareness. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Publication&lt;/strong&gt;: Accepted to &lt;strong&gt;InterSpeech 2023&lt;/strong&gt; (top conference on audio &amp;amp; signal processing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Production Deployment&lt;/strong&gt;: Integrated into SANTA Say TOEIC Speaking App&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cold-Start Robustness&lt;/strong&gt;: Achieved reliable performance even with limited training data for new prompts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-World Impact&lt;/strong&gt;: Helping thousands of language learners improve their speaking skills&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;innovation&#34;&gt;Innovation&lt;/h2&gt;
+&lt;p&gt;Traditional speech scoring systems struggle when encountering new prompts (questions) they haven&amp;rsquo;t seen during training. Our system incorporates both text and image information from the prompts, allowing it to:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🎙️ Emotional Text-to-Speech (TTS) System</title>
+      <link>http://localhost:1313/blog/projects/emotional-tts-humelo/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/emotional-tts-humelo/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;As Research Lead and COO at Humelo, I led the development of next-generation emotional Text-to-Speech systems that could convey nuanced emotions and expressions in synthesized speech. This project was funded by the Ministry of SMEs and startups.&lt;/p&gt;
+&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Government Grant&lt;/strong&gt;: Secured TIPS R&amp;amp;D grant from Ministry of SMEs (S2644149)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Publications&lt;/strong&gt;: Multiple papers accepted to &lt;strong&gt;ICASSP&lt;/strong&gt; (top conference on audio &amp;amp; signal processing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-speaker&lt;/strong&gt;: Developed systems supporting multiple voices and speaking styles&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emotional Control&lt;/strong&gt;: Fine-grained control over emotional expression in synthesized speech&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-innovations&#34;&gt;Technical Innovations&lt;/h2&gt;
+&lt;h3 id=&#34;1-factorized-hierarchical-vae&#34;&gt;1. Factorized Hierarchical VAE&lt;/h3&gt;
+&lt;p&gt;Developed multi-speaker and multi-domain emotional voice conversion using hierarchical variational autoencoders.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🔊 Polyphonic Sound Event Detection with Transfer Learning</title>
+      <link>http://localhost:1313/blog/projects/sound-event-detection-transfer-learning/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/projects/sound-event-detection-transfer-learning/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Research on detecting multiple simultaneous sound events using convolutional bidirectional LSTMs and synthetic data-based transfer learning. This work addressed the challenge of learning from limited real-world audio data.&lt;/p&gt;
+&lt;h2 id=&#34;key-innovation&#34;&gt;Key Innovation&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Synthetic Data-Based Transfer Learning&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generated synthetic audio data for pre-training&lt;/li&gt;
+&lt;li&gt;Transferred knowledge to real-world sound event detection&lt;/li&gt;
+&lt;li&gt;Achieved robust performance with limited labeled data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-approach&#34;&gt;Technical Approach&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: Convolutional Bidirectional LSTM&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Augmentation&lt;/strong&gt;: Synthetic audio generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transfer Learning&lt;/strong&gt;: Pre-train on synthetic data, fine-tune on real data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;publication&#34;&gt;Publication&lt;/h2&gt;
+&lt;p&gt;Seokwon Jeong, *Jungbae Park, *Sang Wan Lee - &amp;ldquo;Polyphonic sound event detection using convolutional bidirectional LSTM and Synthetic data-based transfer learning&amp;rdquo; (ICASSP 2019)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
