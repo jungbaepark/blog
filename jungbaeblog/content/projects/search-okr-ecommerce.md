@@ -10,7 +10,7 @@ categories: ["Industrial Projects"]
 
 At Bucketplace (오늘의집), I drove measurable OKR impact through a series of production search ranking experiments focused on optimizing deal and price-based ranking for e-commerce surfaces. The project encompassed end-to-end delivery from PRD and Design Doc authorship through DAG development to production rollout, establishing a reusable experimentation foundation that the team continues to build upon.
 
-![Search Ranking Experimentation](/images/projects/page9_img1.png)
+![Search Ranking Experimentation](/blog/images/projects/page9_img1.png)
 
 ## Key Achievements
 
@@ -38,7 +38,7 @@ The project established a reusable pipeline for rapid experimentation on search 
 
 2. **Feature Serving Pipeline**: Query Feature Table data flows through Redis into the ranking server, enabling real-time feature lookup during search request processing without adding significant latency to the search path.
 
-![Feature Pipeline Architecture](/images/projects/page17_img1.png)
+![Feature Pipeline Architecture](/blog/images/projects/page17_img1.png)
 
 ### End-to-End Delivery Process
 
@@ -47,7 +47,7 @@ Each experiment followed a rigorous process:
 - **DAG Development**: Airflow DAGs for feature computation, model training, and data pipeline orchestration
 - **Production Rollout**: Staged deployment with A/B testing framework integration
 
-![Experiment Results](/images/projects/page24_img1.png)
+![Experiment Results](/blog/images/projects/page24_img1.png)
 
 ### Hyperparameter Optimization
 
@@ -57,7 +57,7 @@ I developed a specialized Grid Search HPO approach for ranking parameter tuning,
 - **Optuna**: For structured hyperparameter search with pruning
 - **Ray Tune**: For distributed hyperparameter optimization at scale
 
-![HPO Results](/images/projects/page26_img1.png)
+![HPO Results](/blog/images/projects/page26_img1.png)
 
 ## Tech Stack
 

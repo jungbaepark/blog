@@ -48,7 +48,7 @@ Created a system for automated lyrics generation and rap synthesis that:
 - **Audio**: Sound synthesis and rap vocal generation
 - **Framework**: PyTorch
 
-![Music X AI Poster](/images/projects/music_x_ai_poster.jpeg)
+![Music X AI Poster](/blog/images/projects/music_x_ai_poster.jpeg)
 
 ## Period
 
