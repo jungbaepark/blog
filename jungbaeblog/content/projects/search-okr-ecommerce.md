@@ -8,7 +8,7 @@ categories: ["Industrial Projects"]
 
 ## Overview
 
-At Bucketplace (오늘의집), I drove measurable OKR impact through a series of production search ranking experiments focused on optimizing deal and price-based ranking for e-commerce surfaces. The project encompassed end-to-end delivery from PRD and Design Doc authorship through DAG development to production rollout, establishing a reusable experimentation foundation that the team continues to build upon.
+At Bucketplace, I delivered measurable OKR impact through production experiments by establishing a reusable experimentation foundation (Query Feature Table, Redis, Server) and shipping end-to-end from PRD/Design Doc through DAG development to production rollout.
 
 ![Search Ranking Experimentation](/blog/images/projects/page9_img1.png)
 
@@ -22,54 +22,45 @@ At Bucketplace (오늘의집), I drove measurable OKR impact through a series of
 ### Category Product List Page (PLP) -- Price 2.0 Ranking
 - **Buyer Conversion**: +11.17%
 - **Click Conversion**: +5.87%
-- **Product Exposure**: +27.9%
+- **Exposure**: +27.9%
 
 ### Experimentation Track Record
 - **4 total production experiments** conducted
-- **3 winners** shipped to production (75% win rate)
+- **3 winners** shipped to production
+- Minimal side effects observed
 
 ## Technical Approach
 
 ### Experimentation Infrastructure
 
-The project established a reusable pipeline for rapid experimentation on search ranking:
+The project established a reusable experimentation foundation:
 
-1. **Query Feature Table**: A centralized feature store capturing query-level signals (search volume, category distribution, deal availability, price sensitivity indicators) computed via Airflow DAGs and served through Redis for low-latency access.
-
-2. **Feature Serving Pipeline**: Query Feature Table data flows through Redis into the ranking server, enabling real-time feature lookup during search request processing without adding significant latency to the search path.
+- **Query Feature Table**: Computed via Airflow DAGs and served through Redis for low-latency access during search request processing.
+- **Feature Serving Pipeline**: Query Feature Table flows through Redis into the ranking server.
 
 ![Feature Pipeline Architecture](/blog/images/projects/page17_img1.png)
 
 ### End-to-End Delivery Process
 
-Each experiment followed a rigorous process:
-- **PRD / Design Doc**: Formal specification of the hypothesis, expected impact, and rollback criteria
-- **DAG Development**: Airflow DAGs for feature computation, model training, and data pipeline orchestration
-- **Production Rollout**: Staged deployment with A/B testing framework integration
+Each experiment followed the full delivery lifecycle:
+- **PRD / Design Doc** authorship
+- **DAG Development** via Airflow
+- **Production Rollout**
 
 ![Experiment Results](/blog/images/projects/page24_img1.png)
 
 ### Hyperparameter Optimization
 
-I developed a specialized Grid Search HPO approach for ranking parameter tuning, complemented by more advanced techniques:
-
-- **Bayesian Optimization**: For efficient exploration of high-dimensional parameter spaces
-- **Optuna**: For structured hyperparameter search with pruning
-- **Ray Tune**: For distributed hyperparameter optimization at scale
+Developed specialized Grid Search HPO for ranking parameter tuning, with additional tooling from Optuna and Ray Tune.
 
 ![HPO Results](/blog/images/projects/page26_img1.png)
 
 ## Tech Stack
 
-- **Feature Store**: Redis (serving), Query Feature Table (computation)
+- **Feature Serving**: Redis, Query Feature Table
 - **Orchestration**: Airflow DAGs
 - **Search Engine**: ElasticSearch
-- **AutoML/HPO**: Grid Search, Optuna, Ray Tune, Bayesian Optimization
-- **Experimentation**: A/B Testing Framework
-
-## Impact
-
-This project demonstrated the value of systematic experimentation infrastructure for search ranking. The +11.17% buyer conversion improvement on Category PLP alone represents significant revenue impact for the e-commerce platform. More importantly, the reusable experimentation foundation (Query Feature Table, Redis serving pipeline, DAG templates) reduced the marginal cost of running subsequent experiments, enabling the team to iterate faster on ranking improvements. The 75% experiment win rate reflects the effectiveness of the data-driven approach to hypothesis generation and parameter tuning.
+- **HPO**: Grid Search, Optuna, Ray Tune
 
 ## Period
 
