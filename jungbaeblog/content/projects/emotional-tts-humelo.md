@@ -40,9 +40,8 @@ April 2018 - March 2020
 
 ## Awards
 
-![K-Startup Award](/images/projects/k_startup_award.jpg)
-![KAIST Startup Award](/images/projects/kaist_startup_award.jpg)
-![Lab2Biz Award](/images/projects/lab2biz_award.jpeg)
+![K-Startup Award](/blog/images/projects/k_startup_award.jpg)
+![KAIST Startup Award](/blog/images/projects/kaist_startup_award.jpg)
 
 ## Impact
 

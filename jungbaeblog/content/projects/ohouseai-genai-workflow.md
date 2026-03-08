@@ -10,7 +10,7 @@ categories: ["Industrial Projects"]
 
 OHouseAI is an AI-powered interior design generation service at Bucketplace (오늘의집) that enables users to reimagine their living spaces through generative AI. I led the systematization of the GenAI workflow, modularizing the architecture into a Pipeline Provider + Subgraph pattern using LangGraph. This restructuring delivered dramatic improvements across all key service metrics and positioned OHouseAI to reach **Korea #8 ranking in the Graphics/Design category**.
 
-![OHouseAI Architecture](/images/projects/ohouseai_architecture.png)
+![OHouseAI Architecture](/blog/images/projects/ohouseai_architecture.png)
 
 ## Key Achievements
 
@@ -31,7 +31,7 @@ The core architectural innovation was decomposing the monolithic generation pipe
 - **Pipeline Provider**: A centralized orchestration layer that manages the lifecycle of generation requests, routing them through appropriate subgraphs based on user intent and input modality
 - **Subgraph Pattern**: Each generation capability (style transfer, room redesign, furniture placement) is implemented as an independent LangGraph subgraph, enabling independent iteration and A/B testing
 
-![OHouseAI Comparison](/images/projects/ohouseai_comparison.png)
+![OHouseAI Comparison](/blog/images/projects/ohouseai_comparison.png)
 
 ### LLM-as-a-Judge Evaluation Pipeline
 
@@ -43,13 +43,13 @@ To enable data-driven model selection and quality assurance, I built a comprehen
   - **Context Preservation**: How faithfully the output preserves the original room context and constraints
 - **Application**: Used to systematically compare candidate models (including GPT-IMAGE-1.5 and Gemini Nano) and select the best-performing configuration for production deployment
 
-![OHouseAI Judge Scores](/images/projects/ohouseai_judge_scores.png)
+![OHouseAI Judge Scores](/blog/images/projects/ohouseai_judge_scores.png)
 
 ### Monitoring and Observability
 
 Production monitoring through LangFuse provided end-to-end tracing of the generation pipeline, enabling rapid identification of quality degradation and latency bottlenecks.
 
-![OHouseAI Dashboard](/images/projects/ohouseai_dashboard.png)
+![OHouseAI Dashboard](/blog/images/projects/ohouseai_dashboard.png)
 
 ## Tech Stack
 
