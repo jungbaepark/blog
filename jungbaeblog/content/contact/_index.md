@@ -3,30 +3,30 @@ title: "Contact"
 layout: "single"
 ---
 
-## Let's Connect! 📬
+## Let's Connect
 
-I'd love to hear from you! Whether you want to discuss ML research, collaborate on a project, or just chat about AI and technology, feel free to reach out.
+I'd love to hear from you — whether to discuss ML research, explore collaboration, or chat about building production AI systems.
 
 ### Email
-📧 [jbpark0614@gmail.com](mailto:jbpark0614@gmail.com)
+[jbpark0614@gmail.com](mailto:jbpark0614@gmail.com)
 
 ### LinkedIn
-💼 [linkedin.com/in/jungbaepark](https://www.linkedin.com/in/jungbaepark/)
+[linkedin.com/in/jungbaepark](https://www.linkedin.com/in/jungbaepark/)
 
-### Portfolio & CV
-📄 [Download Full CV](https://drive.usercontent.google.com/download?id=1aEcOuG7CsDh_CD_kIBTG03cK9n08t9nz)
+### Portfolio
+[Portfolio (Google Drive)](https://drive.google.com/drive/folders/1CawAwpkrz_sTHtMrI3eT44A57XWS3_fC)
+
+### Blog
+[jungbaepark.github.io/blog](https://jungbaepark.github.io/blog/)
 
 ---
 
 ## What I'm Interested In
 
-I'm always excited to chat about:
+- **ML Systems**: Multimodal retrieval, search ranking, agentic AI, AutoML
+- **Research Collaboration**: Publishing at top-tier venues (CIKM, ICASSP, InterSpeech)
+- **Industry Applications**: E-commerce ML, EdTech, GenAI workflows
+- **Creative AI**: Music generation, TTS, voice conversion
+- **Neuroscience-inspired AI**: Cognitive modeling, brain-computer interfaces
 
-- 🤖 **Machine Learning & AI**: Multimodal AI, retrieval systems, AutoML, knowledge tracing
-- 🔬 **Research Collaboration**: Publishing at top-tier ML conferences
-- 💼 **Industry Projects**: E-commerce ML, EdTech, creative AI applications
-- 🎵 **AI for Creativity**: Music generation, TTS, voice conversion
-- 🧠 **Neuroscience-inspired AI**: Brain-computer interfaces, cognitive modeling
-- 📚 **Knowledge Sharing**: Speaking opportunities, technical writing, mentoring
-
-I typically respond within 24-48 hours. Looking forward to connecting with you!
+I typically respond within 24-48 hours. Looking forward to connecting with you.

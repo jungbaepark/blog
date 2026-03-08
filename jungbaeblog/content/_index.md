@@ -3,41 +3,42 @@ title: "About Me"
 layout: "single"
 ---
 
-## Hello! I'm Jungbae (Bobby) Park 👋
+## Hello, I'm Jungbae (Bobby) Park
 
-Welcome to my corner of the internet! I'm an **ML Engineer** who loves building intelligent systems that make a real difference. Currently, I'm at **Bucketplace (오늘의집)** 🏠, where I develop AI-powered interior design solutions using Vision-Language Models and multimodal retrieval systems.
+Welcome to my portfolio blog. I'm an **ML Engineer** at **Bucketplace (오늘의집)**, where I architect search ranking systems, multimodal retrieval pipelines, and GenAI workflows for one of Korea's largest interior/lifestyle platforms.
 
-### 🎓 My Journey
+### My Journey
 
-It all started with curiosity about the brain 🧠 - how do we think, learn, and perceive the world? This led me to **KAIST**, where I studied **Bio and Brain Engineering** with a minor in **Computer Science**. I earned my Master's degree exploring neuroscience-inspired AI, diving deep into how attention mechanisms help machines understand sequential data.
+My path into ML started with curiosity about the brain — how we think, learn, and perceive the world. At **KAIST**, I studied **Bio and Brain Engineering** with a minor in **Computer Science**, earning my Master's degree on neuroscience-inspired attention mechanisms for sequential data (Lab for Brain & Machine Intelligence, advised by Prof. Sang Wan Lee).
 
-### 💼 What I've Built
+### What I've Built
 
-I've been fortunate to wear many hats throughout my career:
+Over 7+ years across three companies, I've shipped 20+ production ML systems with measurable business impact:
 
-- **🎵 Creative AI Pioneer**: Co-founded **Humelo**, where we built emotional text-to-speech and AI music composition systems. Presented our work at **SXSW 2019** in Austin and collaborated with **SM Entertainment** on AI-generated music!
+- **Bucketplace (오늘의집)** — Search & AIL-LAB: Agentic 3D search with LangGraph/A2A, GenAI interior design (NSS +253%), multi-objective hyperparameter optimization (CIKM'25, patent applied), CLIP-based multimodal retrieval (CTCVR +16%), and Digital Twin pipelines (6000x cost reduction).
 
-- **📚 EdTech Innovator**: At **RIIID**, I scaled ML infrastructure for education technology used by millions of learners worldwide. Built speech scoring systems for language learners and achieved SOTA performance on knowledge tracing.
+- **RIIID (뤼이드)** — MLOps & AI Research: SOTA knowledge tracing (AUC 77 to 88%), speech scoring for TOEIC learners (InterSpeech 2023), model registry/dataset pipelines serving 4+ products, and first multi-GPU training setup (GPU util 25% to 95%).
 
-- **🛍️ E-commerce ML**: Currently optimizing search and discovery at Bucketplace, from multimodal retrieval to AutoML systems that balance multiple business objectives.
+- **Humelo (휴멜로)** — Co-Founder, COO & Research Lead: Emotional TTS (ICASSP 2019, oral), voice conversion (ICASSP 2020), sound event detection (ICASSP 2019), AI music composition (SXSW 2019, KBS Documentary), and ~US$875K in government R&D grants.
 
-### 🔬 Research & Impact
+### Research & Publications
 
-I believe great ML work combines solid research with practical engineering. I've published papers at top conferences like **CIKM**, **InterSpeech**, and **ICASSP**, and I'm always excited to explore how AI can enhance both creativity and everyday experiences.
+11 publications at top venues including **CIKM**, **InterSpeech**, **ICASSP**, and **IEEE SMC**. 8 registered patents + 3 applied. I believe great ML work combines solid research with practical engineering.
 
-### 🛠️ Tech Stack
+### Tech Stack
 
-**Core**: Python • PyTorch • HuggingFace • TensorFlow
+**Core**: Python, PyTorch, HuggingFace, TensorFlow
 
-**MLOps**: LangChain • LangGraph • Optuna • Ray Tune • Airflow • MLFlow
+**Agentic AI**: LangChain, LangGraph, LangFuse, A2A, ADK
 
-**Infrastructure**: FastAPI • AWS • GCP • Docker
+**AutoML & MLOps**: Optuna, Ray Tune, MLFlow, Airflow, BentoML, Triton
 
-**Languages**: 🇰🇷 Korean (Native) • 🇺🇸 English (Business level)
+**Infrastructure**: FastAPI, ElasticSearch, Redis, AWS, GCP, Docker
+
+**Languages**: Korean (Native), English (Business)
 
 ---
 
-### 📬 Let's Connect!
+### Let's Connect
 
-I'm always excited to chat about ML, multimodal AI, or creative applications of technology. Feel free to reach out!
-Please find connection point at contact page!
+I'm always open to discussing ML systems, multimodal AI, or research collaboration. Find me on the [Contact](/blog/contact/) page.
