@@ -4,6 +4,13 @@ date: 2020-03-15
 draft: false
 tags: ["startup", "research-management", "government-grants", "humelo"]
 categories: ["Startup Projects"]
+summary: "Secured ~US$875K across three competitive Korean government R&D grants (IITP, TIPS, Seoul R&BD) at Humelo, covering brain-inspired AI, emotional TTS, and voice conversion research."
+weight: 20
+cover:
+  image: "/blog/images/projects/k_startup_minister_award.jpg"
+  alt: "K-Startup Minister Award"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -40,6 +47,12 @@ For each grant, I contributed to proposal writing, research planning, and projec
 
 - **Research Areas**: Brain-inspired AI, Emotional TTS, Voice Conversion
 - **Management**: Grant proposal writing, budget planning, milestone tracking
+
+## Awards
+
+![Lab2Biz Award](/blog/images/projects/lab2biz_award.jpeg)
+
+![KAIST Startup Award](/blog/images/projects/kaist_startup_award.jpg)
 
 ## Period
 

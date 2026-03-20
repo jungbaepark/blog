@@ -4,6 +4,13 @@ date: 2026-01-15
 draft: false
 tags: ["industrial", "agentic-ai", "langgraph", "multimodal-retrieval", "3d-search", "bucketplace", "a2a"]
 categories: ["Industrial Projects"]
+summary: "Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol."
+weight: 1
+cover:
+  image: "/blog/images/projects/agentic_3d_search_pipeline.png"
+  alt: "Agentic NL 3D Model Search: LangGraph Pipeline"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -20,33 +27,101 @@ At the core of this project is **CoI-Fit (Context-Intent Fit Matching)**, a comp
 - **Dual Interface Design**: Built both A2A (Agent-to-Agent) JSON-RPC and REST/FastAPI interfaces, enabling seamless integration with both agent ecosystems and traditional service architectures
 - **Evaluation Pipeline**: Developed a persona-based evaluation pipeline that generates synthetic query-document sets to evaluate retrieval relevance across long-tail distributions, ensuring robust performance on rare and complex queries
 
+```mermaid
+graph LR
+    A[NL Query] --> B[LLM Parse]
+    B --> C[BM25+KNN\nHybrid Search]
+    C --> D[Filter\nRelaxation]
+    D --> E[Quality\nRecovery]
+    E --> F[Ranked Results]
+```
+
 ## Technical Approach
 
-The system follows a multi-stage agentic pipeline:
+### Pipeline Topology
 
-1. **Query Understanding**: An LLM-based agent parses natural language queries into structured retrieval signals, identifying product category, visual attributes, color preferences, spatial dimensions, and budget constraints.
+The system follows a multi-stage agentic pipeline with parallel fan-out for inference:
 
-2. **Compositional Multimodal Retrieval (CoI-Fit)**: The retrieval backbone combines four signal types:
-   - **Space Analysis**: Understanding the room context and spatial arrangement from 3D coordinates
-   - **Mood/Style Matching**: Extracting aesthetic intent from text and image inputs
-   - **Dimensional Constraints**: Filtering by physical size requirements derived from the 3D scene
-   - **Conversational Context**: Maintaining coherent retrieval across multi-turn interactions
+```mermaid
+flowchart TD
+    A[preprocess] --> B1[pre_analyze]
+    A --> B2[pre_category_agg]
+    B1 --> C[planner]
+    B2 --> C
+    C --> D1[query_rewrite]
+    C --> D2[query_embedding]
+    C --> D3[infer_category]
+    C --> D4[infer_attributes]
+    C --> D5[infer_colors]
+    C --> D6[infer_price]
+    C --> D7[infer_dimensions]
+    D1 --> E[retrieve_with_signals]
+    D2 --> E
+    D3 --> E
+    D4 --> E
+    D5 --> E
+    D6 --> E
+    D7 --> E
+    E --> F[twidder]
+    F --> G[check_refine]
+    G -->|retry| E
+    G -->|final| H[format_response]
+```
 
-3. **Hybrid Search Execution**: BM25 lexical search combined with KNN vector search on ElasticSearch, with dynamic weight balancing based on query characteristics.
+### Request Journey (End-to-End)
 
-4. **Parallel Fan-Out Architecture**: LangGraph orchestrates parallel inference across multiple retrieval dimensions, with results aggregated through a scoring and ranking layer.
+1. **Intake**: Input normalization, safety check, format validation
+2. **Analyze & Plan**: Language/token analysis, category aggregation, search mode determination
+3. **Parallel Intelligence**: Fan-out to 7 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction
+4. **Retrieval & Ranking**: BM25 + KNN hybrid search with twidder for product_id deduplication
+5. **Quality Recovery**: Filter relaxation retry when results are insufficient (max 1 refine to protect p99)
+6. **Response**: Final items with optional debug metadata (node latency, signals, ES query)
 
-5. **Quality Assurance**: Auto-recovery via filter relaxation retry ensures that overly specific queries gracefully degrade to broader matches rather than returning empty results.
+![NL Search Demo](/blog/images/projects/notion_nl_search_demo.png)
+
+### CoI-Fit: Compositional Multimodal Retrieval
+
+CoI-Fit (Context-Intent Fit Matching) serves as the retrieval backbone for multiple downstream agents:
+
+- **Space Analysis**: Understanding room context and spatial arrangement from 3D coordinates
+- **Mood/Style Matching**: Extracting aesthetic intent from text and image inputs
+- **Dimensional Constraints**: Filtering by physical size requirements derived from the 3D scene
+- **Conversational Context**: Maintaining coherent retrieval across multi-turn interactions
+
+![CoI-Fit Abstract Design](/blog/images/projects/notion_coifit_abstract.png)
+
+### State Design (3-Layer)
+
+| Layer | Role | Properties |
+|---|---|---|
+| `inputs` | Request original | Immutable |
+| `artifacts` | Intermediate outputs | Mutable, parallel accumulation |
+| `outputs` | Final response | Finalized at exit |
+
+### Architecture Integration
+
+The system operates as both a standalone service and a domain agent within the AI-AP (AI Agent Platform) orchestrator:
+
+- **Standalone**: Direct REST/A2A calls for search queries
+- **Orchestrated**: AI-AP Orchestrator routes search requests via agent capability discovery
+- **Clear boundary**: Orchestrator handles control plane (routing, fallback, circuit break); search agent handles execution plane (BM25/KNN, signal inference, ranking)
 
 ## Tech Stack
 
 - **Agent Framework**: LangGraph, A2A (Agent-to-Agent Protocol), ADK (Agent Development Kit)
 - **Observability**: LangFuse
-- **Search Infrastructure**: ElasticSearch (BM25 + KNN hybrid)
-- **Orchestration**: Airflow
+- **Search Infrastructure**: ElasticSearch (BM25 + KNN hybrid, blue/green index deployment)
+- **Embedding Models**: SigLIP2, QWEN-3-VL-Embedding-2B (composed text+image embedding)
+- **Orchestration**: Airflow (batch indexing), K8S Operator
 - **Model Serving**: Triton Inference Server
-- **API**: FastAPI, JSON-RPC
-- **Models**: Vision-Language Models (VLM), Multimodal Retrieval Models
+- **API**: FastAPI, JSON-RPC 2.0
+- **Evaluation**: Persona-based synthetic query generation + LLM-as-Judge
+
+## Future Work
+
+- **CoI-Fit Phase 2**: Multi-vector search with `intent vector + context vector + preference vector` for conversational queries
+- **Content Mixing**: Blending product results with review/style content for answer-type exploration
+- **Personalization**: Injecting user behavior features (click/scrap/purchase/dwell) into retrieval/rerank stages
 
 ## Impact
 

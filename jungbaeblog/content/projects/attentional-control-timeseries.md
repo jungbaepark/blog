@@ -4,6 +4,13 @@ date: 2019-02-15
 draft: false
 tags: ["academic", "deep-learning", "attention-mechanism", "time-series", "kaist"]
 categories: ["Academic Research"]
+summary: "Master's thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018."
+weight: 25
+cover:
+  image: "/blog/images/projects/eeg_rl_system-3.png"
+  alt: "Overall system architecture for EEG signal classification with Deep RL (IEEE SMC 2018)"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -22,6 +29,8 @@ Master's thesis research at KAIST exploring attentional control methods for time
 ### EEG Signal Classification
 
 Applied reinforcement learning for adaptive EEG signal processing, addressing the memory-based vs. memoryless trade-off problem. This approach enables the model to dynamically decide when to rely on historical context and when to focus on current observations.
+
+![RL controller, CNN, LSTM, and Mix architectures for EEG classification](/blog/images/projects/eeg_rl_arch-2.png)
 
 ### Attention Mechanisms for Sequential Data
 

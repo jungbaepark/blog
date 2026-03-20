@@ -4,6 +4,13 @@ date: 2023-01-15
 draft: false
 tags: ["industrial", "speech-processing", "deep-learning", "published", "riiid", "interspeech", "cold-start"]
 categories: ["Industrial Projects"]
+summary: "Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app."
+weight: 10
+cover:
+  image: "/blog/images/projects/speech_scoring_arch-3.png"
+  alt: "Figure 3: End-to-end speech scoring model architecture from InterSpeech paper"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -18,6 +25,8 @@ At **RIIID (뤼이드)**, developed an end-to-end automatic speech scoring syste
 - **Real-World Impact**: Enabling thousands of language learners to improve their speaking skills
 
 ## Technical Approach
+
+![Figure 1: Cold start problem visualization](/blog/images/projects/speech_scoring_problem-1.png)
 
 Traditional speech scoring systems struggle when encountering new prompts (questions) they have not seen during training. This is the cold-start item problem. Our approach incorporates:
 
@@ -44,4 +53,4 @@ Enables fair and consistent scoring for speaking practice, helping language lear
 
 ## Publications
 
-- Jungbae Park, Seungtaek Choi - "Addressing Cold Start Problem for End-to-end Automatic Speech Scoring" (InterSpeech 2023)
+- Jungbae Park, Seungtaek Choi - "Addressing Cold Start Problem for End-to-end Automatic Speech Scoring" (InterSpeech 2023, DOI: 10.21437/Interspeech.2023-533)

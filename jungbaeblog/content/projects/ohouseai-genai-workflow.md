@@ -4,6 +4,13 @@ date: 2025-11-15
 draft: false
 tags: ["industrial", "genai", "langchain", "langgraph", "llm-evaluation", "interior-design", "bucketplace"]
 categories: ["Industrial Projects"]
+summary: "Led systematization of OHouseAI's GenAI interior design service at Bucketplace, achieving +253% net satisfaction, 2x latency reduction, and outperforming GPT-IMAGE-1.5 and Gemini Nano. Reached Korea #8 in Graphics/Design."
+weight: 5
+cover:
+  image: "/blog/images/projects/ohouseai_architecture.png"
+  alt: "OHouseAI GenAI Pipeline Architecture"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -50,11 +57,21 @@ Production monitoring through LangFuse for end-to-end tracing of the generation 
 
 ![OHouseAI Dashboard](/blog/images/projects/ohouseai_dashboard.png)
 
+### Architecture Systematization
+
+Restructured the existing LangGraph pipeline into a modular Pipeline Provider + Subgraph pattern:
+
+- **Before**: Monolithic LangGraph graph handling all generation types in a single flow
+- **After**: Composable subgraphs per generation capability, orchestrated by a centralized Pipeline Provider with checkpointed state, Redis persistence, and MongoDB storage
+- **Benefits**: Independent iteration on each generation type, modular prompt management, structured request monitoring, and performance evaluation
+
 ## Tech Stack
 
 - **Agent/Workflow Framework**: LangChain, LangGraph
+- **Backend**: FastAPI, Kafka
+- **Storage**: MongoDB (domain objects), Redis (LangGraph persistence)
 - **Observability**: LangFuse
-- **Evaluation**: LLM-as-a-Judge
+- **Evaluation**: LLM-as-a-Judge (4 rounds x 99 test sets)
 - **Architecture Pattern**: Pipeline Provider + Subgraph
 
 ## Period
