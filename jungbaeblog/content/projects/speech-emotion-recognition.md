@@ -4,6 +4,13 @@ date: 2019-02-01
 draft: false
 tags: ["startup", "speech-processing", "emotion-recognition", "deep-learning", "humelo"]
 categories: ["Startup Projects"]
+summary: "Built a multi-class speech emotion recognition system at Humelo using SpeechCNN and CRNN architectures with MFCC/Mel-spectrogram features, integrated into the Emotional TTS pipeline."
+weight: 20
+cover:
+  image: "/blog/images/projects/speech_emotion_pipeline.png"
+  alt: "Speech Emotion Recognition Pipeline"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -14,6 +21,14 @@ At **Humelo (휴멜로)**, I managed and developed a speech emotion classificati
 
 - Built feature extraction and classifier for multi-class emotion detection from audio signals
 - Integrated the emotion recognition module into the Emotional TTS pipeline
+
+```mermaid
+graph LR
+    A[Audio Input] --> B[MFCC + Mel\nExtraction]
+    B --> C[SpeechCNN / CRNN]
+    C --> D[Emotion\nClassifier]
+    D --> E[Multi-class\nOutput]
+```
 
 ## Technical Approach
 
@@ -34,7 +49,7 @@ The system classified audio segments into multiple emotion categories.
 
 ## Tech Stack
 
-- **Deep Learning Framework**: PyTorch
+- **Deep Learning Framework**: TensorFlow
 - **Architectures**: SpeechCNN, CRNN
 - **Audio Features**: MFCC, Mel-spectrogram analysis
 - **Domain**: Speech emotion recognition, multi-class classification

@@ -1,0 +1,254 @@
+/* ─── Typography ─── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em;
+}
+
+.post-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.post-content {
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+/* ─── Profile Hero (Homepage) ─── */
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 0 16px;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border);
+  flex-shrink: 0;
+}
+
+.profile-info h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 4px;
+  border: none;
+}
+
+.profile-title {
+  font-size: 1.15rem;
+  color: var(--secondary);
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.profile-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-links a {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--code-bg);
+  color: var(--primary);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.profile-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 600px) {
+  .profile-hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .profile-links {
+    justify-content: center;
+  }
+}
+
+/* ─── Date Tags in Work Experience ─── */
+.date-tag {
+  font-size: 0.85rem;
+  color: var(--secondary);
+  font-weight: 400;
+}
+
+/* ─── CTA Buttons ─── */
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  background: #2563eb;
+  color: #ffffff !important;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+  background: #1d4ed8;
+  color: #ffffff !important;
+}
+
+.cta-btn-outline {
+  background: transparent;
+  color: #2563eb !important;
+  border: 2px solid #2563eb;
+}
+
+.cta-btn-outline:hover {
+  background: #2563eb;
+  color: #ffffff !important;
+}
+
+.dark .cta-btn {
+  background: #60a5fa;
+  color: #1a1a2e !important;
+}
+
+.dark .cta-btn:hover {
+  background: #93bbfd;
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.3);
+}
+
+.dark .cta-btn-outline {
+  background: transparent;
+  color: #60a5fa !important;
+  border-color: #60a5fa;
+}
+
+.dark .cta-btn-outline:hover {
+  background: #60a5fa;
+  color: #1a1a2e !important;
+}
+
+/* ─── Project Cards (List Pages) ─── */
+.post-entry {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.post-entry:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.entry-cover {
+  display: block !important;
+  margin: 0;
+}
+
+.entry-cover img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.entry-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.entry-content {
+  font-size: 0.92rem;
+  color: var(--secondary);
+  line-height: 1.5;
+}
+
+/* ─── Tags ─── */
+.post-tags a {
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.15s ease;
+}
+
+/* ─── Color Refinements (Dark Mode) ─── */
+.dark {
+  --gap: 24px;
+  --radius: 12px;
+}
+
+/* ─── Smooth Page Load ─── */
+.main {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Code Blocks ─── */
+.post-content pre {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* ─── Better Links ─── */
+.post-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.post-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ─── Social Icons ─── */
+.social-icons a {
+  transition: transform 0.15s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.15);
+}
+
+/* ─── Breadcrumbs ─── */
+.breadcrumbs {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ─── TOC ─── */
+.toc {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}

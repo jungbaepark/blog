@@ -4,6 +4,13 @@ date: 2019-04-15
 draft: false
 tags: ["startup", "audio-processing", "transfer-learning", "deep-learning", "published", "icassp", "humelo"]
 categories: ["Startup Projects"]
+summary: "Developed convolutional bidirectional LSTM with synthetic data-based transfer learning for polyphonic sound event detection at Humelo, achieving +28.4% F1 improvement. Published at ICASSP 2019 as corresponding author."
+weight: 20
+cover:
+  image: "/blog/images/projects/sed_architecture-2.png"
+  alt: "CBRNN architecture with transfer learning for polyphonic sound event detection (ICASSP 2019)"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -26,7 +33,7 @@ At Humelo, I managed and developed convolutional bidirectional LSTM with synthet
 
 ## Tech Stack
 
-- **Framework**: PyTorch
+- **Framework**: TensorFlow
 - **Method**: Transfer Learning, Convolutional Bidirectional LSTM
 
 ## Period
@@ -35,4 +42,4 @@ June 2018 - May 2019 | Humelo (휴멜로)
 
 ## Publications
 
-- Seokwon Jeong, Jungbae Park (corresponding author), Sang Wan Lee - "Polyphonic sound event detection using convolutional bidirectional LSTM and Synthetic data-based transfer learning" (ICASSP 2019)
+- Seokwon Jung, Jungbae Park (corresponding author), Sang Wan Lee - "Polyphonic Sound Event Detection Using Convolutional Bidirectional LSTM and Synthetic Data-based Transfer Learning" (ICASSP 2019, DOI: 10.1109/ICASSP.2019.8682909)

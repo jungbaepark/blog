@@ -4,6 +4,13 @@ date: 2019-03-15
 draft: false
 tags: ["creative-ai", "music", "generative-ai", "startup", "sxsw", "humelo"]
 categories: ["Creative AI Projects"]
+summary: "Led AI music composition and rap synthesis at Humelo, presented at SXSW 2019, collaborated with SM Entertainment and rapper Sleepy (KBS Documentary), and received coverage from 10+ national media outlets."
+weight: 20
+cover:
+  image: "/blog/images/projects/music_x_ai_poster.jpeg"
+  alt: "Music X AI Collaboration Poster"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
@@ -46,7 +53,7 @@ Created a system for automated lyrics generation and rap synthesis that:
 - **Deep Learning**: Seq2Seq, LSTM, Polynomial models for music generation
 - **NLP**: Lyrics generation, text processing
 - **Audio**: Sound synthesis and rap vocal generation
-- **Framework**: PyTorch
+- **Framework**: TensorFlow
 
 ![Music X AI Poster](/blog/images/projects/music_x_ai_poster.jpeg)
 

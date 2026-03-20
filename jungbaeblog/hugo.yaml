@@ -1,16 +1,83 @@
 baseURL: https://jungbaepark.github.io/blog/
 languageCode: en-us
-title: Jungbae Park's Blogs
+title: Jungbae Park
 theme: ["PaperMod"]
+
+enableRobotsTXT: true
+enableEmoji: true
+buildDrafts: false
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 menu:
   main:
     - name: Projects
       url: /projects/
+      weight: 10
+    - name: Resume
+      url: /resume.pdf
       weight: 20
-    - name: Articles
-      url: /articles/
-      weight: 30
     - name: Contact
       url: /contact/
+      weight: 30
+    - name: Search
+      url: /search/
       weight: 40
+
+params:
+  env: production
+  description: "ML Engineer & Researcher — Search Ranking, Multimodal AI, Agentic Systems"
+  author: "Jungbae Park"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowShareButtons: false
+  ShowToc: true
+  TocOpen: false
+
+  homeInfoParams:
+    Title: ""
+    Content: ""
+
+  mainSections: ["_none"]
+
+  socialIcons:
+    - name: linkedin
+      title: "LinkedIn"
+      url: "https://linkedin.com/in/jungbaepark/"
+    - name: email
+      title: "Email"
+      url: "mailto:jbpark0614@gmail.com"
+
+  cover:
+    linkFullImages: true
+    responsiveImages: true
+    hiddenInList: false
+    hiddenInSingle: false
+
+  label:
+    text: "Jungbae Park"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: dracula
+    lineNos: false
+    noClasses: false

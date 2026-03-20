@@ -4,6 +4,13 @@ date: 2016-11-15
 draft: false
 tags: ["academic", "reinforcement-learning", "multi-agent", "cognitive-science", "kaist"]
 categories: ["Academic Research"]
+summary: "Undergraduate research at KAIST on multi-agent cognitive policy learning through competitive reinforcement learning, demonstrating emergence of complex behaviors. Won Best Paper Award at 2016 KIIS Conference."
+weight: 25
+cover:
+  image: "/blog/images/projects/multi_agent_rl-2.png"
+  alt: "Hunter-prey model and Deep Boltzmann Machine diagrams for multi-agent cognitive policy learning (KIIS 2016)"
+  hidden: false
+  hiddenInList: false
 ---
 
 ## Overview
