@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Deep-Learning on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/deep-learning/</link><description>Recent content in Deep-Learning on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/deep-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Prompt-Aware Speech Scoring System for Second Language Learners</title><link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid><description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description></item><item><title>Knowledge Tracing with Contrastive Learning</title><link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid><description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description></item><item><title>Emotional Text-to-Speech and Voice Conversion Systems</title><link>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</link><pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</guid><description>Led development of duration-controllable TTS and emotional voice conversion at Humelo, producing two ICASSP publications (2019 Oral 1st author, 2020). Won Minister of Science and ICT Special Award at K-Startup 2018.</description></item><item><title>Polyphonic Sound Event Detection with Transfer Learning</title><link>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</link><pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</guid><description>Developed convolutional bidirectional LSTM with synthetic data-based transfer learning for polyphonic sound event detection at Humelo, achieving +28.4% F1 improvement. Published at ICASSP 2019 as corresponding author.</description></item><item><title>Speech Emotion Recognition &amp; Classification System</title><link>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</link><pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</guid><description>Built a multi-class speech emotion recognition system at Humelo using SpeechCNN and CRNN architectures with MFCC/Mel-spectrogram features, integrated into the Emotional TTS pipeline.</description></item><item><title>Attentional Control for Time-Series Data (Master's Thesis)</title><link>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</link><pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</guid><description>Master&amp;rsquo;s thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Deep-Learning on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/deep-learning/</link>
+    <description>Recent content in Deep-Learning on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid>
+      <description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description>
+    </item>
+    <item>
+      <title>Knowledge Tracing with Contrastive Learning</title>
+      <link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid>
+      <description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description>
+    </item>
+    <item>
+      <title>Emotional Text-to-Speech and Voice Conversion Systems</title>
+      <link>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</guid>
+      <description>Led development of duration-controllable TTS and emotional voice conversion at Humelo, producing two ICASSP publications (2019 Oral 1st author, 2020). Won Minister of Science and ICT Special Award at K-Startup 2018.</description>
+    </item>
+    <item>
+      <title>Polyphonic Sound Event Detection with Transfer Learning</title>
+      <link>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</guid>
+      <description>Developed convolutional bidirectional LSTM with synthetic data-based transfer learning for polyphonic sound event detection at Humelo, achieving +28.4% F1 improvement. Published at ICASSP 2019 as corresponding author.</description>
+    </item>
+    <item>
+      <title>Speech Emotion Recognition &amp; Classification System</title>
+      <link>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</guid>
+      <description>Built a multi-class speech emotion recognition system at Humelo using SpeechCNN and CRNN architectures with MFCC/Mel-spectrogram features, integrated into the Emotional TTS pipeline.</description>
+    </item>
+    <item>
+      <title>Attentional Control for Time-Series Data (Master&#39;s Thesis)</title>
+      <link>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</guid>
+      <description>Master&amp;rsquo;s thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018.</description>
+    </item>
+  </channel>
+</rss>

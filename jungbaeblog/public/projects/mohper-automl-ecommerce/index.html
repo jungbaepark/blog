@@ -1,13 +1,463 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Multi-Objective Model Hyperparameter Optimization for E-commerce Search | Jungbae Park</title><meta name=keywords content="industrial,automl,optimization,published,bucketplace,cikm"><meta name=description content="Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="Multi-Objective Model Hyperparameter Optimization for E-commerce Search"><meta property="og:description" content="Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2025-01-15T00:00:00+00:00"><meta property="article:modified_time" content="2025-01-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Automl"><meta property="article:tag" content="Optimization"><meta property="article:tag" content="Published"><meta property="article:tag" content="Bucketplace"><meta property="article:tag" content="Cikm"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png"><meta name=twitter:title content="Multi-Objective Model Hyperparameter Optimization for E-commerce Search"><meta name=twitter:description content="Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"Multi-Objective Model Hyperparameter Optimization for E-commerce Search","item":"https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Multi-Objective Model Hyperparameter Optimization for E-commerce Search","name":"Multi-Objective Model Hyperparameter Optimization for E-commerce Search","description":"Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track.","keywords":["industrial","automl","optimization","published","bucketplace","cikm"],"articleBody":"Overview At Bucketplace (오늘의집), increased iteration velocity and production tuning coverage by launching tuned parameters on SERP and CPLP, targeting CTR/CVR improvements without harming other metrics.\nKey Achievements Publication: Accepted to CIKM'25 Applied Research Track (DOI: 10.1145/3746252.3761496) Patent: Patent applied Production Impact: Launched tuned parameters \u003e5x on SERP and \u003e3x on CPLP Online A/B Results: SERP CTR +0.95%, Click/Query +1.23%; CPLP CTCVR +1.10%, Purchase/Query +1.62% Domain Expansion: Expanded into the AD domain and adopted as common Search Team stack Technical Approach Framework Architecture MOHPER is a multi-objective hyperparameter optimization framework that automatically tunes ElasticSearch ranking parameters while balancing multiple business metrics simultaneously.\nCore Components Multi-Objective Optimization: Bayesian optimization with Optuna/Ray Tune, jointly optimizing CTR, CVR, and other metrics to avoid “whack-a-mole” metric trade-offs Transform Functions: Custom conversion functions mapping raw signals to ranking scores, enabling fine-grained control over how features influence search ranking Safety Guardrails: Each optimization run ensures no significant degradation in non-target metrics before promotion to production Algorithm Flow The optimization loop follows:\nSample hyperparameter configuration via Bayesian optimization Construct ElasticSearch QueryDSL with sampled parameters Evaluate against offline metrics (simulated click/purchase) Update surrogate model and propose next configuration Promote best configuration to online A/B test Production Deployment Launched tuned parameters \u003e5x on SERP and \u003e3x on CPLP Each optimization targeted CTR/CVR improvements while ensuring other metrics were not harmed Expanded the framework into the AD domain and integrated it as common stack for the Search Team Nominated for Bucketplace Engineering Awards Tech Stack AutoML: Optuna, Ray Tune Optimization: Bayesian Optimization, Multi-Objective (Pareto) Search: ElasticSearch QueryDSL Configuration: Hydra-core Orchestration: Airflow, Katib Evaluation: Offline simulation + Online A/B testing Period October 2023 - January 2025 | Bucketplace (오늘의집)\nPublications Jungbae Park, Heonseok Jang - “MOHPER: Multi-objective Hyperparameter Optimization Framework for E-commerce Retrieval System” (CIKM 2025, Applied Research Track; arXiv:2503.05227; DOI: 10.1145/3746252.3761496) Talks CIKM 2025: Oral presentation at the Applied Research Track Bucketplace Internal: “AutoML for Retrieval (ElasticSearch) System Tutorials” (2024.10.24) ","wordCount":"320","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png","datePublished":"2025-01-15T00:00:00Z","dateModified":"2025-01-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">Multi-Objective Model Hyperparameter Optimization for E-commerce Search</h1><div class=post-meta><span title='2025-01-15 00:00:00 +0000 UTC'>January 15, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png alt="MOHPER Framework Architecture (Figure 1, CIKM Paper)"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#framework-architecture aria-label="Framework Architecture">Framework Architecture</a></li><li><a href=#core-components aria-label="Core Components">Core Components</a></li><li><a href=#algorithm-flow aria-label="Algorithm Flow">Algorithm Flow</a></li><li><a href=#production-deployment aria-label="Production Deployment">Production Deployment</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li><li><a href=#publications aria-label=Publications>Publications</a></li><li><a href=#talks aria-label=Talks>Talks</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At <strong>Bucketplace (오늘의집)</strong>, increased iteration velocity and production tuning coverage by launching tuned parameters on SERP and CPLP, targeting CTR/CVR improvements without harming other metrics.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li><strong>Publication</strong>: Accepted to <strong>CIKM'25 Applied Research Track</strong> (DOI: 10.1145/3746252.3761496)</li><li><strong>Patent</strong>: Patent applied</li><li><strong>Production Impact</strong>: Launched tuned parameters >5x on SERP and >3x on CPLP</li><li><strong>Online A/B Results</strong>: SERP CTR <strong>+0.95%</strong>, Click/Query <strong>+1.23%</strong>; CPLP CTCVR <strong>+1.10%</strong>, Purchase/Query <strong>+1.62%</strong></li><li><strong>Domain Expansion</strong>: Expanded into the AD domain and adopted as common Search Team stack</li></ul><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=framework-architecture>Framework Architecture<a hidden class=anchor aria-hidden=true href=#framework-architecture>#</a></h3><p>MOHPER is a multi-objective hyperparameter optimization framework that automatically tunes ElasticSearch ranking parameters while balancing multiple business metrics simultaneously.</p><p><img alt="MOHPER Module Architecture" loading=lazy src=/blog/images/projects/bp_mohper_module.png></p><h3 id=core-components>Core Components<a hidden class=anchor aria-hidden=true href=#core-components>#</a></h3><ol><li><strong>Multi-Objective Optimization</strong>: Bayesian optimization with Optuna/Ray Tune, jointly optimizing CTR, CVR, and other metrics to avoid &ldquo;whack-a-mole&rdquo; metric trade-offs</li><li><strong>Transform Functions</strong>: Custom conversion functions mapping raw signals to ranking scores, enabling fine-grained control over how features influence search ranking</li><li><strong>Safety Guardrails</strong>: Each optimization run ensures no significant degradation in non-target metrics before promotion to production</li></ol><p><img alt="Transform Function Design" loading=lazy src=/blog/images/projects/bp_mohper_transform_function.png></p><h3 id=algorithm-flow>Algorithm Flow<a hidden class=anchor aria-hidden=true href=#algorithm-flow>#</a></h3><p>The optimization loop follows:</p><ol><li>Sample hyperparameter configuration via Bayesian optimization</li><li>Construct ElasticSearch QueryDSL with sampled parameters</li><li>Evaluate against offline metrics (simulated click/purchase)</li><li>Update surrogate model and propose next configuration</li><li>Promote best configuration to online A/B test</li></ol><p><img alt="MOHPER Algorithm" loading=lazy src=/blog/images/projects/bp_mohper_algorithm.png></p><h3 id=production-deployment>Production Deployment<a hidden class=anchor aria-hidden=true href=#production-deployment>#</a></h3><ul><li>Launched tuned parameters <strong>>5x on SERP</strong> and <strong>>3x on CPLP</strong></li><li>Each optimization targeted CTR/CVR improvements while ensuring other metrics were not harmed</li><li>Expanded the framework into the AD domain and integrated it as common stack for the Search Team</li><li>Nominated for Bucketplace Engineering Awards</li></ul><p><img alt="AutoML Integration Overview" loading=lazy src=/blog/images/projects/bp_mohper_automl.png></p><p><img alt="Transform Function and Conversion Funnel" loading=lazy src=/blog/images/projects/mohper_details-4.png></p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>AutoML</strong>: Optuna, Ray Tune</li><li><strong>Optimization</strong>: Bayesian Optimization, Multi-Objective (Pareto)</li><li><strong>Search</strong>: ElasticSearch QueryDSL</li><li><strong>Configuration</strong>: Hydra-core</li><li><strong>Orchestration</strong>: Airflow, Katib</li><li><strong>Evaluation</strong>: Offline simulation + Online A/B testing</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>October 2023 - January 2025 | Bucketplace (오늘의집)</p><h2 id=publications>Publications<a hidden class=anchor aria-hidden=true href=#publications>#</a></h2><ul><li>Jungbae Park, Heonseok Jang - &ldquo;MOHPER: Multi-objective Hyperparameter Optimization Framework for E-commerce Retrieval System&rdquo; (CIKM 2025, Applied Research Track; arXiv:2503.05227; DOI: 10.1145/3746252.3761496)</li></ul><h2 id=talks>Talks<a hidden class=anchor aria-hidden=true href=#talks>#</a></h2><ul><li><strong>CIKM 2025</strong>: Oral presentation at the Applied Research Track</li><li><strong>Bucketplace Internal</strong>: &ldquo;AutoML for Retrieval (ElasticSearch) System Tutorials&rdquo; (2024.10.24)</li></ul><p><img alt="MOHPER Paper Abstract" loading=lazy src=/blog/images/projects/bp_mohper_abstract.png></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/automl/>Automl</a></li><li><a href=https://jungbaepark.github.io/blog/tags/optimization/>Optimization</a></li><li><a href=https://jungbaepark.github.io/blog/tags/published/>Published</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li><li><a href=https://jungbaepark.github.io/blog/tags/cikm/>Cikm</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Multi-Objective Model Hyperparameter Optimization for E-commerce Search | Jungbae Park</title>
+<meta name="keywords" content="industrial, automl, optimization, published, bucketplace, cikm">
+<meta name="description" content="Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x&#43; on SERP and 3x&#43; on CPLP for CTR/CVR gains. Accepted to CIKM&#39;25 Applied Research Track.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="Multi-Objective Model Hyperparameter Optimization for E-commerce Search">
+  <meta property="og:description" content="Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x&#43; on SERP and 3x&#43; on CPLP for CTR/CVR gains. Accepted to CIKM&#39;25 Applied Research Track.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2025-01-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-01-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Automl">
+    <meta property="article:tag" content="Optimization">
+    <meta property="article:tag" content="Published">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="article:tag" content="Cikm">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png">
+<meta name="twitter:title" content="Multi-Objective Model Hyperparameter Optimization for E-commerce Search">
+<meta name="twitter:description" content="Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x&#43; on SERP and 3x&#43; on CPLP for CTR/CVR gains. Accepted to CIKM&#39;25 Applied Research Track.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Multi-Objective Model Hyperparameter Optimization for E-commerce Search",
+      "item": "https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Multi-Objective Model Hyperparameter Optimization for E-commerce Search",
+  "name": "Multi-Objective Model Hyperparameter Optimization for E-commerce Search",
+  "description": "Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track.",
+  "keywords": [
+    "industrial", "automl", "optimization", "published", "bucketplace", "cikm"
+  ],
+  "articleBody": "Overview At Bucketplace (오늘의집), increased iteration velocity and production tuning coverage by launching tuned parameters on SERP and CPLP, targeting CTR/CVR improvements without harming other metrics.\nKey Achievements Publication: Accepted to CIKM'25 Applied Research Track (DOI: 10.1145/3746252.3761496) Patent: Patent applied Production Impact: Launched tuned parameters \u003e5x on SERP and \u003e3x on CPLP Online A/B Results: SERP CTR +0.95%, Click/Query +1.23%; CPLP CTCVR +1.10%, Purchase/Query +1.62% Domain Expansion: Expanded into the AD domain and adopted as common Search Team stack Technical Approach Framework Architecture MOHPER is a multi-objective hyperparameter optimization framework that automatically tunes ElasticSearch ranking parameters while balancing multiple business metrics simultaneously.\nCore Components Multi-Objective Optimization: Bayesian optimization with Optuna/Ray Tune, jointly optimizing CTR, CVR, and other metrics to avoid “whack-a-mole” metric trade-offs Transform Functions: Custom conversion functions mapping raw signals to ranking scores, enabling fine-grained control over how features influence search ranking Safety Guardrails: Each optimization run ensures no significant degradation in non-target metrics before promotion to production Algorithm Flow The optimization loop follows:\nSample hyperparameter configuration via Bayesian optimization Construct ElasticSearch QueryDSL with sampled parameters Evaluate against offline metrics (simulated click/purchase) Update surrogate model and propose next configuration Promote best configuration to online A/B test Production Deployment Launched tuned parameters \u003e5x on SERP and \u003e3x on CPLP Each optimization targeted CTR/CVR improvements while ensuring other metrics were not harmed Expanded the framework into the AD domain and integrated it as common stack for the Search Team Nominated for Bucketplace Engineering Awards Tech Stack AutoML: Optuna, Ray Tune Optimization: Bayesian Optimization, Multi-Objective (Pareto) Search: ElasticSearch QueryDSL Configuration: Hydra-core Orchestration: Airflow, Katib Evaluation: Offline simulation + Online A/B testing Period October 2023 - January 2025 | Bucketplace (오늘의집)\nPublications Jungbae Park, Heonseok Jang - “MOHPER: Multi-objective Hyperparameter Optimization Framework for E-commerce Retrieval System” (CIKM 2025, Applied Research Track; arXiv:2503.05227; DOI: 10.1145/3746252.3761496) Talks CIKM 2025: Oral presentation at the Applied Research Track Bucketplace Internal: “AutoML for Retrieval (ElasticSearch) System Tutorials” (2024.10.24) ",
+  "wordCount" : "320",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png","datePublished": "2025-01-15T00:00:00Z",
+  "dateModified": "2025-01-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Multi-Objective Model Hyperparameter Optimization for E-commerce Search
+    </h1>
+    <div class="post-meta"><span title='2025-01-15 00:00:00 +0000 UTC'>January 15, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/mohper_architecture-3.png" alt="MOHPER Framework Architecture (Figure 1, CIKM Paper)">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a></li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#framework-architecture" aria-label="Framework Architecture">Framework Architecture</a></li>
+                <li>
+                    <a href="#core-components" aria-label="Core Components">Core Components</a></li>
+                <li>
+                    <a href="#algorithm-flow" aria-label="Algorithm Flow">Algorithm Flow</a></li>
+                <li>
+                    <a href="#production-deployment" aria-label="Production Deployment">Production Deployment</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a></li>
+                <li>
+                    <a href="#publications" aria-label="Publications">Publications</a></li>
+                <li>
+                    <a href="#talks" aria-label="Talks">Talks</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At <strong>Bucketplace (오늘의집)</strong>, increased iteration velocity and production tuning coverage by launching tuned parameters on SERP and CPLP, targeting CTR/CVR improvements without harming other metrics.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>Publication</strong>: Accepted to <strong>CIKM'25 Applied Research Track</strong> (DOI: 10.1145/3746252.3761496)</li>
+<li><strong>Patent</strong>: Patent applied</li>
+<li><strong>Production Impact</strong>: Launched tuned parameters &gt;5x on SERP and &gt;3x on CPLP</li>
+<li><strong>Online A/B Results</strong>: SERP CTR <strong>+0.95%</strong>, Click/Query <strong>+1.23%</strong>; CPLP CTCVR <strong>+1.10%</strong>, Purchase/Query <strong>+1.62%</strong></li>
+<li><strong>Domain Expansion</strong>: Expanded into the AD domain and adopted as common Search Team stack</li>
+</ul>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="framework-architecture">Framework Architecture<a hidden class="anchor" aria-hidden="true" href="#framework-architecture">#</a></h3>
+<p>MOHPER is a multi-objective hyperparameter optimization framework that automatically tunes ElasticSearch ranking parameters while balancing multiple business metrics simultaneously.</p>
+<p><img alt="MOHPER Module Architecture" loading="lazy" src="/blog/images/projects/bp_mohper_module.png"></p>
+<h3 id="core-components">Core Components<a hidden class="anchor" aria-hidden="true" href="#core-components">#</a></h3>
+<ol>
+<li><strong>Multi-Objective Optimization</strong>: Bayesian optimization with Optuna/Ray Tune, jointly optimizing CTR, CVR, and other metrics to avoid &ldquo;whack-a-mole&rdquo; metric trade-offs</li>
+<li><strong>Transform Functions</strong>: Custom conversion functions mapping raw signals to ranking scores, enabling fine-grained control over how features influence search ranking</li>
+<li><strong>Safety Guardrails</strong>: Each optimization run ensures no significant degradation in non-target metrics before promotion to production</li>
+</ol>
+<p><img alt="Transform Function Design" loading="lazy" src="/blog/images/projects/bp_mohper_transform_function.png"></p>
+<h3 id="algorithm-flow">Algorithm Flow<a hidden class="anchor" aria-hidden="true" href="#algorithm-flow">#</a></h3>
+<p>The optimization loop follows:</p>
+<ol>
+<li>Sample hyperparameter configuration via Bayesian optimization</li>
+<li>Construct ElasticSearch QueryDSL with sampled parameters</li>
+<li>Evaluate against offline metrics (simulated click/purchase)</li>
+<li>Update surrogate model and propose next configuration</li>
+<li>Promote best configuration to online A/B test</li>
+</ol>
+<p><img alt="MOHPER Algorithm" loading="lazy" src="/blog/images/projects/bp_mohper_algorithm.png"></p>
+<h3 id="production-deployment">Production Deployment<a hidden class="anchor" aria-hidden="true" href="#production-deployment">#</a></h3>
+<ul>
+<li>Launched tuned parameters <strong>&gt;5x on SERP</strong> and <strong>&gt;3x on CPLP</strong></li>
+<li>Each optimization targeted CTR/CVR improvements while ensuring other metrics were not harmed</li>
+<li>Expanded the framework into the AD domain and integrated it as common stack for the Search Team</li>
+<li>Nominated for Bucketplace Engineering Awards</li>
+</ul>
+<p><img alt="AutoML Integration Overview" loading="lazy" src="/blog/images/projects/bp_mohper_automl.png"></p>
+<p><img alt="Transform Function and Conversion Funnel" loading="lazy" src="/blog/images/projects/mohper_details-4.png"></p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>AutoML</strong>: Optuna, Ray Tune</li>
+<li><strong>Optimization</strong>: Bayesian Optimization, Multi-Objective (Pareto)</li>
+<li><strong>Search</strong>: ElasticSearch QueryDSL</li>
+<li><strong>Configuration</strong>: Hydra-core</li>
+<li><strong>Orchestration</strong>: Airflow, Katib</li>
+<li><strong>Evaluation</strong>: Offline simulation + Online A/B testing</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>October 2023 - January 2025 | Bucketplace (오늘의집)</p>
+<h2 id="publications">Publications<a hidden class="anchor" aria-hidden="true" href="#publications">#</a></h2>
+<ul>
+<li>Jungbae Park, Heonseok Jang - &ldquo;MOHPER: Multi-objective Hyperparameter Optimization Framework for E-commerce Retrieval System&rdquo; (CIKM 2025, Applied Research Track; arXiv:2503.05227; DOI: 10.1145/3746252.3761496)</li>
+</ul>
+<h2 id="talks">Talks<a hidden class="anchor" aria-hidden="true" href="#talks">#</a></h2>
+<ul>
+<li><strong>CIKM 2025</strong>: Oral presentation at the Applied Research Track</li>
+<li><strong>Bucketplace Internal</strong>: &ldquo;AutoML for Retrieval (ElasticSearch) System Tutorials&rdquo; (2024.10.24)</li>
+</ul>
+<p><img alt="MOHPER Paper Abstract" loading="lazy" src="/blog/images/projects/bp_mohper_abstract.png"></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/automl/">Automl</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/optimization/">Optimization</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/published/">Published</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/cikm/">Cikm</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

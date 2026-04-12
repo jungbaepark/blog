@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Code-Review on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/code-review/</link><description>Recent content in Code-Review on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/code-review/index.xml" rel="self" type="application/rss+xml"/><item><title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation</title><link>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</guid><description>Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Code-Review on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/code-review/</link>
+    <description>Recent content in Code-Review on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/code-review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation</title>
+      <link>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</guid>
+      <description>Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).</description>
+    </item>
+  </channel>
+</rss>

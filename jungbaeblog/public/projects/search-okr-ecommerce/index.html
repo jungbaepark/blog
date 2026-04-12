@@ -1,13 +1,452 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization | Jungbae Park</title><meta name=keywords content="industrial,search-ranking,a-b-testing,e-commerce,automl,bucketplace"><meta name=description content="Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization"><meta property="og:description" content="Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2025-06-15T00:00:00+00:00"><meta property="article:modified_time" content="2025-06-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Search-Ranking"><meta property="article:tag" content="A-B-Testing"><meta property="article:tag" content="E-Commerce"><meta property="article:tag" content="Automl"><meta property="article:tag" content="Bucketplace"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png"><meta name=twitter:title content="Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization"><meta name=twitter:description content="Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization","item":"https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization","name":"Search OKR: E-commerce Deals \/ Price 2.0 Ranking Optimization","description":"Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search.","keywords":["industrial","search-ranking","a-b-testing","e-commerce","automl","bucketplace"],"articleBody":"Overview At Bucketplace, I delivered measurable OKR impact through production experiments by establishing a reusable experimentation foundation (Query Feature Table, Redis, Server) and shipping end-to-end from PRD/Design Doc through DAG development to production rollout.\nKey Achievements STORE Search Result Page (SRP) – Deals Ranking Buyer Conversion: +1.99% Click Conversion: +0.83% Special-Offer Exposure: +7.35% Category Product List Page (PLP) – Price 2.0 Ranking Buyer Conversion: +11.17% Click Conversion: +5.87% Exposure: +27.9% Experimentation Track Record 4 total production experiments conducted 3 winners shipped to production Minimal side effects observed Technical Approach Experimentation Infrastructure The project established a reusable experimentation foundation:\nQuery Feature Table: Computed via Airflow DAGs and served through Redis for low-latency access during search request processing. Feature Serving Pipeline: Query Feature Table flows through Redis into the ranking server. End-to-End Delivery Process Each experiment followed the full delivery lifecycle:\nPRD / Design Doc authorship DAG Development via Airflow Production Rollout Hyperparameter Optimization Developed specialized Grid Search HPO for ranking parameter tuning, with additional tooling from Optuna and Ray Tune. Integrated with the MOHPER framework for multi-objective optimization across CTR, CVR, and exposure metrics.\nTech Stack Feature Serving: Redis, Query Feature Table, Feature-Serving-API Orchestration: Airflow DAGs Search Engine: ElasticSearch HPO: Grid Search, Optuna, Ray Tune, MOHPER Data Processing: PySpark, Athena Period February 2025 - June 2025 | Bucketplace (오늘의집)\n","wordCount":"218","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png","datePublished":"2025-06-15T00:00:00Z","dateModified":"2025-06-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization</h1><div class=post-meta><span title='2025-06-15 00:00:00 +0000 UTC'>June 15, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png alt="A/B Test Results for Search OKR Experiments"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a><ul><li><a href=#store-search-result-page-srp--deals-ranking aria-label="STORE Search Result Page (SRP) &ndash; Deals Ranking">STORE Search Result Page (SRP) &ndash; Deals Ranking</a></li><li><a href=#category-product-list-page-plp--price-20-ranking aria-label="Category Product List Page (PLP) &ndash; Price 2.0 Ranking">Category Product List Page (PLP) &ndash; Price 2.0 Ranking</a></li><li><a href=#experimentation-track-record aria-label="Experimentation Track Record">Experimentation Track Record</a></li></ul></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#experimentation-infrastructure aria-label="Experimentation Infrastructure">Experimentation Infrastructure</a></li><li><a href=#end-to-end-delivery-process aria-label="End-to-End Delivery Process">End-to-End Delivery Process</a></li><li><a href=#hyperparameter-optimization aria-label="Hyperparameter Optimization">Hyperparameter Optimization</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At Bucketplace, I delivered measurable OKR impact through production experiments by establishing a reusable experimentation foundation (Query Feature Table, Redis, Server) and shipping end-to-end from PRD/Design Doc through DAG development to production rollout.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><h3 id=store-search-result-page-srp--deals-ranking>STORE Search Result Page (SRP) &ndash; Deals Ranking<a hidden class=anchor aria-hidden=true href=#store-search-result-page-srp--deals-ranking>#</a></h3><ul><li><strong>Buyer Conversion</strong>: +1.99%</li><li><strong>Click Conversion</strong>: +0.83%</li><li><strong>Special-Offer Exposure</strong>: +7.35%</li></ul><h3 id=category-product-list-page-plp--price-20-ranking>Category Product List Page (PLP) &ndash; Price 2.0 Ranking<a hidden class=anchor aria-hidden=true href=#category-product-list-page-plp--price-20-ranking>#</a></h3><ul><li><strong>Buyer Conversion</strong>: +11.17%</li><li><strong>Click Conversion</strong>: +5.87%</li><li><strong>Exposure</strong>: +27.9%</li></ul><h3 id=experimentation-track-record>Experimentation Track Record<a hidden class=anchor aria-hidden=true href=#experimentation-track-record>#</a></h3><ul><li><strong>4 total production experiments</strong> conducted</li><li><strong>3 winners</strong> shipped to production</li><li>Minimal side effects observed</li></ul><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=experimentation-infrastructure>Experimentation Infrastructure<a hidden class=anchor aria-hidden=true href=#experimentation-infrastructure>#</a></h3><p>The project established a reusable experimentation foundation:</p><ul><li><strong>Query Feature Table</strong>: Computed via Airflow DAGs and served through Redis for low-latency access during search request processing.</li><li><strong>Feature Serving Pipeline</strong>: Query Feature Table flows through Redis into the ranking server.</li></ul><h3 id=end-to-end-delivery-process>End-to-End Delivery Process<a hidden class=anchor aria-hidden=true href=#end-to-end-delivery-process>#</a></h3><p>Each experiment followed the full delivery lifecycle:</p><ul><li><strong>PRD / Design Doc</strong> authorship</li><li><strong>DAG Development</strong> via Airflow</li><li><strong>Production Rollout</strong></li></ul><p><img alt="A/B Test Results" loading=lazy src=/blog/images/projects/search_okr_results-2.png></p><h3 id=hyperparameter-optimization>Hyperparameter Optimization<a hidden class=anchor aria-hidden=true href=#hyperparameter-optimization>#</a></h3><p>Developed specialized Grid Search HPO for ranking parameter tuning, with additional tooling from Optuna and Ray Tune. Integrated with the MOHPER framework for multi-objective optimization across CTR, CVR, and exposure metrics.</p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Feature Serving</strong>: Redis, Query Feature Table, Feature-Serving-API</li><li><strong>Orchestration</strong>: Airflow DAGs</li><li><strong>Search Engine</strong>: ElasticSearch</li><li><strong>HPO</strong>: Grid Search, Optuna, Ray Tune, MOHPER</li><li><strong>Data Processing</strong>: PySpark, Athena</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>February 2025 - June 2025 | Bucketplace (오늘의집)</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/search-ranking/>Search-Ranking</a></li><li><a href=https://jungbaepark.github.io/blog/tags/a-b-testing/>A-B-Testing</a></li><li><a href=https://jungbaepark.github.io/blog/tags/e-commerce/>E-Commerce</a></li><li><a href=https://jungbaepark.github.io/blog/tags/automl/>Automl</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization | Jungbae Park</title>
+<meta name="keywords" content="industrial, search-ranking, a-b-testing, e-commerce, automl, bucketplace">
+<meta name="description" content="Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving &#43;11.17% buyer conversion on category pages and &#43;7.35% deals exposure on store search.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization">
+  <meta property="og:description" content="Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving &#43;11.17% buyer conversion on category pages and &#43;7.35% deals exposure on store search.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2025-06-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Search-Ranking">
+    <meta property="article:tag" content="A-B-Testing">
+    <meta property="article:tag" content="E-Commerce">
+    <meta property="article:tag" content="Automl">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png">
+<meta name="twitter:title" content="Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization">
+<meta name="twitter:description" content="Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving &#43;11.17% buyer conversion on category pages and &#43;7.35% deals exposure on store search.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization",
+      "item": "https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization",
+  "name": "Search OKR: E-commerce Deals \/ Price 2.0 Ranking Optimization",
+  "description": "Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search.",
+  "keywords": [
+    "industrial", "search-ranking", "a-b-testing", "e-commerce", "automl", "bucketplace"
+  ],
+  "articleBody": "Overview At Bucketplace, I delivered measurable OKR impact through production experiments by establishing a reusable experimentation foundation (Query Feature Table, Redis, Server) and shipping end-to-end from PRD/Design Doc through DAG development to production rollout.\nKey Achievements STORE Search Result Page (SRP) – Deals Ranking Buyer Conversion: +1.99% Click Conversion: +0.83% Special-Offer Exposure: +7.35% Category Product List Page (PLP) – Price 2.0 Ranking Buyer Conversion: +11.17% Click Conversion: +5.87% Exposure: +27.9% Experimentation Track Record 4 total production experiments conducted 3 winners shipped to production Minimal side effects observed Technical Approach Experimentation Infrastructure The project established a reusable experimentation foundation:\nQuery Feature Table: Computed via Airflow DAGs and served through Redis for low-latency access during search request processing. Feature Serving Pipeline: Query Feature Table flows through Redis into the ranking server. End-to-End Delivery Process Each experiment followed the full delivery lifecycle:\nPRD / Design Doc authorship DAG Development via Airflow Production Rollout Hyperparameter Optimization Developed specialized Grid Search HPO for ranking parameter tuning, with additional tooling from Optuna and Ray Tune. Integrated with the MOHPER framework for multi-objective optimization across CTR, CVR, and exposure metrics.\nTech Stack Feature Serving: Redis, Query Feature Table, Feature-Serving-API Orchestration: Airflow DAGs Search Engine: ElasticSearch HPO: Grid Search, Optuna, Ray Tune, MOHPER Data Processing: PySpark, Athena Period February 2025 - June 2025 | Bucketplace (오늘의집)\n",
+  "wordCount" : "218",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png","datePublished": "2025-06-15T00:00:00Z",
+  "dateModified": "2025-06-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization
+    </h1>
+    <div class="post-meta"><span title='2025-06-15 00:00:00 +0000 UTC'>June 15, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/search_okr_results-2.png" alt="A/B Test Results for Search OKR Experiments">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a><ul>
+                        
+                <li>
+                    <a href="#store-search-result-page-srp--deals-ranking" aria-label="STORE Search Result Page (SRP) &ndash; Deals Ranking">STORE Search Result Page (SRP) &ndash; Deals Ranking</a></li>
+                <li>
+                    <a href="#category-product-list-page-plp--price-20-ranking" aria-label="Category Product List Page (PLP) &ndash; Price 2.0 Ranking">Category Product List Page (PLP) &ndash; Price 2.0 Ranking</a></li>
+                <li>
+                    <a href="#experimentation-track-record" aria-label="Experimentation Track Record">Experimentation Track Record</a></li></ul>
+                </li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#experimentation-infrastructure" aria-label="Experimentation Infrastructure">Experimentation Infrastructure</a></li>
+                <li>
+                    <a href="#end-to-end-delivery-process" aria-label="End-to-End Delivery Process">End-to-End Delivery Process</a></li>
+                <li>
+                    <a href="#hyperparameter-optimization" aria-label="Hyperparameter Optimization">Hyperparameter Optimization</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At Bucketplace, I delivered measurable OKR impact through production experiments by establishing a reusable experimentation foundation (Query Feature Table, Redis, Server) and shipping end-to-end from PRD/Design Doc through DAG development to production rollout.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<h3 id="store-search-result-page-srp--deals-ranking">STORE Search Result Page (SRP) &ndash; Deals Ranking<a hidden class="anchor" aria-hidden="true" href="#store-search-result-page-srp--deals-ranking">#</a></h3>
+<ul>
+<li><strong>Buyer Conversion</strong>: +1.99%</li>
+<li><strong>Click Conversion</strong>: +0.83%</li>
+<li><strong>Special-Offer Exposure</strong>: +7.35%</li>
+</ul>
+<h3 id="category-product-list-page-plp--price-20-ranking">Category Product List Page (PLP) &ndash; Price 2.0 Ranking<a hidden class="anchor" aria-hidden="true" href="#category-product-list-page-plp--price-20-ranking">#</a></h3>
+<ul>
+<li><strong>Buyer Conversion</strong>: +11.17%</li>
+<li><strong>Click Conversion</strong>: +5.87%</li>
+<li><strong>Exposure</strong>: +27.9%</li>
+</ul>
+<h3 id="experimentation-track-record">Experimentation Track Record<a hidden class="anchor" aria-hidden="true" href="#experimentation-track-record">#</a></h3>
+<ul>
+<li><strong>4 total production experiments</strong> conducted</li>
+<li><strong>3 winners</strong> shipped to production</li>
+<li>Minimal side effects observed</li>
+</ul>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="experimentation-infrastructure">Experimentation Infrastructure<a hidden class="anchor" aria-hidden="true" href="#experimentation-infrastructure">#</a></h3>
+<p>The project established a reusable experimentation foundation:</p>
+<ul>
+<li><strong>Query Feature Table</strong>: Computed via Airflow DAGs and served through Redis for low-latency access during search request processing.</li>
+<li><strong>Feature Serving Pipeline</strong>: Query Feature Table flows through Redis into the ranking server.</li>
+</ul>
+<h3 id="end-to-end-delivery-process">End-to-End Delivery Process<a hidden class="anchor" aria-hidden="true" href="#end-to-end-delivery-process">#</a></h3>
+<p>Each experiment followed the full delivery lifecycle:</p>
+<ul>
+<li><strong>PRD / Design Doc</strong> authorship</li>
+<li><strong>DAG Development</strong> via Airflow</li>
+<li><strong>Production Rollout</strong></li>
+</ul>
+<p><img alt="A/B Test Results" loading="lazy" src="/blog/images/projects/search_okr_results-2.png"></p>
+<h3 id="hyperparameter-optimization">Hyperparameter Optimization<a hidden class="anchor" aria-hidden="true" href="#hyperparameter-optimization">#</a></h3>
+<p>Developed specialized Grid Search HPO for ranking parameter tuning, with additional tooling from Optuna and Ray Tune. Integrated with the MOHPER framework for multi-objective optimization across CTR, CVR, and exposure metrics.</p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Feature Serving</strong>: Redis, Query Feature Table, Feature-Serving-API</li>
+<li><strong>Orchestration</strong>: Airflow DAGs</li>
+<li><strong>Search Engine</strong>: ElasticSearch</li>
+<li><strong>HPO</strong>: Grid Search, Optuna, Ray Tune, MOHPER</li>
+<li><strong>Data Processing</strong>: PySpark, Athena</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>February 2025 - June 2025 | Bucketplace (오늘의집)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/search-ranking/">Search-Ranking</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/a-b-testing/">A-B-Testing</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/e-commerce/">E-Commerce</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/automl/">Automl</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Riiid on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/riiid/</link><description>Recent content in Riiid on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/riiid/index.xml" rel="self" type="application/rss+xml"/><item><title>Prompt-Aware Speech Scoring System for Second Language Learners</title><link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid><description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description></item><item><title>Knowledge Tracing with Contrastive Learning</title><link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid><description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description></item><item><title>ML Model Registry, Dataset Pipeline &amp; Infrastructure at RIIID (뤼이드)</title><link>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</guid><description>Built ML model registry (MLFlow) and dataset pipelines (Airflow, Athena, BigQuery) at RIIID, serving 4+ products including SANTA TOEIC, IVYGlobal SAT, CASA GRANDE, and INICIE.</description></item><item><title>ML Pipeline Acceleration &amp; Multi-GPU Training at RIIID (뤼이드)</title><link>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</link><pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</guid><description>Introduced RIIID&amp;rsquo;s first multi-GPU training, boosting GPU utilization from 25% to 95% and cutting initialization time from 1 hour to 10 seconds. Built CI/CD pipelines with GitHub Actions.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Riiid on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/riiid/</link>
+    <description>Recent content in Riiid on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/riiid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid>
+      <description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description>
+    </item>
+    <item>
+      <title>Knowledge Tracing with Contrastive Learning</title>
+      <link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid>
+      <description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description>
+    </item>
+    <item>
+      <title>ML Model Registry, Dataset Pipeline &amp; Infrastructure at RIIID (뤼이드)</title>
+      <link>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</link>
+      <pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</guid>
+      <description>Built ML model registry (MLFlow) and dataset pipelines (Airflow, Athena, BigQuery) at RIIID, serving 4+ products including SANTA TOEIC, IVYGlobal SAT, CASA GRANDE, and INICIE.</description>
+    </item>
+    <item>
+      <title>ML Pipeline Acceleration &amp; Multi-GPU Training at RIIID (뤼이드)</title>
+      <link>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</guid>
+      <description>Introduced RIIID&amp;rsquo;s first multi-GPU training, boosting GPU utilization from 25% to 95% and cutting initialization time from 1 hour to 10 seconds. Built CI/CD pipelines with GitHub Actions.</description>
+    </item>
+  </channel>
+</rss>

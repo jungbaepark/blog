@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Research-Management on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/research-management/</link><description>Recent content in Research-Management on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/research-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Government &amp; Public R&amp;D Grant Management</title><link>https://jungbaepark.github.io/blog/projects/government-rd-grants/</link><pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/government-rd-grants/</guid><description>Secured ~US$875K across three competitive Korean government R&amp;amp;D grants (IITP, TIPS, Seoul R&amp;amp;BD) at Humelo, covering brain-inspired AI, emotional TTS, and voice conversion research.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Research-Management on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/research-management/</link>
+    <description>Recent content in Research-Management on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/research-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Government &amp; Public R&amp;D Grant Management</title>
+      <link>https://jungbaepark.github.io/blog/projects/government-rd-grants/</link>
+      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/government-rd-grants/</guid>
+      <description>Secured ~US$875K across three competitive Korean government R&amp;amp;D grants (IITP, TIPS, Seoul R&amp;amp;BD) at Humelo, covering brain-inspired AI, emotional TTS, and voice conversion research.</description>
+    </item>
+  </channel>
+</rss>
