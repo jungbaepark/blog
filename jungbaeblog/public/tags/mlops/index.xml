@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Mlops on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/mlops/</link><description>Recent content in Mlops on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Wed, 15 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/mlops/index.xml" rel="self" type="application/rss+xml"/><item><title>ML Model Registry, Dataset Pipeline &amp; Infrastructure at RIIID (뤼이드)</title><link>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</guid><description>Built ML model registry (MLFlow) and dataset pipelines (Airflow, Athena, BigQuery) at RIIID, serving 4+ products including SANTA TOEIC, IVYGlobal SAT, CASA GRANDE, and INICIE.</description></item><item><title>ML Pipeline Acceleration &amp; Multi-GPU Training at RIIID (뤼이드)</title><link>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</link><pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</guid><description>Introduced RIIID&amp;rsquo;s first multi-GPU training, boosting GPU utilization from 25% to 95% and cutting initialization time from 1 hour to 10 seconds. Built CI/CD pipelines with GitHub Actions.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mlops on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/mlops/</link>
+    <description>Recent content in Mlops on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/mlops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ML Model Registry, Dataset Pipeline &amp; Infrastructure at RIIID (뤼이드)</title>
+      <link>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</link>
+      <pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</guid>
+      <description>Built ML model registry (MLFlow) and dataset pipelines (Airflow, Athena, BigQuery) at RIIID, serving 4+ products including SANTA TOEIC, IVYGlobal SAT, CASA GRANDE, and INICIE.</description>
+    </item>
+    <item>
+      <title>ML Pipeline Acceleration &amp; Multi-GPU Training at RIIID (뤼이드)</title>
+      <link>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</guid>
+      <description>Introduced RIIID&amp;rsquo;s first multi-GPU training, boosting GPU utilization from 25% to 95% and cutting initialization time from 1 hour to 10 seconds. Built CI/CD pipelines with GitHub Actions.</description>
+    </item>
+  </channel>
+</rss>

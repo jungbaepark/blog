@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Attention-Mechanism on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/attention-mechanism/</link><description>Recent content in Attention-Mechanism on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/attention-mechanism/index.xml" rel="self" type="application/rss+xml"/><item><title>Attentional Control for Time-Series Data (Master's Thesis)</title><link>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</link><pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</guid><description>Master&amp;rsquo;s thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Attention-Mechanism on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/attention-mechanism/</link>
+    <description>Recent content in Attention-Mechanism on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/attention-mechanism/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attentional Control for Time-Series Data (Master&#39;s Thesis)</title>
+      <link>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</guid>
+      <description>Master&amp;rsquo;s thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,19 +1,443 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Global Content Search Ranking System | Jungbae Park</title><meta name=keywords content="industrial,search-ranking,elasticsearch,content-ranking,bucketplace"><meta name=description content="Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/global-content-search-ranking/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/global-content-search-ranking/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/global-content-search-ranking/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="Global Content Search Ranking System"><meta property="og:description" content="Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2023-09-15T00:00:00+00:00"><meta property="article:modified_time" content="2023-09-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Search-Ranking"><meta property="article:tag" content="Elasticsearch"><meta property="article:tag" content="Content-Ranking"><meta property="article:tag" content="Bucketplace"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/global_content_search.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/global_content_search.png"><meta name=twitter:title content="Global Content Search Ranking System"><meta name=twitter:description content="Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"Global Content Search Ranking System","item":"https://jungbaepark.github.io/blog/projects/global-content-search-ranking/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Global Content Search Ranking System","name":"Global Content Search Ranking System","description":"Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.","keywords":["industrial","search-ranking","elasticsearch","content-ranking","bucketplace"],"articleBody":"Overview At Bucketplace (오늘의집), built a two-stage content ranking system for 3 content types with time decay and a global language analyzer, served via Redis caching.\nKey Achievements Built two-stage ranking pipeline (candidate retrieval + function-score reranking) for 3 content types Integrated time decay into ranking Implemented a global language analyzer for search quality Redis-cached serving for low-latency responses graph LR A[Query Input] --\u003e B[Candidate\\nRetrieval] B --\u003e C[Function-Score\\nReranking] C --\u003e D[Time Decay\\n+ Language] D --\u003e E[Redis Cache] E --\u003e F[Ranked Results] Technical Approach Stage 1 — Candidate Retrieval ElasticSearch multi_match queries with a global language analyzer (Korean synonym analyzer) across multiple fields: title, card descriptions, hashtags, user nicknames/companies, style names, area names, and residence information.\nMatch Strategy: best_fields with tie_breaker=0.2 for initial matching Recall Optimization: minimum_should_match: 30% for OR-based search to maximize recall Phrase Matching: Variable slop parameters tuned per field — slop=1 for hashtags, slop=2 for titles, slop=3 for longer descriptions Stage 2 — Function-Score Reranking Reranking candidates using ElasticSearch function_score queries with most_fields to accumulate relevance scores across multiple field matches:\nMatching Features: Multi-match and phrase matching scores Embedding Features: Cross-modal similarity (dense vector matching) Feedback Signals: Click-through data from user interactions Temporal Features: Recency decay and engagement velocity Quality Signals: Content quality scoring and sorting mechanisms Content Type Unification Unified 3 existing content collections (photos, home tours, know-how) under a consolidated “Content” tab with a common ranking pipeline.\nServing Architecture Data processing via Airflow batch jobs with results cached in Redis for low-latency direct client access, serving both app and web interfaces.\nTech Stack Search Engine: ElasticSearch (multi_match, function_score, phrase matching) Orchestration: Airflow (batch processing) Backend: Go Server Caching: Redis Ranking Signals: BM25, cross-modal embeddings, click feedback, time decay Period July 2023 - September 2023 | Bucketplace (오늘의집)\n","wordCount":"291","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/global_content_search.png","datePublished":"2023-09-15T00:00:00Z","dateModified":"2023-09-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/global-content-search-ranking/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">Global Content Search Ranking System</h1><div class=post-meta><span title='2023-09-15 00:00:00 +0000 UTC'>September 15, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/global_content_search.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/global_content_search.png alt="Global Content Search Two-Stage Ranking Pipeline"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#stage-1--candidate-retrieval aria-label="Stage 1 — Candidate Retrieval">Stage 1 — Candidate Retrieval</a></li><li><a href=#stage-2--function-score-reranking aria-label="Stage 2 — Function-Score Reranking">Stage 2 — Function-Score Reranking</a></li><li><a href=#content-type-unification aria-label="Content Type Unification">Content Type Unification</a></li><li><a href=#serving-architecture aria-label="Serving Architecture">Serving Architecture</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At <strong>Bucketplace (오늘의집)</strong>, built a two-stage content ranking system for 3 content types with time decay and a global language analyzer, served via Redis caching.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li>Built two-stage ranking pipeline (candidate retrieval + function-score reranking) for 3 content types</li><li>Integrated time decay into ranking</li><li>Implemented a global language analyzer for search quality</li><li>Redis-cached serving for low-latency responses</li></ul><pre class=mermaid>graph LR
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Global Content Search Ranking System | Jungbae Park</title>
+<meta name="keywords" content="industrial, search-ranking, elasticsearch, content-ranking, bucketplace">
+<meta name="description" content="Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/global-content-search-ranking/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/global-content-search-ranking/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/global-content-search-ranking/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="Global Content Search Ranking System">
+  <meta property="og:description" content="Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2023-09-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-09-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Search-Ranking">
+    <meta property="article:tag" content="Elasticsearch">
+    <meta property="article:tag" content="Content-Ranking">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/global_content_search.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/global_content_search.png">
+<meta name="twitter:title" content="Global Content Search Ranking System">
+<meta name="twitter:description" content="Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Global Content Search Ranking System",
+      "item": "https://jungbaepark.github.io/blog/projects/global-content-search-ranking/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Global Content Search Ranking System",
+  "name": "Global Content Search Ranking System",
+  "description": "Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.",
+  "keywords": [
+    "industrial", "search-ranking", "elasticsearch", "content-ranking", "bucketplace"
+  ],
+  "articleBody": "Overview At Bucketplace (오늘의집), built a two-stage content ranking system for 3 content types with time decay and a global language analyzer, served via Redis caching.\nKey Achievements Built two-stage ranking pipeline (candidate retrieval + function-score reranking) for 3 content types Integrated time decay into ranking Implemented a global language analyzer for search quality Redis-cached serving for low-latency responses graph LR A[Query Input] --\u003e B[Candidate\\nRetrieval] B --\u003e C[Function-Score\\nReranking] C --\u003e D[Time Decay\\n+ Language] D --\u003e E[Redis Cache] E --\u003e F[Ranked Results] Technical Approach Stage 1 — Candidate Retrieval ElasticSearch multi_match queries with a global language analyzer (Korean synonym analyzer) across multiple fields: title, card descriptions, hashtags, user nicknames/companies, style names, area names, and residence information.\nMatch Strategy: best_fields with tie_breaker=0.2 for initial matching Recall Optimization: minimum_should_match: 30% for OR-based search to maximize recall Phrase Matching: Variable slop parameters tuned per field — slop=1 for hashtags, slop=2 for titles, slop=3 for longer descriptions Stage 2 — Function-Score Reranking Reranking candidates using ElasticSearch function_score queries with most_fields to accumulate relevance scores across multiple field matches:\nMatching Features: Multi-match and phrase matching scores Embedding Features: Cross-modal similarity (dense vector matching) Feedback Signals: Click-through data from user interactions Temporal Features: Recency decay and engagement velocity Quality Signals: Content quality scoring and sorting mechanisms Content Type Unification Unified 3 existing content collections (photos, home tours, know-how) under a consolidated “Content” tab with a common ranking pipeline.\nServing Architecture Data processing via Airflow batch jobs with results cached in Redis for low-latency direct client access, serving both app and web interfaces.\nTech Stack Search Engine: ElasticSearch (multi_match, function_score, phrase matching) Orchestration: Airflow (batch processing) Backend: Go Server Caching: Redis Ranking Signals: BM25, cross-modal embeddings, click feedback, time decay Period July 2023 - September 2023 | Bucketplace (오늘의집)\n",
+  "wordCount" : "291",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/global_content_search.png","datePublished": "2023-09-15T00:00:00Z",
+  "dateModified": "2023-09-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/global-content-search-ranking/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Global Content Search Ranking System
+    </h1>
+    <div class="post-meta"><span title='2023-09-15 00:00:00 +0000 UTC'>September 15, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/global_content_search.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/global_content_search.png" alt="Global Content Search Two-Stage Ranking Pipeline">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a></li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#stage-1--candidate-retrieval" aria-label="Stage 1 — Candidate Retrieval">Stage 1 — Candidate Retrieval</a></li>
+                <li>
+                    <a href="#stage-2--function-score-reranking" aria-label="Stage 2 — Function-Score Reranking">Stage 2 — Function-Score Reranking</a></li>
+                <li>
+                    <a href="#content-type-unification" aria-label="Content Type Unification">Content Type Unification</a></li>
+                <li>
+                    <a href="#serving-architecture" aria-label="Serving Architecture">Serving Architecture</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At <strong>Bucketplace (오늘의집)</strong>, built a two-stage content ranking system for 3 content types with time decay and a global language analyzer, served via Redis caching.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li>Built two-stage ranking pipeline (candidate retrieval + function-score reranking) for 3 content types</li>
+<li>Integrated time decay into ranking</li>
+<li>Implemented a global language analyzer for search quality</li>
+<li>Redis-cached serving for low-latency responses</li>
+</ul>
+<pre class="mermaid">graph LR
     A[Query Input] --> B[Candidate\nRetrieval]
     B --> C[Function-Score\nReranking]
     C --> D[Time Decay\n+ Language]
     D --> E[Redis Cache]
     E --> F[Ranked Results]
-</pre><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=stage-1--candidate-retrieval>Stage 1 — Candidate Retrieval<a hidden class=anchor aria-hidden=true href=#stage-1--candidate-retrieval>#</a></h3><p>ElasticSearch <code>multi_match</code> queries with a global language analyzer (Korean synonym analyzer) across multiple fields: title, card descriptions, hashtags, user nicknames/companies, style names, area names, and residence information.</p><ul><li><strong>Match Strategy</strong>: <code>best_fields</code> with <code>tie_breaker=0.2</code> for initial matching</li><li><strong>Recall Optimization</strong>: <code>minimum_should_match: 30%</code> for OR-based search to maximize recall</li><li><strong>Phrase Matching</strong>: Variable <code>slop</code> parameters tuned per field — <code>slop=1</code> for hashtags, <code>slop=2</code> for titles, <code>slop=3</code> for longer descriptions</li></ul><h3 id=stage-2--function-score-reranking>Stage 2 — Function-Score Reranking<a hidden class=anchor aria-hidden=true href=#stage-2--function-score-reranking>#</a></h3><p>Reranking candidates using ElasticSearch <code>function_score</code> queries with <code>most_fields</code> to accumulate relevance scores across multiple field matches:</p><ul><li><strong>Matching Features</strong>: Multi-match and phrase matching scores</li><li><strong>Embedding Features</strong>: Cross-modal similarity (dense vector matching)</li><li><strong>Feedback Signals</strong>: Click-through data from user interactions</li><li><strong>Temporal Features</strong>: Recency decay and engagement velocity</li><li><strong>Quality Signals</strong>: Content quality scoring and sorting mechanisms</li></ul><h3 id=content-type-unification>Content Type Unification<a hidden class=anchor aria-hidden=true href=#content-type-unification>#</a></h3><p>Unified 3 existing content collections (photos, home tours, know-how) under a consolidated &ldquo;Content&rdquo; tab with a common ranking pipeline.</p><h3 id=serving-architecture>Serving Architecture<a hidden class=anchor aria-hidden=true href=#serving-architecture>#</a></h3><p>Data processing via Airflow batch jobs with results cached in Redis for low-latency direct client access, serving both app and web interfaces.</p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Search Engine</strong>: ElasticSearch (multi_match, function_score, phrase matching)</li><li><strong>Orchestration</strong>: Airflow (batch processing)</li><li><strong>Backend</strong>: Go Server</li><li><strong>Caching</strong>: Redis</li><li><strong>Ranking Signals</strong>: BM25, cross-modal embeddings, click feedback, time decay</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>July 2023 - September 2023 | Bucketplace (오늘의집)</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/search-ranking/>Search-Ranking</a></li><li><a href=https://jungbaepark.github.io/blog/tags/elasticsearch/>Elasticsearch</a></li><li><a href=https://jungbaepark.github.io/blog/tags/content-ranking/>Content-Ranking</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+</pre>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="stage-1--candidate-retrieval">Stage 1 — Candidate Retrieval<a hidden class="anchor" aria-hidden="true" href="#stage-1--candidate-retrieval">#</a></h3>
+<p>ElasticSearch <code>multi_match</code> queries with a global language analyzer (Korean synonym analyzer) across multiple fields: title, card descriptions, hashtags, user nicknames/companies, style names, area names, and residence information.</p>
+<ul>
+<li><strong>Match Strategy</strong>: <code>best_fields</code> with <code>tie_breaker=0.2</code> for initial matching</li>
+<li><strong>Recall Optimization</strong>: <code>minimum_should_match: 30%</code> for OR-based search to maximize recall</li>
+<li><strong>Phrase Matching</strong>: Variable <code>slop</code> parameters tuned per field — <code>slop=1</code> for hashtags, <code>slop=2</code> for titles, <code>slop=3</code> for longer descriptions</li>
+</ul>
+<h3 id="stage-2--function-score-reranking">Stage 2 — Function-Score Reranking<a hidden class="anchor" aria-hidden="true" href="#stage-2--function-score-reranking">#</a></h3>
+<p>Reranking candidates using ElasticSearch <code>function_score</code> queries with <code>most_fields</code> to accumulate relevance scores across multiple field matches:</p>
+<ul>
+<li><strong>Matching Features</strong>: Multi-match and phrase matching scores</li>
+<li><strong>Embedding Features</strong>: Cross-modal similarity (dense vector matching)</li>
+<li><strong>Feedback Signals</strong>: Click-through data from user interactions</li>
+<li><strong>Temporal Features</strong>: Recency decay and engagement velocity</li>
+<li><strong>Quality Signals</strong>: Content quality scoring and sorting mechanisms</li>
+</ul>
+<h3 id="content-type-unification">Content Type Unification<a hidden class="anchor" aria-hidden="true" href="#content-type-unification">#</a></h3>
+<p>Unified 3 existing content collections (photos, home tours, know-how) under a consolidated &ldquo;Content&rdquo; tab with a common ranking pipeline.</p>
+<h3 id="serving-architecture">Serving Architecture<a hidden class="anchor" aria-hidden="true" href="#serving-architecture">#</a></h3>
+<p>Data processing via Airflow batch jobs with results cached in Redis for low-latency direct client access, serving both app and web interfaces.</p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Search Engine</strong>: ElasticSearch (multi_match, function_score, phrase matching)</li>
+<li><strong>Orchestration</strong>: Airflow (batch processing)</li>
+<li><strong>Backend</strong>: Go Server</li>
+<li><strong>Caching</strong>: Redis</li>
+<li><strong>Ranking Signals</strong>: BM25, cross-modal embeddings, click feedback, time decay</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>July 2023 - September 2023 | Bucketplace (오늘의집)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/search-ranking/">Search-Ranking</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/elasticsearch/">Elasticsearch</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/content-ranking/">Content-Ranking</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

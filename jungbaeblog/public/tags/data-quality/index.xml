@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Data-Quality on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/data-quality/</link><description>Recent content in Data-Quality on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/data-quality/index.xml" rel="self" type="application/rss+xml"/><item><title>Design &amp; Development of a Shared Team ML Mart</title><link>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</guid><description>Designed a shared ML feature mart for Bucketplace Search Team with client-side log validation, lag anomaly detection, and automated A/B test analysis pipeline using PySpark and HiveDB.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data-Quality on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/data-quality/</link>
+    <description>Recent content in Data-Quality on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/data-quality/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design &amp; Development of a Shared Team ML Mart</title>
+      <link>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</guid>
+      <description>Designed a shared ML feature mart for Bucketplace Search Team with client-side log validation, lag anomaly detection, and automated A/B test analysis pipeline using PySpark and HiveDB.</description>
+    </item>
+  </channel>
+</rss>

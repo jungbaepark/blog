@@ -1,1 +1,159 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Projects on Jungbae Park</title><link>https://jungbaepark.github.io/blog/projects/</link><description>Recent content in Projects on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation</title><link>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</guid><description>Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).</description></item><item><title>Agentic Compositional Multimodal Natural Language 3D Model Search</title><link>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</link><pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</guid><description>Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.</description></item><item><title>Scene-to-Products Retrieval for Digital Twin (Image-to-3D)</title><link>https://jungbaepark.github.io/blog/projects/digital-twin-scene-retrieval/</link><pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/digital-twin-scene-retrieval/</guid><description>Built an end-to-end scene-to-products retrieval pipeline for Digital Twin at Bucketplace, achieving 13x recall improvement, 6,000x cost reduction in 3D collaboration, and scaling the catalog from 30K to 400K+ products.</description></item><item><title>OHouseAI GenAI Workflow Systematization</title><link>https://jungbaepark.github.io/blog/projects/ohouseai-genai-workflow/</link><pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ohouseai-genai-workflow/</guid><description>Led systematization of OHouseAI&amp;rsquo;s GenAI interior design service at Bucketplace, achieving +253% net satisfaction, 2x latency reduction, and outperforming GPT-IMAGE-1.5 and Gemini Nano. Reached Korea #8 in Graphics/Design.</description></item><item><title>Personalized Multimodal Retrieval with VLM Distillation</title><link>https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/</link><pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/</guid><description>Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.</description></item><item><title>Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization</title><link>https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/</link><pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/</guid><description>Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search.</description></item><item><title>Multi-Objective Model Hyperparameter Optimization for E-commerce Search</title><link>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</link><pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</guid><description>Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track.</description></item><item><title>Global Content Search Ranking System</title><link>https://jungbaepark.github.io/blog/projects/global-content-search-ranking/</link><pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/global-content-search-ranking/</guid><description>Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.</description></item><item><title>CLIP-based E-Commerce Multimodal Search and Classification</title><link>https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/</link><pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/</guid><description>Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories.</description></item><item><title>Design &amp; Development of a Shared Team ML Mart</title><link>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</link><pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</guid><description>Designed a shared ML feature mart for Bucketplace Search Team with client-side log validation, lag anomaly detection, and automated A/B test analysis pipeline using PySpark and HiveDB.</description></item><item><title>Prompt-Aware Speech Scoring System for Second Language Learners</title><link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid><description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description></item><item><title>Knowledge Tracing with Contrastive Learning</title><link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid><description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description></item><item><title>ML Model Registry, Dataset Pipeline &amp; Infrastructure at RIIID (뤼이드)</title><link>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</guid><description>Built ML model registry (MLFlow) and dataset pipelines (Airflow, Athena, BigQuery) at RIIID, serving 4+ products including SANTA TOEIC, IVYGlobal SAT, CASA GRANDE, and INICIE.</description></item><item><title>ML Pipeline Acceleration &amp; Multi-GPU Training at RIIID (뤼이드)</title><link>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</link><pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</guid><description>Introduced RIIID&amp;rsquo;s first multi-GPU training, boosting GPU utilization from 25% to 95% and cutting initialization time from 1 hour to 10 seconds. Built CI/CD pipelines with GitHub Actions.</description></item><item><title>Emotional Text-to-Speech and Voice Conversion Systems</title><link>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</link><pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</guid><description>Led development of duration-controllable TTS and emotional voice conversion at Humelo, producing two ICASSP publications (2019 Oral 1st author, 2020). Won Minister of Science and ICT Special Award at K-Startup 2018.</description></item><item><title>Government &amp; Public R&amp;D Grant Management</title><link>https://jungbaepark.github.io/blog/projects/government-rd-grants/</link><pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/government-rd-grants/</guid><description>Secured ~US$875K across three competitive Korean government R&amp;amp;D grants (IITP, TIPS, Seoul R&amp;amp;BD) at Humelo, covering brain-inspired AI, emotional TTS, and voice conversion research.</description></item><item><title>Polyphonic Sound Event Detection with Transfer Learning</title><link>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</link><pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</guid><description>Developed convolutional bidirectional LSTM with synthetic data-based transfer learning for polyphonic sound event detection at Humelo, achieving +28.4% F1 improvement. Published at ICASSP 2019 as corresponding author.</description></item><item><title>AI Music Composition and SM Entertainment Collaboration</title><link>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</link><pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</guid><description>Led AI music composition and rap synthesis at Humelo, presented at SXSW 2019, collaborated with SM Entertainment and rapper Sleepy (KBS Documentary), and received coverage from 10+ national media outlets.</description></item><item><title>Speech Emotion Recognition &amp; Classification System</title><link>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</link><pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</guid><description>Built a multi-class speech emotion recognition system at Humelo using SpeechCNN and CRNN architectures with MFCC/Mel-spectrogram features, integrated into the Emotional TTS pipeline.</description></item><item><title>Attentional Control for Time-Series Data (Master's Thesis)</title><link>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</link><pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</guid><description>Master&amp;rsquo;s thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018.</description></item><item><title>Multi-Agent Cognitive Policy Learning through Competition</title><link>https://jungbaepark.github.io/blog/projects/multi-agent-reinforcement-learning/</link><pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/multi-agent-reinforcement-learning/</guid><description>Undergraduate research at KAIST on multi-agent cognitive policy learning through competitive reinforcement learning, demonstrating emergence of complex behaviors. Won Best Paper Award at 2016 KIIS Conference.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Projects on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/projects/</link>
+    <description>Recent content in Projects on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation</title>
+      <link>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</guid>
+      <description>Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).</description>
+    </item>
+    <item>
+      <title>Agentic Compositional Multimodal Natural Language 3D Model Search</title>
+      <link>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</guid>
+      <description>Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.</description>
+    </item>
+    <item>
+      <title>Scene-to-Products Retrieval for Digital Twin (Image-to-3D)</title>
+      <link>https://jungbaepark.github.io/blog/projects/digital-twin-scene-retrieval/</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/digital-twin-scene-retrieval/</guid>
+      <description>Built an end-to-end scene-to-products retrieval pipeline for Digital Twin at Bucketplace, achieving 13x recall improvement, 6,000x cost reduction in 3D collaboration, and scaling the catalog from 30K to 400K+ products.</description>
+    </item>
+    <item>
+      <title>OHouseAI GenAI Workflow Systematization</title>
+      <link>https://jungbaepark.github.io/blog/projects/ohouseai-genai-workflow/</link>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ohouseai-genai-workflow/</guid>
+      <description>Led systematization of OHouseAI&amp;rsquo;s GenAI interior design service at Bucketplace, achieving +253% net satisfaction, 2x latency reduction, and outperforming GPT-IMAGE-1.5 and Gemini Nano. Reached Korea #8 in Graphics/Design.</description>
+    </item>
+    <item>
+      <title>Personalized Multimodal Retrieval with VLM Distillation</title>
+      <link>https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/</guid>
+      <description>Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.</description>
+    </item>
+    <item>
+      <title>Search OKR: E-commerce Deals / Price 2.0 Ranking Optimization</title>
+      <link>https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/search-okr-ecommerce/</guid>
+      <description>Delivered measurable search ranking OKR impact at Bucketplace through 4 production A/B experiments (3 winners shipped), achieving +11.17% buyer conversion on category pages and +7.35% deals exposure on store search.</description>
+    </item>
+    <item>
+      <title>Multi-Objective Model Hyperparameter Optimization for E-commerce Search</title>
+      <link>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</guid>
+      <description>Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM&#39;25 Applied Research Track.</description>
+    </item>
+    <item>
+      <title>Global Content Search Ranking System</title>
+      <link>https://jungbaepark.github.io/blog/projects/global-content-search-ranking/</link>
+      <pubDate>Fri, 15 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/global-content-search-ranking/</guid>
+      <description>Built a two-stage content ranking system at Bucketplace covering 3 content types, with ElasticSearch function-score reranking, time decay, global language analysis, and Redis-cached serving.</description>
+    </item>
+    <item>
+      <title>CLIP-based E-Commerce Multimodal Search and Classification</title>
+      <link>https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/</guid>
+      <description>Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories.</description>
+    </item>
+    <item>
+      <title>Design &amp; Development of a Shared Team ML Mart</title>
+      <link>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/shared-team-ml-mart/</guid>
+      <description>Designed a shared ML feature mart for Bucketplace Search Team with client-side log validation, lag anomaly detection, and automated A/B test analysis pipeline using PySpark and HiveDB.</description>
+    </item>
+    <item>
+      <title>Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid>
+      <description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description>
+    </item>
+    <item>
+      <title>Knowledge Tracing with Contrastive Learning</title>
+      <link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid>
+      <description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description>
+    </item>
+    <item>
+      <title>ML Model Registry, Dataset Pipeline &amp; Infrastructure at RIIID (뤼이드)</title>
+      <link>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</link>
+      <pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ml-infrastructure-riiid/</guid>
+      <description>Built ML model registry (MLFlow) and dataset pipelines (Airflow, Athena, BigQuery) at RIIID, serving 4+ products including SANTA TOEIC, IVYGlobal SAT, CASA GRANDE, and INICIE.</description>
+    </item>
+    <item>
+      <title>ML Pipeline Acceleration &amp; Multi-GPU Training at RIIID (뤼이드)</title>
+      <link>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ml-pipeline-acceleration/</guid>
+      <description>Introduced RIIID&amp;rsquo;s first multi-GPU training, boosting GPU utilization from 25% to 95% and cutting initialization time from 1 hour to 10 seconds. Built CI/CD pipelines with GitHub Actions.</description>
+    </item>
+    <item>
+      <title>Emotional Text-to-Speech and Voice Conversion Systems</title>
+      <link>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/emotional-tts-humelo/</guid>
+      <description>Led development of duration-controllable TTS and emotional voice conversion at Humelo, producing two ICASSP publications (2019 Oral 1st author, 2020). Won Minister of Science and ICT Special Award at K-Startup 2018.</description>
+    </item>
+    <item>
+      <title>Government &amp; Public R&amp;D Grant Management</title>
+      <link>https://jungbaepark.github.io/blog/projects/government-rd-grants/</link>
+      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/government-rd-grants/</guid>
+      <description>Secured ~US$875K across three competitive Korean government R&amp;amp;D grants (IITP, TIPS, Seoul R&amp;amp;BD) at Humelo, covering brain-inspired AI, emotional TTS, and voice conversion research.</description>
+    </item>
+    <item>
+      <title>Polyphonic Sound Event Detection with Transfer Learning</title>
+      <link>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</link>
+      <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/sound-event-detection-transfer-learning/</guid>
+      <description>Developed convolutional bidirectional LSTM with synthetic data-based transfer learning for polyphonic sound event detection at Humelo, achieving +28.4% F1 improvement. Published at ICASSP 2019 as corresponding author.</description>
+    </item>
+    <item>
+      <title>AI Music Composition and SM Entertainment Collaboration</title>
+      <link>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</guid>
+      <description>Led AI music composition and rap synthesis at Humelo, presented at SXSW 2019, collaborated with SM Entertainment and rapper Sleepy (KBS Documentary), and received coverage from 10+ national media outlets.</description>
+    </item>
+    <item>
+      <title>Speech Emotion Recognition &amp; Classification System</title>
+      <link>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/speech-emotion-recognition/</guid>
+      <description>Built a multi-class speech emotion recognition system at Humelo using SpeechCNN and CRNN architectures with MFCC/Mel-spectrogram features, integrated into the Emotional TTS pipeline.</description>
+    </item>
+    <item>
+      <title>Attentional Control for Time-Series Data (Master&#39;s Thesis)</title>
+      <link>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/attentional-control-timeseries/</guid>
+      <description>Master&amp;rsquo;s thesis at KAIST on attentional control for time-series classification and synthesis, solving the memory-based vs. memoryless trade-off for EEG signals. Oral presentation at IEEE SMC 2018.</description>
+    </item>
+    <item>
+      <title>Multi-Agent Cognitive Policy Learning through Competition</title>
+      <link>https://jungbaepark.github.io/blog/projects/multi-agent-reinforcement-learning/</link>
+      <pubDate>Tue, 15 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/multi-agent-reinforcement-learning/</guid>
+      <description>Undergraduate research at KAIST on multi-agent cognitive policy learning through competitive reinforcement learning, demonstrating emergence of complex behaviors. Won Best Paper Award at 2016 KIIS Conference.</description>
+    </item>
+  </channel>
+</rss>

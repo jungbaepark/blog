@@ -18,9 +18,6 @@ menu:
     - name: Projects
       url: /projects/
       weight: 10
-    - name: Resume
-      url: /resume.pdf
-      weight: 20
     - name: Contact
       url: /contact/
       weight: 30

@@ -8,7 +8,6 @@ title: "Jungbae Park"
     <h1>Jungbae (Bobby) Park</h1>
     <p class="profile-title">ML Engineer / Research Scientist</p>
     <div class="profile-links">
-      <a href="/blog/resume.pdf">Resume (PDF)</a>
       <a href="https://linkedin.com/in/jungbaepark/">LinkedIn</a>
       <a href="https://drive.google.com/drive/folders/1CawAwpkrz_sTHtMrI3eT44A57XWS3_fC">Portfolio</a>
       <a href="mailto:jbpark0614@gmail.com">Email</a>
@@ -130,5 +129,4 @@ As COO, I handled HR, finance, and culture, and secured **~$875K** across 3 gove
 
 <div class="cta-buttons">
   <a href="/blog/projects/" class="cta-btn">View All Projects</a>
-  <a href="/blog/resume.pdf" class="cta-btn cta-btn-outline">Download Resume</a>
 </div>

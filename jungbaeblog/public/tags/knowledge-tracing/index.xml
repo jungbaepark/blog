@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Knowledge-Tracing on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/knowledge-tracing/</link><description>Recent content in Knowledge-Tracing on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Sat, 15 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/knowledge-tracing/index.xml" rel="self" type="application/rss+xml"/><item><title>Knowledge Tracing with Contrastive Learning</title><link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link><pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid><description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Knowledge-Tracing on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/knowledge-tracing/</link>
+    <description>Recent content in Knowledge-Tracing on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/knowledge-tracing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Knowledge Tracing with Contrastive Learning</title>
+      <link>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/knowledge-tracing-contrastive/</guid>
+      <description>Proposed ACCL and RCL contrastive learning methods at RIIID, achieving state-of-the-art on student modeling across 6 benchmarks (dropout prediction, knowledge tracing). Deployed to Santa TOEIC platform.</description>
+    </item>
+  </channel>
+</rss>

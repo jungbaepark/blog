@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Optimization on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/optimization/</link><description>Recent content in Optimization on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/optimization/index.xml" rel="self" type="application/rss+xml"/><item><title>Multi-Objective Model Hyperparameter Optimization for E-commerce Search</title><link>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</link><pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</guid><description>Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM'25 Applied Research Track.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Optimization on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/optimization/</link>
+    <description>Recent content in Optimization on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multi-Objective Model Hyperparameter Optimization for E-commerce Search</title>
+      <link>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/mohper-automl-ecommerce/</guid>
+      <description>Built a multi-objective hyperparameter optimization framework for e-commerce search at Bucketplace, launching tuned parameters 5x+ on SERP and 3x+ on CPLP for CTR/CVR gains. Accepted to CIKM&#39;25 Applied Research Track.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,13 +1,430 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Personalized Multimodal Retrieval with VLM Distillation | Jungbae Park</title><meta name=keywords content="industrial,multimodal-retrieval,knowledge-distillation,recommendation,bucketplace"><meta name=description content="Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="Personalized Multimodal Retrieval with VLM Distillation"><meta property="og:description" content="Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2025-06-15T00:00:00+00:00"><meta property="article:modified_time" content="2025-06-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Multimodal-Retrieval"><meta property="article:tag" content="Knowledge-Distillation"><meta property="article:tag" content="Recommendation"><meta property="article:tag" content="Bucketplace"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png"><meta name=twitter:title content="Personalized Multimodal Retrieval with VLM Distillation"><meta name=twitter:description content="Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"Personalized Multimodal Retrieval with VLM Distillation","item":"https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Personalized Multimodal Retrieval with VLM Distillation","name":"Personalized Multimodal Retrieval with VLM Distillation","description":"Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.","keywords":["industrial","multimodal-retrieval","knowledge-distillation","recommendation","bucketplace"],"articleBody":"Overview At Bucketplace (오늘의집), researched and developed personalized multimodal retrieval systems by combining sequential recommendation models with vision-language models and knowledge distillation techniques. This work explores unifying visual understanding, language comprehension, and user behavior modeling into a single retrieval framework for e-commerce product recommendation.\nKey Achievements Sequential Modeling: Implemented SASRec (Self-Attentive Sequential Recommendation) for user behavior modeling, learning from product page view and click patterns Multimodal Embeddings: Integrated Jina-CLIP-V2 for joint vision-language representations Knowledge Distillation: Applied distillation techniques to create efficient production models from large VLMs Demo Development: Built interactive demo using Streamlit and BentoML Technical Approach Problem Context Existing recommendation systems at Bucketplace (e.g., SASRec-based producers for PDP feed) operate on behavioral signals alone — click patterns, view history, and purchase sequences. These models predict “what the user will look at next” but lack understanding of why — the visual attributes, style preferences, and aesthetic choices that drive user decisions.\nApproach: VLM-Distilled Sequential Recommendation Teacher Model (VLM): Jina-CLIP-V2 generates rich multimodal embeddings that capture both visual and textual product attributes Student Model (SASRec): A lightweight sequential recommendation model is trained to predict the VLM’s embedding outputs, effectively distilling multimodal understanding into an efficient sequential model Metric Learning: PyTorch-Metric-Learning for contrastive training between user interaction sequences and multimodal product representations Efficient Training: QLoRA for parameter-efficient fine-tuning, DeepSpeed for distributed training Integration with Recommendation Pipeline The distilled model slots into the existing Producer → Mixer → Ranker → Twiddler recommendation pipeline at Bucketplace, providing multimodal-aware candidate generation alongside existing behavioral producers (SASRec from PDP click, similar image, popular CTR, etc.).\nTech Stack Deep Learning: PyTorch, HuggingFace, DeepSpeed Training: Lightning AI, QLoRA Metric Learning: PyTorch-Metric-Learning VLM: Jina-CLIP-V2 Sequential Models: SASRec Deployment: BentoML, Streamlit Period May 2025 - June 2025 | Bucketplace (오늘의집)\nImpact This project explores the next generation of product recommendation by bridging the gap between visual understanding and behavioral prediction. By distilling VLM knowledge into efficient sequential models, the approach enables personalized multimodal retrieval that can understand both what users do and what they see, unlocking style-aware and context-aware product discovery at scale.\n","wordCount":"343","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png","datePublished":"2025-06-15T00:00:00Z","dateModified":"2025-06-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">Personalized Multimodal Retrieval with VLM Distillation</h1><div class=post-meta><span title='2025-06-15 00:00:00 +0000 UTC'>June 15, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png alt="Personalized Multimodal Retrieval Pipeline"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#problem-context aria-label="Problem Context">Problem Context</a></li><li><a href=#approach-vlm-distilled-sequential-recommendation aria-label="Approach: VLM-Distilled Sequential Recommendation">Approach: VLM-Distilled Sequential Recommendation</a></li><li><a href=#integration-with-recommendation-pipeline aria-label="Integration with Recommendation Pipeline">Integration with Recommendation Pipeline</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li><li><a href=#impact aria-label=Impact>Impact</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At <strong>Bucketplace (오늘의집)</strong>, researched and developed personalized multimodal retrieval systems by combining sequential recommendation models with vision-language models and knowledge distillation techniques. This work explores unifying visual understanding, language comprehension, and user behavior modeling into a single retrieval framework for e-commerce product recommendation.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li><strong>Sequential Modeling</strong>: Implemented SASRec (Self-Attentive Sequential Recommendation) for user behavior modeling, learning from product page view and click patterns</li><li><strong>Multimodal Embeddings</strong>: Integrated Jina-CLIP-V2 for joint vision-language representations</li><li><strong>Knowledge Distillation</strong>: Applied distillation techniques to create efficient production models from large VLMs</li><li><strong>Demo Development</strong>: Built interactive demo using Streamlit and BentoML</li></ul><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=problem-context>Problem Context<a hidden class=anchor aria-hidden=true href=#problem-context>#</a></h3><p>Existing recommendation systems at Bucketplace (e.g., SASRec-based producers for PDP feed) operate on behavioral signals alone — click patterns, view history, and purchase sequences. These models predict &ldquo;what the user will look at next&rdquo; but lack understanding of <em>why</em> — the visual attributes, style preferences, and aesthetic choices that drive user decisions.</p><h3 id=approach-vlm-distilled-sequential-recommendation>Approach: VLM-Distilled Sequential Recommendation<a hidden class=anchor aria-hidden=true href=#approach-vlm-distilled-sequential-recommendation>#</a></h3><ol><li><strong>Teacher Model (VLM)</strong>: Jina-CLIP-V2 generates rich multimodal embeddings that capture both visual and textual product attributes</li><li><strong>Student Model (SASRec)</strong>: A lightweight sequential recommendation model is trained to predict the VLM&rsquo;s embedding outputs, effectively distilling multimodal understanding into an efficient sequential model</li><li><strong>Metric Learning</strong>: PyTorch-Metric-Learning for contrastive training between user interaction sequences and multimodal product representations</li><li><strong>Efficient Training</strong>: QLoRA for parameter-efficient fine-tuning, DeepSpeed for distributed training</li></ol><h3 id=integration-with-recommendation-pipeline>Integration with Recommendation Pipeline<a hidden class=anchor aria-hidden=true href=#integration-with-recommendation-pipeline>#</a></h3><p>The distilled model slots into the existing Producer → Mixer → Ranker → Twiddler recommendation pipeline at Bucketplace, providing multimodal-aware candidate generation alongside existing behavioral producers (SASRec from PDP click, similar image, popular CTR, etc.).</p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Deep Learning</strong>: PyTorch, HuggingFace, DeepSpeed</li><li><strong>Training</strong>: Lightning AI, QLoRA</li><li><strong>Metric Learning</strong>: PyTorch-Metric-Learning</li><li><strong>VLM</strong>: Jina-CLIP-V2</li><li><strong>Sequential Models</strong>: SASRec</li><li><strong>Deployment</strong>: BentoML, Streamlit</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>May 2025 - June 2025 | Bucketplace (오늘의집)</p><h2 id=impact>Impact<a hidden class=anchor aria-hidden=true href=#impact>#</a></h2><p>This project explores the next generation of product recommendation by bridging the gap between visual understanding and behavioral prediction. By distilling VLM knowledge into efficient sequential models, the approach enables personalized multimodal retrieval that can understand both <em>what users do</em> and <em>what they see</em>, unlocking style-aware and context-aware product discovery at scale.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/multimodal-retrieval/>Multimodal-Retrieval</a></li><li><a href=https://jungbaepark.github.io/blog/tags/knowledge-distillation/>Knowledge-Distillation</a></li><li><a href=https://jungbaepark.github.io/blog/tags/recommendation/>Recommendation</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Personalized Multimodal Retrieval with VLM Distillation | Jungbae Park</title>
+<meta name="keywords" content="industrial, multimodal-retrieval, knowledge-distillation, recommendation, bucketplace">
+<meta name="description" content="Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="Personalized Multimodal Retrieval with VLM Distillation">
+  <meta property="og:description" content="Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2025-06-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Multimodal-Retrieval">
+    <meta property="article:tag" content="Knowledge-Distillation">
+    <meta property="article:tag" content="Recommendation">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png">
+<meta name="twitter:title" content="Personalized Multimodal Retrieval with VLM Distillation">
+<meta name="twitter:description" content="Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Personalized Multimodal Retrieval with VLM Distillation",
+      "item": "https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Personalized Multimodal Retrieval with VLM Distillation",
+  "name": "Personalized Multimodal Retrieval with VLM Distillation",
+  "description": "Developed personalized multimodal retrieval combining SASRec sequential recommendation with Jina-CLIP-V2 vision-language representations, using knowledge distillation for efficient production serving at Bucketplace.",
+  "keywords": [
+    "industrial", "multimodal-retrieval", "knowledge-distillation", "recommendation", "bucketplace"
+  ],
+  "articleBody": "Overview At Bucketplace (오늘의집), researched and developed personalized multimodal retrieval systems by combining sequential recommendation models with vision-language models and knowledge distillation techniques. This work explores unifying visual understanding, language comprehension, and user behavior modeling into a single retrieval framework for e-commerce product recommendation.\nKey Achievements Sequential Modeling: Implemented SASRec (Self-Attentive Sequential Recommendation) for user behavior modeling, learning from product page view and click patterns Multimodal Embeddings: Integrated Jina-CLIP-V2 for joint vision-language representations Knowledge Distillation: Applied distillation techniques to create efficient production models from large VLMs Demo Development: Built interactive demo using Streamlit and BentoML Technical Approach Problem Context Existing recommendation systems at Bucketplace (e.g., SASRec-based producers for PDP feed) operate on behavioral signals alone — click patterns, view history, and purchase sequences. These models predict “what the user will look at next” but lack understanding of why — the visual attributes, style preferences, and aesthetic choices that drive user decisions.\nApproach: VLM-Distilled Sequential Recommendation Teacher Model (VLM): Jina-CLIP-V2 generates rich multimodal embeddings that capture both visual and textual product attributes Student Model (SASRec): A lightweight sequential recommendation model is trained to predict the VLM’s embedding outputs, effectively distilling multimodal understanding into an efficient sequential model Metric Learning: PyTorch-Metric-Learning for contrastive training between user interaction sequences and multimodal product representations Efficient Training: QLoRA for parameter-efficient fine-tuning, DeepSpeed for distributed training Integration with Recommendation Pipeline The distilled model slots into the existing Producer → Mixer → Ranker → Twiddler recommendation pipeline at Bucketplace, providing multimodal-aware candidate generation alongside existing behavioral producers (SASRec from PDP click, similar image, popular CTR, etc.).\nTech Stack Deep Learning: PyTorch, HuggingFace, DeepSpeed Training: Lightning AI, QLoRA Metric Learning: PyTorch-Metric-Learning VLM: Jina-CLIP-V2 Sequential Models: SASRec Deployment: BentoML, Streamlit Period May 2025 - June 2025 | Bucketplace (오늘의집)\nImpact This project explores the next generation of product recommendation by bridging the gap between visual understanding and behavioral prediction. By distilling VLM knowledge into efficient sequential models, the approach enables personalized multimodal retrieval that can understand both what users do and what they see, unlocking style-aware and context-aware product discovery at scale.\n",
+  "wordCount" : "343",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png","datePublished": "2025-06-15T00:00:00Z",
+  "dateModified": "2025-06-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/multimodal-retrieval-vlm/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Personalized Multimodal Retrieval with VLM Distillation
+    </h1>
+    <div class="post-meta"><span title='2025-06-15 00:00:00 +0000 UTC'>June 15, 2025</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/multimodal_vlm_pipeline.png" alt="Personalized Multimodal Retrieval Pipeline">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a></li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#problem-context" aria-label="Problem Context">Problem Context</a></li>
+                <li>
+                    <a href="#approach-vlm-distilled-sequential-recommendation" aria-label="Approach: VLM-Distilled Sequential Recommendation">Approach: VLM-Distilled Sequential Recommendation</a></li>
+                <li>
+                    <a href="#integration-with-recommendation-pipeline" aria-label="Integration with Recommendation Pipeline">Integration with Recommendation Pipeline</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a></li>
+                <li>
+                    <a href="#impact" aria-label="Impact">Impact</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At <strong>Bucketplace (오늘의집)</strong>, researched and developed personalized multimodal retrieval systems by combining sequential recommendation models with vision-language models and knowledge distillation techniques. This work explores unifying visual understanding, language comprehension, and user behavior modeling into a single retrieval framework for e-commerce product recommendation.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>Sequential Modeling</strong>: Implemented SASRec (Self-Attentive Sequential Recommendation) for user behavior modeling, learning from product page view and click patterns</li>
+<li><strong>Multimodal Embeddings</strong>: Integrated Jina-CLIP-V2 for joint vision-language representations</li>
+<li><strong>Knowledge Distillation</strong>: Applied distillation techniques to create efficient production models from large VLMs</li>
+<li><strong>Demo Development</strong>: Built interactive demo using Streamlit and BentoML</li>
+</ul>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="problem-context">Problem Context<a hidden class="anchor" aria-hidden="true" href="#problem-context">#</a></h3>
+<p>Existing recommendation systems at Bucketplace (e.g., SASRec-based producers for PDP feed) operate on behavioral signals alone — click patterns, view history, and purchase sequences. These models predict &ldquo;what the user will look at next&rdquo; but lack understanding of <em>why</em> — the visual attributes, style preferences, and aesthetic choices that drive user decisions.</p>
+<h3 id="approach-vlm-distilled-sequential-recommendation">Approach: VLM-Distilled Sequential Recommendation<a hidden class="anchor" aria-hidden="true" href="#approach-vlm-distilled-sequential-recommendation">#</a></h3>
+<ol>
+<li><strong>Teacher Model (VLM)</strong>: Jina-CLIP-V2 generates rich multimodal embeddings that capture both visual and textual product attributes</li>
+<li><strong>Student Model (SASRec)</strong>: A lightweight sequential recommendation model is trained to predict the VLM&rsquo;s embedding outputs, effectively distilling multimodal understanding into an efficient sequential model</li>
+<li><strong>Metric Learning</strong>: PyTorch-Metric-Learning for contrastive training between user interaction sequences and multimodal product representations</li>
+<li><strong>Efficient Training</strong>: QLoRA for parameter-efficient fine-tuning, DeepSpeed for distributed training</li>
+</ol>
+<h3 id="integration-with-recommendation-pipeline">Integration with Recommendation Pipeline<a hidden class="anchor" aria-hidden="true" href="#integration-with-recommendation-pipeline">#</a></h3>
+<p>The distilled model slots into the existing Producer → Mixer → Ranker → Twiddler recommendation pipeline at Bucketplace, providing multimodal-aware candidate generation alongside existing behavioral producers (SASRec from PDP click, similar image, popular CTR, etc.).</p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Deep Learning</strong>: PyTorch, HuggingFace, DeepSpeed</li>
+<li><strong>Training</strong>: Lightning AI, QLoRA</li>
+<li><strong>Metric Learning</strong>: PyTorch-Metric-Learning</li>
+<li><strong>VLM</strong>: Jina-CLIP-V2</li>
+<li><strong>Sequential Models</strong>: SASRec</li>
+<li><strong>Deployment</strong>: BentoML, Streamlit</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>May 2025 - June 2025 | Bucketplace (오늘의집)</p>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>This project explores the next generation of product recommendation by bridging the gap between visual understanding and behavioral prediction. By distilling VLM knowledge into efficient sequential models, the approach enables personalized multimodal retrieval that can understand both <em>what users do</em> and <em>what they see</em>, unlocking style-aware and context-aware product discovery at scale.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/multimodal-retrieval/">Multimodal-Retrieval</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/knowledge-distillation/">Knowledge-Distillation</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/recommendation/">Recommendation</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

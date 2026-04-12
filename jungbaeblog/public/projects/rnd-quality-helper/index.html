@@ -1,20 +1,452 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>rnd-quality-helper: Multi-Agent R&amp;D Workflow & Code Review Automation | Jungbae Park</title><meta name=keywords content="industrial,agentic-ai,llm,code-review,multi-agent,bucketplace"><meta name=description content="Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel)."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/rnd-quality-helper/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/rnd-quality-helper/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/rnd-quality-helper/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="rnd-quality-helper: Multi-Agent R&D Workflow & Code Review Automation"><meta property="og:description" content="Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel)."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2026-01-20T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-20T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Agentic-Ai"><meta property="article:tag" content="Llm"><meta property="article:tag" content="Code-Review"><meta property="article:tag" content="Multi-Agent"><meta property="article:tag" content="Bucketplace"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png"><meta name=twitter:title content="rnd-quality-helper: Multi-Agent R&amp;D Workflow & Code Review Automation"><meta name=twitter:description content="Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel)."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"rnd-quality-helper: Multi-Agent R\u0026D Workflow \u0026 Code Review Automation","item":"https://jungbaepark.github.io/blog/projects/rnd-quality-helper/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"rnd-quality-helper: Multi-Agent R\u0026D Workflow \u0026 Code Review Automation","name":"rnd-quality-helper: Multi-Agent R\u0026D Workflow \u0026 Code Review Automation","description":"Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).","keywords":["industrial","agentic-ai","llm","code-review","multi-agent","bucketplace"],"articleBody":"Overview At Bucketplace (오늘의집) AIL, built a Claude Code plugin that orchestrates 17 specialized agents and 14 skills to automate R\u0026D workflows—from research and planning through implementation, code review, and verification. A team-level PoC that demonstrates multi-agent orchestration for developer productivity.\nKey Achievements 17 Specialized Agents: Covering research (codebase, convention, history, API, web, academic), planning (feature, refactor, migration), review (logic, security, architecture, quality, performance), and verification (functional, regression, integration) 14 Skills: Workflow orchestration, plan change detection, multi-persona review, verification (quick \u0026 full), and self-review at each phase Cross-Model Review: Parallel multi-persona code review using Claude, Codex, and Gemini simultaneously with 3-layer defense Structured Workflow Pipeline: Research → Aggregate → Plan → Implement → Verify → Iterate Technical Approach Multi-Agent Orchestration Each agent is a specialized subprocess with its own system prompt, tool access, and domain expertise. Agents are launched in parallel where tasks are independent and sequentially where dependencies exist.\nCross-Model Multi-Persona Review The review system runs multiple specialized reviewers (logic, security, architecture, quality, performance, positive) in parallel across different LLM backends, aggregating findings with confidence-based filtering.\nWorkflow Pipeline graph LR A[\"Research\\n(parallel)\"] --\u003e B[\"Aggregate\\n(prioritize)\"] B --\u003e C[\"Plan\\n(planner+critic)\"] C --\u003e D[\"Implement\\n(+review)\"] D --\u003e E[\"Verify\\n(test+check)\"] E --\u003e F[\"Iterate\\n(feedback)\"] F -.-\u003e|feedback| C The /workflow skill coordinates a 6-phase pipeline:\nResearch (parallel): Select relevant researchers based on task scope Aggregate: Synthesize findings into prioritized brief Plan: Choose planner by task type, then self-review Implement: One logical change at a time with checkpoint reviews Verify: Run tests + specialized verifiers in parallel Iterate: Adaptive feedback loop back to the smallest relevant phase Enterprise Plugin Ecosystem Part of a broader initiative to build a company-wide Claude Code plugin marketplace at Bucketplace:\nPlugin distribution via shared directory structure (~/claude-marketplace/plugins/common) Team-specific plugins alongside common plugins Internal guide for enterprise adoption published on Notion Notion Integration Plan documents can be pushed to Notion with Mermaid diagram support via the /push-plan-to-notion skill, enabling seamless collaboration between AI-assisted development and project management.\nTech Stack Platform: Claude Code Plugin (TypeScript/YAML) Orchestration: Multi-Agent, ReAct Pattern LLM Backends: Claude, Codex, Gemini (cross-model) Integration: Notion MCP, GitHub API, Jira (Atlassian MCP) Protocol: Skills, Agents, Hooks (Claude Code Plugin API) Distribution: Enterprise plugin marketplace Period January 2026 - Current | Bucketplace (오늘의집) AIL\n","wordCount":"367","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png","datePublished":"2026-01-20T00:00:00Z","dateModified":"2026-01-20T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/rnd-quality-helper/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">rnd-quality-helper: Multi-Agent R&amp;D Workflow & Code Review Automation</h1><div class=post-meta><span title='2026-01-20 00:00:00 +0000 UTC'>January 20, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png alt="rnd-quality-helper 6-Phase Workflow Pipeline"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#multi-agent-orchestration aria-label="Multi-Agent Orchestration">Multi-Agent Orchestration</a></li><li><a href=#cross-model-multi-persona-review aria-label="Cross-Model Multi-Persona Review">Cross-Model Multi-Persona Review</a></li><li><a href=#workflow-pipeline aria-label="Workflow Pipeline">Workflow Pipeline</a></li><li><a href=#enterprise-plugin-ecosystem aria-label="Enterprise Plugin Ecosystem">Enterprise Plugin Ecosystem</a></li><li><a href=#notion-integration aria-label="Notion Integration">Notion Integration</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At <strong>Bucketplace (오늘의집) AIL</strong>, built a Claude Code plugin that orchestrates 17 specialized agents and 14 skills to automate R&amp;D workflows&mdash;from research and planning through implementation, code review, and verification. A team-level PoC that demonstrates multi-agent orchestration for developer productivity.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li><strong>17 Specialized Agents</strong>: Covering research (codebase, convention, history, API, web, academic), planning (feature, refactor, migration), review (logic, security, architecture, quality, performance), and verification (functional, regression, integration)</li><li><strong>14 Skills</strong>: Workflow orchestration, plan change detection, multi-persona review, verification (quick & full), and self-review at each phase</li><li><strong>Cross-Model Review</strong>: Parallel multi-persona code review using Claude, Codex, and Gemini simultaneously with 3-layer defense</li><li><strong>Structured Workflow Pipeline</strong>: Research → Aggregate → Plan → Implement → Verify → Iterate</li></ul><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=multi-agent-orchestration>Multi-Agent Orchestration<a hidden class=anchor aria-hidden=true href=#multi-agent-orchestration>#</a></h3><p>Each agent is a specialized subprocess with its own system prompt, tool access, and domain expertise. Agents are launched in parallel where tasks are independent and sequentially where dependencies exist.</p><h3 id=cross-model-multi-persona-review>Cross-Model Multi-Persona Review<a hidden class=anchor aria-hidden=true href=#cross-model-multi-persona-review>#</a></h3><p>The review system runs multiple specialized reviewers (logic, security, architecture, quality, performance, positive) in parallel across different LLM backends, aggregating findings with confidence-based filtering.</p><h3 id=workflow-pipeline>Workflow Pipeline<a hidden class=anchor aria-hidden=true href=#workflow-pipeline>#</a></h3><pre class=mermaid>graph LR
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation | Jungbae Park</title>
+<meta name="keywords" content="industrial, agentic-ai, llm, code-review, multi-agent, bucketplace">
+<meta name="description" content="Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/rnd-quality-helper/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/rnd-quality-helper/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/rnd-quality-helper/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="rnd-quality-helper: Multi-Agent R&D Workflow & Code Review Automation">
+  <meta property="og:description" content="Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2026-01-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-20T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Agentic-Ai">
+    <meta property="article:tag" content="Llm">
+    <meta property="article:tag" content="Code-Review">
+    <meta property="article:tag" content="Multi-Agent">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png">
+<meta name="twitter:title" content="rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation">
+<meta name="twitter:description" content="Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "rnd-quality-helper: Multi-Agent R\u0026D Workflow \u0026 Code Review Automation",
+      "item": "https://jungbaepark.github.io/blog/projects/rnd-quality-helper/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "rnd-quality-helper: Multi-Agent R\u0026D Workflow \u0026 Code Review Automation",
+  "name": "rnd-quality-helper: Multi-Agent R\u0026D Workflow \u0026 Code Review Automation",
+  "description": "Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).",
+  "keywords": [
+    "industrial", "agentic-ai", "llm", "code-review", "multi-agent", "bucketplace"
+  ],
+  "articleBody": "Overview At Bucketplace (오늘의집) AIL, built a Claude Code plugin that orchestrates 17 specialized agents and 14 skills to automate R\u0026D workflows—from research and planning through implementation, code review, and verification. A team-level PoC that demonstrates multi-agent orchestration for developer productivity.\nKey Achievements 17 Specialized Agents: Covering research (codebase, convention, history, API, web, academic), planning (feature, refactor, migration), review (logic, security, architecture, quality, performance), and verification (functional, regression, integration) 14 Skills: Workflow orchestration, plan change detection, multi-persona review, verification (quick \u0026 full), and self-review at each phase Cross-Model Review: Parallel multi-persona code review using Claude, Codex, and Gemini simultaneously with 3-layer defense Structured Workflow Pipeline: Research → Aggregate → Plan → Implement → Verify → Iterate Technical Approach Multi-Agent Orchestration Each agent is a specialized subprocess with its own system prompt, tool access, and domain expertise. Agents are launched in parallel where tasks are independent and sequentially where dependencies exist.\nCross-Model Multi-Persona Review The review system runs multiple specialized reviewers (logic, security, architecture, quality, performance, positive) in parallel across different LLM backends, aggregating findings with confidence-based filtering.\nWorkflow Pipeline graph LR A[\"Research\\n(parallel)\"] --\u003e B[\"Aggregate\\n(prioritize)\"] B --\u003e C[\"Plan\\n(planner+critic)\"] C --\u003e D[\"Implement\\n(+review)\"] D --\u003e E[\"Verify\\n(test+check)\"] E --\u003e F[\"Iterate\\n(feedback)\"] F -.-\u003e|feedback| C The /workflow skill coordinates a 6-phase pipeline:\nResearch (parallel): Select relevant researchers based on task scope Aggregate: Synthesize findings into prioritized brief Plan: Choose planner by task type, then self-review Implement: One logical change at a time with checkpoint reviews Verify: Run tests + specialized verifiers in parallel Iterate: Adaptive feedback loop back to the smallest relevant phase Enterprise Plugin Ecosystem Part of a broader initiative to build a company-wide Claude Code plugin marketplace at Bucketplace:\nPlugin distribution via shared directory structure (~/claude-marketplace/plugins/common) Team-specific plugins alongside common plugins Internal guide for enterprise adoption published on Notion Notion Integration Plan documents can be pushed to Notion with Mermaid diagram support via the /push-plan-to-notion skill, enabling seamless collaboration between AI-assisted development and project management.\nTech Stack Platform: Claude Code Plugin (TypeScript/YAML) Orchestration: Multi-Agent, ReAct Pattern LLM Backends: Claude, Codex, Gemini (cross-model) Integration: Notion MCP, GitHub API, Jira (Atlassian MCP) Protocol: Skills, Agents, Hooks (Claude Code Plugin API) Distribution: Enterprise plugin marketplace Period January 2026 - Current | Bucketplace (오늘의집) AIL\n",
+  "wordCount" : "367",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png","datePublished": "2026-01-20T00:00:00Z",
+  "dateModified": "2026-01-20T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/rnd-quality-helper/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation
+    </h1>
+    <div class="post-meta"><span title='2026-01-20 00:00:00 +0000 UTC'>January 20, 2026</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/rnd_quality_helper_workflow.png" alt="rnd-quality-helper 6-Phase Workflow Pipeline">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a></li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#multi-agent-orchestration" aria-label="Multi-Agent Orchestration">Multi-Agent Orchestration</a></li>
+                <li>
+                    <a href="#cross-model-multi-persona-review" aria-label="Cross-Model Multi-Persona Review">Cross-Model Multi-Persona Review</a></li>
+                <li>
+                    <a href="#workflow-pipeline" aria-label="Workflow Pipeline">Workflow Pipeline</a></li>
+                <li>
+                    <a href="#enterprise-plugin-ecosystem" aria-label="Enterprise Plugin Ecosystem">Enterprise Plugin Ecosystem</a></li>
+                <li>
+                    <a href="#notion-integration" aria-label="Notion Integration">Notion Integration</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At <strong>Bucketplace (오늘의집) AIL</strong>, built a Claude Code plugin that orchestrates 17 specialized agents and 14 skills to automate R&amp;D workflows&mdash;from research and planning through implementation, code review, and verification. A team-level PoC that demonstrates multi-agent orchestration for developer productivity.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>17 Specialized Agents</strong>: Covering research (codebase, convention, history, API, web, academic), planning (feature, refactor, migration), review (logic, security, architecture, quality, performance), and verification (functional, regression, integration)</li>
+<li><strong>14 Skills</strong>: Workflow orchestration, plan change detection, multi-persona review, verification (quick &amp; full), and self-review at each phase</li>
+<li><strong>Cross-Model Review</strong>: Parallel multi-persona code review using Claude, Codex, and Gemini simultaneously with 3-layer defense</li>
+<li><strong>Structured Workflow Pipeline</strong>: Research → Aggregate → Plan → Implement → Verify → Iterate</li>
+</ul>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="multi-agent-orchestration">Multi-Agent Orchestration<a hidden class="anchor" aria-hidden="true" href="#multi-agent-orchestration">#</a></h3>
+<p>Each agent is a specialized subprocess with its own system prompt, tool access, and domain expertise. Agents are launched in parallel where tasks are independent and sequentially where dependencies exist.</p>
+<h3 id="cross-model-multi-persona-review">Cross-Model Multi-Persona Review<a hidden class="anchor" aria-hidden="true" href="#cross-model-multi-persona-review">#</a></h3>
+<p>The review system runs multiple specialized reviewers (logic, security, architecture, quality, performance, positive) in parallel across different LLM backends, aggregating findings with confidence-based filtering.</p>
+<h3 id="workflow-pipeline">Workflow Pipeline<a hidden class="anchor" aria-hidden="true" href="#workflow-pipeline">#</a></h3>
+<pre class="mermaid">graph LR
     A["Research\n(parallel)"] --> B["Aggregate\n(prioritize)"]
     B --> C["Plan\n(planner+critic)"]
     C --> D["Implement\n(+review)"]
     D --> E["Verify\n(test+check)"]
     E --> F["Iterate\n(feedback)"]
     F -.->|feedback| C
-</pre><p>The <code>/workflow</code> skill coordinates a 6-phase pipeline:</p><ol><li><strong>Research</strong> (parallel): Select relevant researchers based on task scope</li><li><strong>Aggregate</strong>: Synthesize findings into prioritized brief</li><li><strong>Plan</strong>: Choose planner by task type, then self-review</li><li><strong>Implement</strong>: One logical change at a time with checkpoint reviews</li><li><strong>Verify</strong>: Run tests + specialized verifiers in parallel</li><li><strong>Iterate</strong>: Adaptive feedback loop back to the smallest relevant phase</li></ol><h3 id=enterprise-plugin-ecosystem>Enterprise Plugin Ecosystem<a hidden class=anchor aria-hidden=true href=#enterprise-plugin-ecosystem>#</a></h3><p>Part of a broader initiative to build a company-wide Claude Code plugin marketplace at Bucketplace:</p><ul><li>Plugin distribution via shared directory structure (<code>~/claude-marketplace/plugins/common</code>)</li><li>Team-specific plugins alongside common plugins</li><li>Internal guide for enterprise adoption published on Notion</li></ul><h3 id=notion-integration>Notion Integration<a hidden class=anchor aria-hidden=true href=#notion-integration>#</a></h3><p>Plan documents can be pushed to Notion with Mermaid diagram support via the <code>/push-plan-to-notion</code> skill, enabling seamless collaboration between AI-assisted development and project management.</p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Platform</strong>: Claude Code Plugin (TypeScript/YAML)</li><li><strong>Orchestration</strong>: Multi-Agent, ReAct Pattern</li><li><strong>LLM Backends</strong>: Claude, Codex, Gemini (cross-model)</li><li><strong>Integration</strong>: Notion MCP, GitHub API, Jira (Atlassian MCP)</li><li><strong>Protocol</strong>: Skills, Agents, Hooks (Claude Code Plugin API)</li><li><strong>Distribution</strong>: Enterprise plugin marketplace</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>January 2026 - Current | Bucketplace (오늘의집) AIL</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/agentic-ai/>Agentic-Ai</a></li><li><a href=https://jungbaepark.github.io/blog/tags/llm/>Llm</a></li><li><a href=https://jungbaepark.github.io/blog/tags/code-review/>Code-Review</a></li><li><a href=https://jungbaepark.github.io/blog/tags/multi-agent/>Multi-Agent</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+</pre>
+<p>The <code>/workflow</code> skill coordinates a 6-phase pipeline:</p>
+<ol>
+<li><strong>Research</strong> (parallel): Select relevant researchers based on task scope</li>
+<li><strong>Aggregate</strong>: Synthesize findings into prioritized brief</li>
+<li><strong>Plan</strong>: Choose planner by task type, then self-review</li>
+<li><strong>Implement</strong>: One logical change at a time with checkpoint reviews</li>
+<li><strong>Verify</strong>: Run tests + specialized verifiers in parallel</li>
+<li><strong>Iterate</strong>: Adaptive feedback loop back to the smallest relevant phase</li>
+</ol>
+<h3 id="enterprise-plugin-ecosystem">Enterprise Plugin Ecosystem<a hidden class="anchor" aria-hidden="true" href="#enterprise-plugin-ecosystem">#</a></h3>
+<p>Part of a broader initiative to build a company-wide Claude Code plugin marketplace at Bucketplace:</p>
+<ul>
+<li>Plugin distribution via shared directory structure (<code>~/claude-marketplace/plugins/common</code>)</li>
+<li>Team-specific plugins alongside common plugins</li>
+<li>Internal guide for enterprise adoption published on Notion</li>
+</ul>
+<h3 id="notion-integration">Notion Integration<a hidden class="anchor" aria-hidden="true" href="#notion-integration">#</a></h3>
+<p>Plan documents can be pushed to Notion with Mermaid diagram support via the <code>/push-plan-to-notion</code> skill, enabling seamless collaboration between AI-assisted development and project management.</p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Platform</strong>: Claude Code Plugin (TypeScript/YAML)</li>
+<li><strong>Orchestration</strong>: Multi-Agent, ReAct Pattern</li>
+<li><strong>LLM Backends</strong>: Claude, Codex, Gemini (cross-model)</li>
+<li><strong>Integration</strong>: Notion MCP, GitHub API, Jira (Atlassian MCP)</li>
+<li><strong>Protocol</strong>: Skills, Agents, Hooks (Claude Code Plugin API)</li>
+<li><strong>Distribution</strong>: Enterprise plugin marketplace</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>January 2026 - Current | Bucketplace (오늘의집) AIL</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/agentic-ai/">Agentic-Ai</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/llm/">Llm</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/code-review/">Code-Review</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/multi-agent/">Multi-Agent</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -22,18 +22,31 @@ At the core of this project is **CoI-Fit (Context-Intent Fit Matching)**, a comp
 ## Key Achievements
 
 - **Compositional Retrieval Framework**: Designed CoI-Fit, a novel multimodal retrieval architecture that fuses heterogeneous signals (visual, textual, spatial) into a unified retrieval pipeline
+- **Two-Tier Negative Query Separation**: Hard exclude (must-not) + soft downrank via graduated confidence scoring, preventing irrelevant results while preserving recall
+- **5-Level Progressive Fallback**: Graceful degradation from full-signal retrieval down to broad category search, ensuring non-empty results even for ambiguous queries
 - **Multi-Agent Architecture**: Architected a LangGraph pipeline with parallel fan-out inference, enabling concurrent processing of multiple retrieval dimensions
-- **Auto Quality Recovery**: Implemented intelligent filter relaxation retry mechanisms that automatically recover from overly restrictive queries, ensuring high recall even for long-tail searches
 - **Dual Interface Design**: Built both A2A (Agent-to-Agent) JSON-RPC and REST/FastAPI interfaces, enabling seamless integration with both agent ecosystems and traditional service architectures
-- **Evaluation Pipeline**: Developed a persona-based evaluation pipeline that generates synthetic query-document sets to evaluate retrieval relevance across long-tail distributions, ensuring robust performance on rare and complex queries
+- **Auto Quality Recovery**: Implemented intelligent filter relaxation retry mechanisms that automatically recover from overly restrictive queries, ensuring high recall even for long-tail searches
+- **Automated Quality Evaluation**: 8-dimension rule-based CI scoring + LLM-as-Judge with LangFuse experiment tracking; persona-based synthetic query generation for long-tail coverage
+
+### Benchmark Results (634 queries)
+
+| Metric | Improvement |
+|---|---|
+| Judge Satisfaction | **+11.9%** |
+| Category Recall | **+16.6%** |
+| Positive Hit | **+18.0%** |
+| Negative Leak | **-50%** |
+| Latency p50 | **-20.8%** |
 
 ```mermaid
 graph LR
     A[NL Query] --> B[LLM Parse]
-    B --> C[BM25+KNN\nHybrid Search]
-    C --> D[Filter\nRelaxation]
-    D --> E[Quality\nRecovery]
-    E --> F[Ranked Results]
+    B --> C[Negative\nSeparation]
+    C --> D[BM25+KNN\nHybrid Search]
+    D --> E[Graduated\nConfidence Scoring]
+    E --> F[5-Level\nFallback]
+    F --> G[Ranked Results]
 ```
 
 ## Technical Approach
@@ -55,6 +68,7 @@ flowchart TD
     C --> D5[infer_colors]
     C --> D6[infer_price]
     C --> D7[infer_dimensions]
+    C --> D8[negative_separation]
     D1 --> E[retrieve_with_signals]
     D2 --> E
     D3 --> E
@@ -62,20 +76,23 @@ flowchart TD
     D5 --> E
     D6 --> E
     D7 --> E
+    D8 --> E
     E --> F[twidder]
-    F --> G[check_refine]
-    G -->|retry| E
-    G -->|final| H[format_response]
+    F --> G[confidence_scoring]
+    G --> H[check_refine]
+    H -->|retry\n5-level fallback| E
+    H -->|final| I[format_response]
 ```
 
 ### Request Journey (End-to-End)
 
 1. **Intake**: Input normalization, safety check, format validation
 2. **Analyze & Plan**: Language/token analysis, category aggregation, search mode determination
-3. **Parallel Intelligence**: Fan-out to 7 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction
-4. **Retrieval & Ranking**: BM25 + KNN hybrid search with twidder for product_id deduplication
-5. **Quality Recovery**: Filter relaxation retry when results are insufficient (max 1 refine to protect p99)
-6. **Response**: Final items with optional debug metadata (node latency, signals, ES query)
+3. **Parallel Intelligence**: Fan-out to 8 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction, and negative query separation (hard exclude vs. soft downrank)
+4. **Retrieval & Ranking**: BM25 + KNN hybrid search with two-tier negative filtering and twidder for product_id deduplication
+5. **Confidence Scoring**: Graduated scoring across retrieval signals to rank results by match quality
+6. **Quality Recovery**: 5-level progressive fallback (full-signal → relaxed filters → broad category) with max 1 refine to protect p99
+7. **Response**: Final items with optional debug metadata (node latency, signals, ES query)
 
 ![NL Search Demo](/blog/images/projects/notion_nl_search_demo.png)
 

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Cold-Start on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/cold-start/</link><description>Recent content in Cold-Start on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/cold-start/index.xml" rel="self" type="application/rss+xml"/><item><title>Prompt-Aware Speech Scoring System for Second Language Learners</title><link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid><description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cold-Start on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/cold-start/</link>
+    <description>Recent content in Cold-Start on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/cold-start/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prompt-Aware Speech Scoring System for Second Language Learners</title>
+      <link>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/</guid>
+      <description>Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.</description>
+    </item>
+  </channel>
+</rss>

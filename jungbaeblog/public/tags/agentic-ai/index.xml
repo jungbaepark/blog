@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Agentic-Ai on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/agentic-ai/</link><description>Recent content in Agentic-Ai on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/agentic-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation</title><link>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</guid><description>Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).</description></item><item><title>Agentic Compositional Multimodal Natural Language 3D Model Search</title><link>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</link><pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</guid><description>Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Agentic-Ai on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/agentic-ai/</link>
+    <description>Recent content in Agentic-Ai on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/agentic-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rnd-quality-helper: Multi-Agent R&amp;D Workflow &amp; Code Review Automation</title>
+      <link>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/rnd-quality-helper/</guid>
+      <description>Built a Claude Code plugin with 17 specialized agents and 14 skills automating code review, planning, and verification across the dev lifecycle. Features cross-model multi-persona review (Claude/Codex/Gemini in parallel).</description>
+    </item>
+    <item>
+      <title>Agentic Compositional Multimodal Natural Language 3D Model Search</title>
+      <link>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/</guid>
+      <description>Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.</description>
+    </item>
+  </channel>
+</rss>

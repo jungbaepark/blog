@@ -1,12 +1,317 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Agentic Compositional Multimodal Natural Language 3D Model Search | Jungbae Park</title><meta name=keywords content="industrial,agentic-ai,langgraph,multimodal-retrieval,3d-search,bucketplace,a2a"><meta name=description content="Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="Agentic Compositional Multimodal Natural Language 3D Model Search"><meta property="og:description" content="Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2026-01-15T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Agentic-Ai"><meta property="article:tag" content="Langgraph"><meta property="article:tag" content="Multimodal-Retrieval"><meta property="article:tag" content="3d-Search"><meta property="article:tag" content="Bucketplace"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png"><meta name=twitter:title content="Agentic Compositional Multimodal Natural Language 3D Model Search"><meta name=twitter:description content="Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"Agentic Compositional Multimodal Natural Language 3D Model Search","item":"https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Agentic Compositional Multimodal Natural Language 3D Model Search","name":"Agentic Compositional Multimodal Natural Language 3D Model Search","description":"Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.","keywords":["industrial","agentic-ai","langgraph","multimodal-retrieval","3d-search","bucketplace","a2a"],"articleBody":"Overview At Bucketplace (오늘의집), I am building an AI-powered search agent that interprets natural language queries and translates them into structured retrieval signals for Room Planner 3D products. The system decomposes free-form user intent into actionable dimensions – category, attributes, color, dimensions, and budget – via LLM reasoning, then executes BM25+KNN hybrid search on ElasticSearch to surface the most relevant 3D product models.\nAt the core of this project is CoI-Fit (Context-Intent Fit Matching), a compositional multimodal retrieval framework I designed to serve as the retrieval backbone for multiple downstream agents. CoI-Fit combines space analysis, mood/style interpretation, dimensional constraints, and conversational context drawn from image, text, and 3D coordinate inputs to produce contextually grounded retrieval results.\nKey Achievements Compositional Retrieval Framework: Designed CoI-Fit, a novel multimodal retrieval architecture that fuses heterogeneous signals (visual, textual, spatial) into a unified retrieval pipeline Multi-Agent Architecture: Architected a LangGraph pipeline with parallel fan-out inference, enabling concurrent processing of multiple retrieval dimensions Auto Quality Recovery: Implemented intelligent filter relaxation retry mechanisms that automatically recover from overly restrictive queries, ensuring high recall even for long-tail searches Dual Interface Design: Built both A2A (Agent-to-Agent) JSON-RPC and REST/FastAPI interfaces, enabling seamless integration with both agent ecosystems and traditional service architectures Evaluation Pipeline: Developed a persona-based evaluation pipeline that generates synthetic query-document sets to evaluate retrieval relevance across long-tail distributions, ensuring robust performance on rare and complex queries graph LR A[NL Query] --\u003e B[LLM Parse] B --\u003e C[BM25+KNN\\nHybrid Search] C --\u003e D[Filter\\nRelaxation] D --\u003e E[Quality\\nRecovery] E --\u003e F[Ranked Results] Technical Approach Pipeline Topology The system follows a multi-stage agentic pipeline with parallel fan-out for inference:\nflowchart TD A[preprocess] --\u003e B1[pre_analyze] A --\u003e B2[pre_category_agg] B1 --\u003e C[planner] B2 --\u003e C C --\u003e D1[query_rewrite] C --\u003e D2[query_embedding] C --\u003e D3[infer_category] C --\u003e D4[infer_attributes] C --\u003e D5[infer_colors] C --\u003e D6[infer_price] C --\u003e D7[infer_dimensions] D1 --\u003e E[retrieve_with_signals] D2 --\u003e E D3 --\u003e E D4 --\u003e E D5 --\u003e E D6 --\u003e E D7 --\u003e E E --\u003e F[twidder] F --\u003e G[check_refine] G --\u003e|retry| E G --\u003e|final| H[format_response] Request Journey (End-to-End) Intake: Input normalization, safety check, format validation Analyze \u0026 Plan: Language/token analysis, category aggregation, search mode determination Parallel Intelligence: Fan-out to 7 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction Retrieval \u0026 Ranking: BM25 + KNN hybrid search with twidder for product_id deduplication Quality Recovery: Filter relaxation retry when results are insufficient (max 1 refine to protect p99) Response: Final items with optional debug metadata (node latency, signals, ES query) CoI-Fit: Compositional Multimodal Retrieval CoI-Fit (Context-Intent Fit Matching) serves as the retrieval backbone for multiple downstream agents:\nSpace Analysis: Understanding room context and spatial arrangement from 3D coordinates Mood/Style Matching: Extracting aesthetic intent from text and image inputs Dimensional Constraints: Filtering by physical size requirements derived from the 3D scene Conversational Context: Maintaining coherent retrieval across multi-turn interactions State Design (3-Layer) Layer Role Properties inputs Request original Immutable artifacts Intermediate outputs Mutable, parallel accumulation outputs Final response Finalized at exit Architecture Integration The system operates as both a standalone service and a domain agent within the AI-AP (AI Agent Platform) orchestrator:\nStandalone: Direct REST/A2A calls for search queries Orchestrated: AI-AP Orchestrator routes search requests via agent capability discovery Clear boundary: Orchestrator handles control plane (routing, fallback, circuit break); search agent handles execution plane (BM25/KNN, signal inference, ranking) Tech Stack Agent Framework: LangGraph, A2A (Agent-to-Agent Protocol), ADK (Agent Development Kit) Observability: LangFuse Search Infrastructure: ElasticSearch (BM25 + KNN hybrid, blue/green index deployment) Embedding Models: SigLIP2, QWEN-3-VL-Embedding-2B (composed text+image embedding) Orchestration: Airflow (batch indexing), K8S Operator Model Serving: Triton Inference Server API: FastAPI, JSON-RPC 2.0 Evaluation: Persona-based synthetic query generation + LLM-as-Judge Future Work CoI-Fit Phase 2: Multi-vector search with intent vector + context vector + preference vector for conversational queries Content Mixing: Blending product results with review/style content for answer-type exploration Personalization: Injecting user behavior features (click/scrap/purchase/dwell) into retrieval/rerank stages Impact This project establishes a foundational retrieval layer for the Room Planner ecosystem at Bucketplace. By serving as the retrieval backbone for multiple downstream agents, CoI-Fit enables a new class of AI-powered interior design experiences where users can describe what they want in natural language – referencing images, spatial constraints, and stylistic preferences – and receive precisely matched 3D product recommendations. The dual A2A/REST interface ensures the system integrates cleanly into both the emerging agent-to-agent ecosystem and existing microservice infrastructure.\nPeriod January 2026 - Current | Bucketplace (오늘의집)\n","wordCount":"727","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png","datePublished":"2026-01-15T00:00:00Z","dateModified":"2026-01-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">Agentic Compositional Multimodal Natural Language 3D Model Search</h1><div class=post-meta><span title='2026-01-15 00:00:00 +0000 UTC'>January 15, 2026</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png alt="Agentic NL 3D Model Search: LangGraph Pipeline"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#pipeline-topology aria-label="Pipeline Topology">Pipeline Topology</a></li><li><a href=#request-journey-end-to-end aria-label="Request Journey (End-to-End)">Request Journey (End-to-End)</a></li><li><a href=#coi-fit-compositional-multimodal-retrieval aria-label="CoI-Fit: Compositional Multimodal Retrieval">CoI-Fit: Compositional Multimodal Retrieval</a></li><li><a href=#state-design-3-layer aria-label="State Design (3-Layer)">State Design (3-Layer)</a></li><li><a href=#architecture-integration aria-label="Architecture Integration">Architecture Integration</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#future-work aria-label="Future Work">Future Work</a></li><li><a href=#impact aria-label=Impact>Impact</a></li><li><a href=#period aria-label=Period>Period</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At Bucketplace (오늘의집), I am building an AI-powered search agent that interprets natural language queries and translates them into structured retrieval signals for Room Planner 3D products. The system decomposes free-form user intent into actionable dimensions &ndash; category, attributes, color, dimensions, and budget &ndash; via LLM reasoning, then executes BM25+KNN hybrid search on ElasticSearch to surface the most relevant 3D product models.</p><p>At the core of this project is <strong>CoI-Fit (Context-Intent Fit Matching)</strong>, a compositional multimodal retrieval framework I designed to serve as the retrieval backbone for multiple downstream agents. CoI-Fit combines space analysis, mood/style interpretation, dimensional constraints, and conversational context drawn from image, text, and 3D coordinate inputs to produce contextually grounded retrieval results.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li><strong>Compositional Retrieval Framework</strong>: Designed CoI-Fit, a novel multimodal retrieval architecture that fuses heterogeneous signals (visual, textual, spatial) into a unified retrieval pipeline</li><li><strong>Multi-Agent Architecture</strong>: Architected a LangGraph pipeline with parallel fan-out inference, enabling concurrent processing of multiple retrieval dimensions</li><li><strong>Auto Quality Recovery</strong>: Implemented intelligent filter relaxation retry mechanisms that automatically recover from overly restrictive queries, ensuring high recall even for long-tail searches</li><li><strong>Dual Interface Design</strong>: Built both A2A (Agent-to-Agent) JSON-RPC and REST/FastAPI interfaces, enabling seamless integration with both agent ecosystems and traditional service architectures</li><li><strong>Evaluation Pipeline</strong>: Developed a persona-based evaluation pipeline that generates synthetic query-document sets to evaluate retrieval relevance across long-tail distributions, ensuring robust performance on rare and complex queries</li></ul><pre class=mermaid>graph LR
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Agentic Compositional Multimodal Natural Language 3D Model Search | Jungbae Park</title>
+<meta name="keywords" content="industrial, agentic-ai, langgraph, multimodal-retrieval, 3d-search, bucketplace, a2a">
+<meta name="description" content="Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25&#43;KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="Agentic Compositional Multimodal Natural Language 3D Model Search">
+  <meta property="og:description" content="Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25&#43;KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2026-01-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Agentic-Ai">
+    <meta property="article:tag" content="Langgraph">
+    <meta property="article:tag" content="Multimodal-Retrieval">
+    <meta property="article:tag" content="3d-Search">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png">
+<meta name="twitter:title" content="Agentic Compositional Multimodal Natural Language 3D Model Search">
+<meta name="twitter:description" content="Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25&#43;KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Agentic Compositional Multimodal Natural Language 3D Model Search",
+      "item": "https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Agentic Compositional Multimodal Natural Language 3D Model Search",
+  "name": "Agentic Compositional Multimodal Natural Language 3D Model Search",
+  "description": "Building an agentic multimodal search system (CoI-Fit) for 3D product retrieval at Bucketplace, combining LLM reasoning with BM25+KNN hybrid search across visual, textual, and spatial signals via LangGraph and A2A protocol.",
+  "keywords": [
+    "industrial", "agentic-ai", "langgraph", "multimodal-retrieval", "3d-search", "bucketplace", "a2a"
+  ],
+  "articleBody": "Overview At Bucketplace (오늘의집), I am building an AI-powered search agent that interprets natural language queries and translates them into structured retrieval signals for Room Planner 3D products. The system decomposes free-form user intent into actionable dimensions – category, attributes, color, dimensions, and budget – via LLM reasoning, then executes BM25+KNN hybrid search on ElasticSearch to surface the most relevant 3D product models.\nAt the core of this project is CoI-Fit (Context-Intent Fit Matching), a compositional multimodal retrieval framework I designed to serve as the retrieval backbone for multiple downstream agents. CoI-Fit combines space analysis, mood/style interpretation, dimensional constraints, and conversational context drawn from image, text, and 3D coordinate inputs to produce contextually grounded retrieval results.\nKey Achievements Compositional Retrieval Framework: Designed CoI-Fit, a novel multimodal retrieval architecture that fuses heterogeneous signals (visual, textual, spatial) into a unified retrieval pipeline Two-Tier Negative Query Separation: Hard exclude (must-not) + soft downrank via graduated confidence scoring, preventing irrelevant results while preserving recall 5-Level Progressive Fallback: Graceful degradation from full-signal retrieval down to broad category search, ensuring non-empty results even for ambiguous queries Multi-Agent Architecture: Architected a LangGraph pipeline with parallel fan-out inference, enabling concurrent processing of multiple retrieval dimensions Dual Interface Design: Built both A2A (Agent-to-Agent) JSON-RPC and REST/FastAPI interfaces, enabling seamless integration with both agent ecosystems and traditional service architectures Auto Quality Recovery: Implemented intelligent filter relaxation retry mechanisms that automatically recover from overly restrictive queries, ensuring high recall even for long-tail searches Automated Quality Evaluation: 8-dimension rule-based CI scoring + LLM-as-Judge with LangFuse experiment tracking; persona-based synthetic query generation for long-tail coverage Benchmark Results (634 queries) Metric Improvement Judge Satisfaction +11.9% Category Recall +16.6% Positive Hit +18.0% Negative Leak -50% Latency p50 -20.8% graph LR A[NL Query] --\u003e B[LLM Parse] B --\u003e C[Negative\\nSeparation] C --\u003e D[BM25+KNN\\nHybrid Search] D --\u003e E[Graduated\\nConfidence Scoring] E --\u003e F[5-Level\\nFallback] F --\u003e G[Ranked Results] Technical Approach Pipeline Topology The system follows a multi-stage agentic pipeline with parallel fan-out for inference:\nflowchart TD A[preprocess] --\u003e B1[pre_analyze] A --\u003e B2[pre_category_agg] B1 --\u003e C[planner] B2 --\u003e C C --\u003e D1[query_rewrite] C --\u003e D2[query_embedding] C --\u003e D3[infer_category] C --\u003e D4[infer_attributes] C --\u003e D5[infer_colors] C --\u003e D6[infer_price] C --\u003e D7[infer_dimensions] C --\u003e D8[negative_separation] D1 --\u003e E[retrieve_with_signals] D2 --\u003e E D3 --\u003e E D4 --\u003e E D5 --\u003e E D6 --\u003e E D7 --\u003e E D8 --\u003e E E --\u003e F[twidder] F --\u003e G[confidence_scoring] G --\u003e H[check_refine] H --\u003e|retry\\n5-level fallback| E H --\u003e|final| I[format_response] Request Journey (End-to-End) Intake: Input normalization, safety check, format validation Analyze \u0026 Plan: Language/token analysis, category aggregation, search mode determination Parallel Intelligence: Fan-out to 8 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction, and negative query separation (hard exclude vs. soft downrank) Retrieval \u0026 Ranking: BM25 + KNN hybrid search with two-tier negative filtering and twidder for product_id deduplication Confidence Scoring: Graduated scoring across retrieval signals to rank results by match quality Quality Recovery: 5-level progressive fallback (full-signal → relaxed filters → broad category) with max 1 refine to protect p99 Response: Final items with optional debug metadata (node latency, signals, ES query) CoI-Fit: Compositional Multimodal Retrieval CoI-Fit (Context-Intent Fit Matching) serves as the retrieval backbone for multiple downstream agents:\nSpace Analysis: Understanding room context and spatial arrangement from 3D coordinates Mood/Style Matching: Extracting aesthetic intent from text and image inputs Dimensional Constraints: Filtering by physical size requirements derived from the 3D scene Conversational Context: Maintaining coherent retrieval across multi-turn interactions State Design (3-Layer) Layer Role Properties inputs Request original Immutable artifacts Intermediate outputs Mutable, parallel accumulation outputs Final response Finalized at exit Architecture Integration The system operates as both a standalone service and a domain agent within the AI-AP (AI Agent Platform) orchestrator:\nStandalone: Direct REST/A2A calls for search queries Orchestrated: AI-AP Orchestrator routes search requests via agent capability discovery Clear boundary: Orchestrator handles control plane (routing, fallback, circuit break); search agent handles execution plane (BM25/KNN, signal inference, ranking) Tech Stack Agent Framework: LangGraph, A2A (Agent-to-Agent Protocol), ADK (Agent Development Kit) Observability: LangFuse Search Infrastructure: ElasticSearch (BM25 + KNN hybrid, blue/green index deployment) Embedding Models: SigLIP2, QWEN-3-VL-Embedding-2B (composed text+image embedding) Orchestration: Airflow (batch indexing), K8S Operator Model Serving: Triton Inference Server API: FastAPI, JSON-RPC 2.0 Evaluation: Persona-based synthetic query generation + LLM-as-Judge Future Work CoI-Fit Phase 2: Multi-vector search with intent vector + context vector + preference vector for conversational queries Content Mixing: Blending product results with review/style content for answer-type exploration Personalization: Injecting user behavior features (click/scrap/purchase/dwell) into retrieval/rerank stages Impact This project establishes a foundational retrieval layer for the Room Planner ecosystem at Bucketplace. By serving as the retrieval backbone for multiple downstream agents, CoI-Fit enables a new class of AI-powered interior design experiences where users can describe what they want in natural language – referencing images, spatial constraints, and stylistic preferences – and receive precisely matched 3D product recommendations. The dual A2A/REST interface ensures the system integrates cleanly into both the emerging agent-to-agent ecosystem and existing microservice infrastructure.\nPeriod January 2026 - Current | Bucketplace (오늘의집)\n",
+  "wordCount" : "825",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png","datePublished": "2026-01-15T00:00:00Z",
+  "dateModified": "2026-01-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/agentic-3d-model-search/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Agentic Compositional Multimodal Natural Language 3D Model Search
+    </h1>
+    <div class="post-meta"><span title='2026-01-15 00:00:00 +0000 UTC'>January 15, 2026</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/agentic_3d_search_pipeline.png" alt="Agentic NL 3D Model Search: LangGraph Pipeline">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a><ul>
+                        
+                <li>
+                    <a href="#benchmark-results-634-queries" aria-label="Benchmark Results (634 queries)">Benchmark Results (634 queries)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#pipeline-topology" aria-label="Pipeline Topology">Pipeline Topology</a></li>
+                <li>
+                    <a href="#request-journey-end-to-end" aria-label="Request Journey (End-to-End)">Request Journey (End-to-End)</a></li>
+                <li>
+                    <a href="#coi-fit-compositional-multimodal-retrieval" aria-label="CoI-Fit: Compositional Multimodal Retrieval">CoI-Fit: Compositional Multimodal Retrieval</a></li>
+                <li>
+                    <a href="#state-design-3-layer" aria-label="State Design (3-Layer)">State Design (3-Layer)</a></li>
+                <li>
+                    <a href="#architecture-integration" aria-label="Architecture Integration">Architecture Integration</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#future-work" aria-label="Future Work">Future Work</a></li>
+                <li>
+                    <a href="#impact" aria-label="Impact">Impact</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At Bucketplace (오늘의집), I am building an AI-powered search agent that interprets natural language queries and translates them into structured retrieval signals for Room Planner 3D products. The system decomposes free-form user intent into actionable dimensions &ndash; category, attributes, color, dimensions, and budget &ndash; via LLM reasoning, then executes BM25+KNN hybrid search on ElasticSearch to surface the most relevant 3D product models.</p>
+<p>At the core of this project is <strong>CoI-Fit (Context-Intent Fit Matching)</strong>, a compositional multimodal retrieval framework I designed to serve as the retrieval backbone for multiple downstream agents. CoI-Fit combines space analysis, mood/style interpretation, dimensional constraints, and conversational context drawn from image, text, and 3D coordinate inputs to produce contextually grounded retrieval results.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>Compositional Retrieval Framework</strong>: Designed CoI-Fit, a novel multimodal retrieval architecture that fuses heterogeneous signals (visual, textual, spatial) into a unified retrieval pipeline</li>
+<li><strong>Two-Tier Negative Query Separation</strong>: Hard exclude (must-not) + soft downrank via graduated confidence scoring, preventing irrelevant results while preserving recall</li>
+<li><strong>5-Level Progressive Fallback</strong>: Graceful degradation from full-signal retrieval down to broad category search, ensuring non-empty results even for ambiguous queries</li>
+<li><strong>Multi-Agent Architecture</strong>: Architected a LangGraph pipeline with parallel fan-out inference, enabling concurrent processing of multiple retrieval dimensions</li>
+<li><strong>Dual Interface Design</strong>: Built both A2A (Agent-to-Agent) JSON-RPC and REST/FastAPI interfaces, enabling seamless integration with both agent ecosystems and traditional service architectures</li>
+<li><strong>Auto Quality Recovery</strong>: Implemented intelligent filter relaxation retry mechanisms that automatically recover from overly restrictive queries, ensuring high recall even for long-tail searches</li>
+<li><strong>Automated Quality Evaluation</strong>: 8-dimension rule-based CI scoring + LLM-as-Judge with LangFuse experiment tracking; persona-based synthetic query generation for long-tail coverage</li>
+</ul>
+<h3 id="benchmark-results-634-queries">Benchmark Results (634 queries)<a hidden class="anchor" aria-hidden="true" href="#benchmark-results-634-queries">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Metric</th>
+          <th>Improvement</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Judge Satisfaction</td>
+          <td><strong>+11.9%</strong></td>
+      </tr>
+      <tr>
+          <td>Category Recall</td>
+          <td><strong>+16.6%</strong></td>
+      </tr>
+      <tr>
+          <td>Positive Hit</td>
+          <td><strong>+18.0%</strong></td>
+      </tr>
+      <tr>
+          <td>Negative Leak</td>
+          <td><strong>-50%</strong></td>
+      </tr>
+      <tr>
+          <td>Latency p50</td>
+          <td><strong>-20.8%</strong></td>
+      </tr>
+  </tbody>
+</table>
+<pre class="mermaid">graph LR
     A[NL Query] --> B[LLM Parse]
-    B --> C[BM25+KNN\nHybrid Search]
-    C --> D[Filter\nRelaxation]
-    D --> E[Quality\nRecovery]
-    E --> F[Ranked Results]
-</pre><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=pipeline-topology>Pipeline Topology<a hidden class=anchor aria-hidden=true href=#pipeline-topology>#</a></h3><p>The system follows a multi-stage agentic pipeline with parallel fan-out for inference:</p><pre class=mermaid>flowchart TD
+    B --> C[Negative\nSeparation]
+    C --> D[BM25+KNN\nHybrid Search]
+    D --> E[Graduated\nConfidence Scoring]
+    E --> F[5-Level\nFallback]
+    F --> G[Ranked Results]
+</pre>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="pipeline-topology">Pipeline Topology<a hidden class="anchor" aria-hidden="true" href="#pipeline-topology">#</a></h3>
+<p>The system follows a multi-stage agentic pipeline with parallel fan-out for inference:</p>
+<pre class="mermaid">flowchart TD
     A[preprocess] --> B1[pre_analyze]
     A --> B2[pre_category_agg]
     B1 --> C[planner]
@@ -18,6 +323,7 @@
     C --> D5[infer_colors]
     C --> D6[infer_price]
     C --> D7[infer_dimensions]
+    C --> D8[negative_separation]
     D1 --> E[retrieve_with_signals]
     D2 --> E
     D3 --> E
@@ -25,18 +331,236 @@
     D5 --> E
     D6 --> E
     D7 --> E
+    D8 --> E
     E --> F[twidder]
-    F --> G[check_refine]
-    G -->|retry| E
-    G -->|final| H[format_response]
-</pre><h3 id=request-journey-end-to-end>Request Journey (End-to-End)<a hidden class=anchor aria-hidden=true href=#request-journey-end-to-end>#</a></h3><ol><li><strong>Intake</strong>: Input normalization, safety check, format validation</li><li><strong>Analyze & Plan</strong>: Language/token analysis, category aggregation, search mode determination</li><li><strong>Parallel Intelligence</strong>: Fan-out to 7 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction</li><li><strong>Retrieval & Ranking</strong>: BM25 + KNN hybrid search with twidder for product_id deduplication</li><li><strong>Quality Recovery</strong>: Filter relaxation retry when results are insufficient (max 1 refine to protect p99)</li><li><strong>Response</strong>: Final items with optional debug metadata (node latency, signals, ES query)</li></ol><p><img alt="NL Search Demo" loading=lazy src=/blog/images/projects/notion_nl_search_demo.png></p><h3 id=coi-fit-compositional-multimodal-retrieval>CoI-Fit: Compositional Multimodal Retrieval<a hidden class=anchor aria-hidden=true href=#coi-fit-compositional-multimodal-retrieval>#</a></h3><p>CoI-Fit (Context-Intent Fit Matching) serves as the retrieval backbone for multiple downstream agents:</p><ul><li><strong>Space Analysis</strong>: Understanding room context and spatial arrangement from 3D coordinates</li><li><strong>Mood/Style Matching</strong>: Extracting aesthetic intent from text and image inputs</li><li><strong>Dimensional Constraints</strong>: Filtering by physical size requirements derived from the 3D scene</li><li><strong>Conversational Context</strong>: Maintaining coherent retrieval across multi-turn interactions</li></ul><p><img alt="CoI-Fit Abstract Design" loading=lazy src=/blog/images/projects/notion_coifit_abstract.png></p><h3 id=state-design-3-layer>State Design (3-Layer)<a hidden class=anchor aria-hidden=true href=#state-design-3-layer>#</a></h3><table><thead><tr><th>Layer</th><th>Role</th><th>Properties</th></tr></thead><tbody><tr><td><code>inputs</code></td><td>Request original</td><td>Immutable</td></tr><tr><td><code>artifacts</code></td><td>Intermediate outputs</td><td>Mutable, parallel accumulation</td></tr><tr><td><code>outputs</code></td><td>Final response</td><td>Finalized at exit</td></tr></tbody></table><h3 id=architecture-integration>Architecture Integration<a hidden class=anchor aria-hidden=true href=#architecture-integration>#</a></h3><p>The system operates as both a standalone service and a domain agent within the AI-AP (AI Agent Platform) orchestrator:</p><ul><li><strong>Standalone</strong>: Direct REST/A2A calls for search queries</li><li><strong>Orchestrated</strong>: AI-AP Orchestrator routes search requests via agent capability discovery</li><li><strong>Clear boundary</strong>: Orchestrator handles control plane (routing, fallback, circuit break); search agent handles execution plane (BM25/KNN, signal inference, ranking)</li></ul><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Agent Framework</strong>: LangGraph, A2A (Agent-to-Agent Protocol), ADK (Agent Development Kit)</li><li><strong>Observability</strong>: LangFuse</li><li><strong>Search Infrastructure</strong>: ElasticSearch (BM25 + KNN hybrid, blue/green index deployment)</li><li><strong>Embedding Models</strong>: SigLIP2, QWEN-3-VL-Embedding-2B (composed text+image embedding)</li><li><strong>Orchestration</strong>: Airflow (batch indexing), K8S Operator</li><li><strong>Model Serving</strong>: Triton Inference Server</li><li><strong>API</strong>: FastAPI, JSON-RPC 2.0</li><li><strong>Evaluation</strong>: Persona-based synthetic query generation + LLM-as-Judge</li></ul><h2 id=future-work>Future Work<a hidden class=anchor aria-hidden=true href=#future-work>#</a></h2><ul><li><strong>CoI-Fit Phase 2</strong>: Multi-vector search with <code>intent vector + context vector + preference vector</code> for conversational queries</li><li><strong>Content Mixing</strong>: Blending product results with review/style content for answer-type exploration</li><li><strong>Personalization</strong>: Injecting user behavior features (click/scrap/purchase/dwell) into retrieval/rerank stages</li></ul><h2 id=impact>Impact<a hidden class=anchor aria-hidden=true href=#impact>#</a></h2><p>This project establishes a foundational retrieval layer for the Room Planner ecosystem at Bucketplace. By serving as the retrieval backbone for multiple downstream agents, CoI-Fit enables a new class of AI-powered interior design experiences where users can describe what they want in natural language &ndash; referencing images, spatial constraints, and stylistic preferences &ndash; and receive precisely matched 3D product recommendations. The dual A2A/REST interface ensures the system integrates cleanly into both the emerging agent-to-agent ecosystem and existing microservice infrastructure.</p><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>January 2026 - Current | Bucketplace (오늘의집)</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/agentic-ai/>Agentic-Ai</a></li><li><a href=https://jungbaepark.github.io/blog/tags/langgraph/>Langgraph</a></li><li><a href=https://jungbaepark.github.io/blog/tags/multimodal-retrieval/>Multimodal-Retrieval</a></li><li><a href=https://jungbaepark.github.io/blog/tags/3d-search/>3d-Search</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li><li><a href=https://jungbaepark.github.io/blog/tags/a2a/>A2a</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+    F --> G[confidence_scoring]
+    G --> H[check_refine]
+    H -->|retry\n5-level fallback| E
+    H -->|final| I[format_response]
+</pre>
+<h3 id="request-journey-end-to-end">Request Journey (End-to-End)<a hidden class="anchor" aria-hidden="true" href="#request-journey-end-to-end">#</a></h3>
+<ol>
+<li><strong>Intake</strong>: Input normalization, safety check, format validation</li>
+<li><strong>Analyze &amp; Plan</strong>: Language/token analysis, category aggregation, search mode determination</li>
+<li><strong>Parallel Intelligence</strong>: Fan-out to 8 concurrent inference nodes — query rewrite, embedding generation, category/attribute/color/price/dimension signal extraction, and negative query separation (hard exclude vs. soft downrank)</li>
+<li><strong>Retrieval &amp; Ranking</strong>: BM25 + KNN hybrid search with two-tier negative filtering and twidder for product_id deduplication</li>
+<li><strong>Confidence Scoring</strong>: Graduated scoring across retrieval signals to rank results by match quality</li>
+<li><strong>Quality Recovery</strong>: 5-level progressive fallback (full-signal → relaxed filters → broad category) with max 1 refine to protect p99</li>
+<li><strong>Response</strong>: Final items with optional debug metadata (node latency, signals, ES query)</li>
+</ol>
+<p><img alt="NL Search Demo" loading="lazy" src="/blog/images/projects/notion_nl_search_demo.png"></p>
+<h3 id="coi-fit-compositional-multimodal-retrieval">CoI-Fit: Compositional Multimodal Retrieval<a hidden class="anchor" aria-hidden="true" href="#coi-fit-compositional-multimodal-retrieval">#</a></h3>
+<p>CoI-Fit (Context-Intent Fit Matching) serves as the retrieval backbone for multiple downstream agents:</p>
+<ul>
+<li><strong>Space Analysis</strong>: Understanding room context and spatial arrangement from 3D coordinates</li>
+<li><strong>Mood/Style Matching</strong>: Extracting aesthetic intent from text and image inputs</li>
+<li><strong>Dimensional Constraints</strong>: Filtering by physical size requirements derived from the 3D scene</li>
+<li><strong>Conversational Context</strong>: Maintaining coherent retrieval across multi-turn interactions</li>
+</ul>
+<p><img alt="CoI-Fit Abstract Design" loading="lazy" src="/blog/images/projects/notion_coifit_abstract.png"></p>
+<h3 id="state-design-3-layer">State Design (3-Layer)<a hidden class="anchor" aria-hidden="true" href="#state-design-3-layer">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Layer</th>
+          <th>Role</th>
+          <th>Properties</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>inputs</code></td>
+          <td>Request original</td>
+          <td>Immutable</td>
+      </tr>
+      <tr>
+          <td><code>artifacts</code></td>
+          <td>Intermediate outputs</td>
+          <td>Mutable, parallel accumulation</td>
+      </tr>
+      <tr>
+          <td><code>outputs</code></td>
+          <td>Final response</td>
+          <td>Finalized at exit</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="architecture-integration">Architecture Integration<a hidden class="anchor" aria-hidden="true" href="#architecture-integration">#</a></h3>
+<p>The system operates as both a standalone service and a domain agent within the AI-AP (AI Agent Platform) orchestrator:</p>
+<ul>
+<li><strong>Standalone</strong>: Direct REST/A2A calls for search queries</li>
+<li><strong>Orchestrated</strong>: AI-AP Orchestrator routes search requests via agent capability discovery</li>
+<li><strong>Clear boundary</strong>: Orchestrator handles control plane (routing, fallback, circuit break); search agent handles execution plane (BM25/KNN, signal inference, ranking)</li>
+</ul>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Agent Framework</strong>: LangGraph, A2A (Agent-to-Agent Protocol), ADK (Agent Development Kit)</li>
+<li><strong>Observability</strong>: LangFuse</li>
+<li><strong>Search Infrastructure</strong>: ElasticSearch (BM25 + KNN hybrid, blue/green index deployment)</li>
+<li><strong>Embedding Models</strong>: SigLIP2, QWEN-3-VL-Embedding-2B (composed text+image embedding)</li>
+<li><strong>Orchestration</strong>: Airflow (batch indexing), K8S Operator</li>
+<li><strong>Model Serving</strong>: Triton Inference Server</li>
+<li><strong>API</strong>: FastAPI, JSON-RPC 2.0</li>
+<li><strong>Evaluation</strong>: Persona-based synthetic query generation + LLM-as-Judge</li>
+</ul>
+<h2 id="future-work">Future Work<a hidden class="anchor" aria-hidden="true" href="#future-work">#</a></h2>
+<ul>
+<li><strong>CoI-Fit Phase 2</strong>: Multi-vector search with <code>intent vector + context vector + preference vector</code> for conversational queries</li>
+<li><strong>Content Mixing</strong>: Blending product results with review/style content for answer-type exploration</li>
+<li><strong>Personalization</strong>: Injecting user behavior features (click/scrap/purchase/dwell) into retrieval/rerank stages</li>
+</ul>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>This project establishes a foundational retrieval layer for the Room Planner ecosystem at Bucketplace. By serving as the retrieval backbone for multiple downstream agents, CoI-Fit enables a new class of AI-powered interior design experiences where users can describe what they want in natural language &ndash; referencing images, spatial constraints, and stylistic preferences &ndash; and receive precisely matched 3D product recommendations. The dual A2A/REST interface ensures the system integrates cleanly into both the emerging agent-to-agent ecosystem and existing microservice infrastructure.</p>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>January 2026 - Current | Bucketplace (오늘의집)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/agentic-ai/">Agentic-Ai</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/langgraph/">Langgraph</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/multimodal-retrieval/">Multimodal-Retrieval</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/3d-search/">3d-Search</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/a2a/">A2a</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

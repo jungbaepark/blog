@@ -1,13 +1,436 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>CLIP-based E-Commerce Multimodal Search and Classification | Jungbae Park</title><meta name=keywords content="industrial,CLIP,multimodal-ai,e-commerce,bucketplace,quantization"><meta name=description content="Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="CLIP-based E-Commerce Multimodal Search and Classification"><meta property="og:description" content="Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2023-06-15T00:00:00+00:00"><meta property="article:modified_time" content="2023-06-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="CLIP"><meta property="article:tag" content="Multimodal-Ai"><meta property="article:tag" content="E-Commerce"><meta property="article:tag" content="Bucketplace"><meta property="article:tag" content="Quantization"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png"><meta name=twitter:title content="CLIP-based E-Commerce Multimodal Search and Classification"><meta name=twitter:description content="Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"CLIP-based E-Commerce Multimodal Search and Classification","item":"https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"CLIP-based E-Commerce Multimodal Search and Classification","name":"CLIP-based E-Commerce Multimodal Search and Classification","description":"Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories.","keywords":["industrial","CLIP","multimodal-ai","e-commerce","bucketplace","quantization"],"articleBody":"Overview At Bucketplace (오늘의집), shipped multimodal retrieval improvements and quantization optimizations for e-commerce search, along with product classification across a large category space.\nKey Achievements Query CTR: +3.03% improvement Query CTCVR: +16.39% improvement Inference Speed: 2x speed improvement via quantization Disk Usage: 1/4 disk reduction through quantization Classification: Top-10 Accuracy 92.23% among \u003e2,000 product categories Technical Approach Multimodal Dense Retrieval Integrated CLIP-based dense vector retrieval into the e-commerce search pipeline, enabling semantic matching beyond traditional BM25 keyword search:\nImage-to-Text Retrieval: Users can search products using text queries that match against product image embeddings Partial Hybrid Search: Combined dense image retrieval via CLIP with traditional text-based BM25, creating a hybrid retrieval system Query Embedding Service: Built a dedicated service for real-time query vector generation Production Optimization INT8 Quantization: Achieved 2x inference speed and 1/4 disk usage with minimal quality degradation Serving Architecture: Deployed via Triton Inference Server for efficient batch inference Product Classification Built a multi-label classification system across \u003e2,000 product categories:\nTop-10 Accuracy: 92.23% — enabling automated category assignment at scale Application: Used for product catalog enrichment and search filter generation Tech Stack Model: CLIP (OpenAI), SigLIP Optimization: INT8 Quantization, ONNX Runtime Retrieval: Dense Vector Retrieval, Hybrid Search (BM25 + KNN) Serving: Triton Inference Server Search: ElasticSearch Period January 2023 - June 2023 | Bucketplace (오늘의집)\n","wordCount":"216","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png","datePublished":"2023-06-15T00:00:00Z","dateModified":"2023-06-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">CLIP-based E-Commerce Multimodal Search and Classification</h1><div class=post-meta><span title='2023-06-15 00:00:00 +0000 UTC'>June 15, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png alt="CLIP Multimodal Retrieval: Before vs After — zero-result queries now return relevant products via semantic matching"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a><ul><li><a href=#multimodal-dense-retrieval aria-label="Multimodal Dense Retrieval">Multimodal Dense Retrieval</a></li><li><a href=#production-optimization aria-label="Production Optimization">Production Optimization</a></li><li><a href=#product-classification aria-label="Product Classification">Product Classification</a></li></ul></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At <strong>Bucketplace (오늘의집)</strong>, shipped multimodal retrieval improvements and quantization optimizations for e-commerce search, along with product classification across a large category space.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li><strong>Query CTR</strong>: +3.03% improvement</li><li><strong>Query CTCVR</strong>: +16.39% improvement</li><li><strong>Inference Speed</strong>: 2x speed improvement via quantization</li><li><strong>Disk Usage</strong>: 1/4 disk reduction through quantization</li><li><strong>Classification</strong>: Top-10 Accuracy 92.23% among >2,000 product categories</li></ul><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><h3 id=multimodal-dense-retrieval>Multimodal Dense Retrieval<a hidden class=anchor aria-hidden=true href=#multimodal-dense-retrieval>#</a></h3><p>Integrated CLIP-based dense vector retrieval into the e-commerce search pipeline, enabling semantic matching beyond traditional BM25 keyword search:</p><ul><li><strong>Image-to-Text Retrieval</strong>: Users can search products using text queries that match against product image embeddings</li><li><strong>Partial Hybrid Search</strong>: Combined dense image retrieval via CLIP with traditional text-based BM25, creating a hybrid retrieval system</li><li><strong>Query Embedding Service</strong>: Built a dedicated service for real-time query vector generation</li></ul><h3 id=production-optimization>Production Optimization<a hidden class=anchor aria-hidden=true href=#production-optimization>#</a></h3><ul><li><strong>INT8 Quantization</strong>: Achieved 2x inference speed and 1/4 disk usage with minimal quality degradation</li><li><strong>Serving Architecture</strong>: Deployed via Triton Inference Server for efficient batch inference</li></ul><h3 id=product-classification>Product Classification<a hidden class=anchor aria-hidden=true href=#product-classification>#</a></h3><p>Built a multi-label classification system across >2,000 product categories:</p><ul><li><strong>Top-10 Accuracy</strong>: 92.23% — enabling automated category assignment at scale</li><li><strong>Application</strong>: Used for product catalog enrichment and search filter generation</li></ul><p><img alt="Related Works: NAVER Shopping and e-CLIP Architectures" loading=lazy src=/blog/images/projects/clip_related-04.png></p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Model</strong>: CLIP (OpenAI), SigLIP</li><li><strong>Optimization</strong>: INT8 Quantization, ONNX Runtime</li><li><strong>Retrieval</strong>: Dense Vector Retrieval, Hybrid Search (BM25 + KNN)</li><li><strong>Serving</strong>: Triton Inference Server</li><li><strong>Search</strong>: ElasticSearch</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>January 2023 - June 2023 | Bucketplace (오늘의집)</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/clip/>CLIP</a></li><li><a href=https://jungbaepark.github.io/blog/tags/multimodal-ai/>Multimodal-Ai</a></li><li><a href=https://jungbaepark.github.io/blog/tags/e-commerce/>E-Commerce</a></li><li><a href=https://jungbaepark.github.io/blog/tags/bucketplace/>Bucketplace</a></li><li><a href=https://jungbaepark.github.io/blog/tags/quantization/>Quantization</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CLIP-based E-Commerce Multimodal Search and Classification | Jungbae Park</title>
+<meta name="keywords" content="industrial, CLIP, multimodal-ai, e-commerce, bucketplace, quantization">
+<meta name="description" content="Shipped CLIP-based multimodal retrieval at Bucketplace, achieving &#43;16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000&#43; product categories.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="CLIP-based E-Commerce Multimodal Search and Classification">
+  <meta property="og:description" content="Shipped CLIP-based multimodal retrieval at Bucketplace, achieving &#43;16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000&#43; product categories.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2023-06-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-06-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="CLIP">
+    <meta property="article:tag" content="Multimodal-Ai">
+    <meta property="article:tag" content="E-Commerce">
+    <meta property="article:tag" content="Bucketplace">
+    <meta property="article:tag" content="Quantization">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png">
+<meta name="twitter:title" content="CLIP-based E-Commerce Multimodal Search and Classification">
+<meta name="twitter:description" content="Shipped CLIP-based multimodal retrieval at Bucketplace, achieving &#43;16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000&#43; product categories.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CLIP-based E-Commerce Multimodal Search and Classification",
+      "item": "https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CLIP-based E-Commerce Multimodal Search and Classification",
+  "name": "CLIP-based E-Commerce Multimodal Search and Classification",
+  "description": "Shipped CLIP-based multimodal retrieval at Bucketplace, achieving +16.39% query CTCVR, 2x inference speed via quantization, and 92.23% Top-10 accuracy across 2,000+ product categories.",
+  "keywords": [
+    "industrial", "CLIP", "multimodal-ai", "e-commerce", "bucketplace", "quantization"
+  ],
+  "articleBody": "Overview At Bucketplace (오늘의집), shipped multimodal retrieval improvements and quantization optimizations for e-commerce search, along with product classification across a large category space.\nKey Achievements Query CTR: +3.03% improvement Query CTCVR: +16.39% improvement Inference Speed: 2x speed improvement via quantization Disk Usage: 1/4 disk reduction through quantization Classification: Top-10 Accuracy 92.23% among \u003e2,000 product categories Technical Approach Multimodal Dense Retrieval Integrated CLIP-based dense vector retrieval into the e-commerce search pipeline, enabling semantic matching beyond traditional BM25 keyword search:\nImage-to-Text Retrieval: Users can search products using text queries that match against product image embeddings Partial Hybrid Search: Combined dense image retrieval via CLIP with traditional text-based BM25, creating a hybrid retrieval system Query Embedding Service: Built a dedicated service for real-time query vector generation Production Optimization INT8 Quantization: Achieved 2x inference speed and 1/4 disk usage with minimal quality degradation Serving Architecture: Deployed via Triton Inference Server for efficient batch inference Product Classification Built a multi-label classification system across \u003e2,000 product categories:\nTop-10 Accuracy: 92.23% — enabling automated category assignment at scale Application: Used for product catalog enrichment and search filter generation Tech Stack Model: CLIP (OpenAI), SigLIP Optimization: INT8 Quantization, ONNX Runtime Retrieval: Dense Vector Retrieval, Hybrid Search (BM25 + KNN) Serving: Triton Inference Server Search: ElasticSearch Period January 2023 - June 2023 | Bucketplace (오늘의집)\n",
+  "wordCount" : "216",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png","datePublished": "2023-06-15T00:00:00Z",
+  "dateModified": "2023-06-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/clip-ecommerce-multimodal/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      CLIP-based E-Commerce Multimodal Search and Classification
+    </h1>
+    <div class="post-meta"><span title='2023-06-15 00:00:00 +0000 UTC'>June 15, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/clip_retrieval_showcase.png" alt="CLIP Multimodal Retrieval: Before vs After — zero-result queries now return relevant products via semantic matching">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a></li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a><ul>
+                        
+                <li>
+                    <a href="#multimodal-dense-retrieval" aria-label="Multimodal Dense Retrieval">Multimodal Dense Retrieval</a></li>
+                <li>
+                    <a href="#production-optimization" aria-label="Production Optimization">Production Optimization</a></li>
+                <li>
+                    <a href="#product-classification" aria-label="Product Classification">Product Classification</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At <strong>Bucketplace (오늘의집)</strong>, shipped multimodal retrieval improvements and quantization optimizations for e-commerce search, along with product classification across a large category space.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>Query CTR</strong>: +3.03% improvement</li>
+<li><strong>Query CTCVR</strong>: +16.39% improvement</li>
+<li><strong>Inference Speed</strong>: 2x speed improvement via quantization</li>
+<li><strong>Disk Usage</strong>: 1/4 disk reduction through quantization</li>
+<li><strong>Classification</strong>: Top-10 Accuracy 92.23% among &gt;2,000 product categories</li>
+</ul>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<h3 id="multimodal-dense-retrieval">Multimodal Dense Retrieval<a hidden class="anchor" aria-hidden="true" href="#multimodal-dense-retrieval">#</a></h3>
+<p>Integrated CLIP-based dense vector retrieval into the e-commerce search pipeline, enabling semantic matching beyond traditional BM25 keyword search:</p>
+<ul>
+<li><strong>Image-to-Text Retrieval</strong>: Users can search products using text queries that match against product image embeddings</li>
+<li><strong>Partial Hybrid Search</strong>: Combined dense image retrieval via CLIP with traditional text-based BM25, creating a hybrid retrieval system</li>
+<li><strong>Query Embedding Service</strong>: Built a dedicated service for real-time query vector generation</li>
+</ul>
+<h3 id="production-optimization">Production Optimization<a hidden class="anchor" aria-hidden="true" href="#production-optimization">#</a></h3>
+<ul>
+<li><strong>INT8 Quantization</strong>: Achieved 2x inference speed and 1/4 disk usage with minimal quality degradation</li>
+<li><strong>Serving Architecture</strong>: Deployed via Triton Inference Server for efficient batch inference</li>
+</ul>
+<h3 id="product-classification">Product Classification<a hidden class="anchor" aria-hidden="true" href="#product-classification">#</a></h3>
+<p>Built a multi-label classification system across &gt;2,000 product categories:</p>
+<ul>
+<li><strong>Top-10 Accuracy</strong>: 92.23% — enabling automated category assignment at scale</li>
+<li><strong>Application</strong>: Used for product catalog enrichment and search filter generation</li>
+</ul>
+<p><img alt="Related Works: NAVER Shopping and e-CLIP Architectures" loading="lazy" src="/blog/images/projects/clip_related-04.png"></p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Model</strong>: CLIP (OpenAI), SigLIP</li>
+<li><strong>Optimization</strong>: INT8 Quantization, ONNX Runtime</li>
+<li><strong>Retrieval</strong>: Dense Vector Retrieval, Hybrid Search (BM25 + KNN)</li>
+<li><strong>Serving</strong>: Triton Inference Server</li>
+<li><strong>Search</strong>: ElasticSearch</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>January 2023 - June 2023 | Bucketplace (오늘의집)</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/clip/">CLIP</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/multimodal-ai/">Multimodal-Ai</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/e-commerce/">E-Commerce</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/bucketplace/">Bucketplace</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/quantization/">Quantization</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

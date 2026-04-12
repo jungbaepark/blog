@@ -1,13 +1,426 @@
-<!doctype html><html lang=en dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Prompt-Aware Speech Scoring System for Second Language Learners | Jungbae Park</title><meta name=keywords content="industrial,speech-processing,deep-learning,published,riiid,interspeech,cold-start"><meta name=description content="Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app."><meta name=author content="Jungbae Park"><link rel=canonical href=https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/><link crossorigin=anonymous href=/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A+pXjEwfiVE=" rel="preload stylesheet" as=style><link rel=icon href=https://jungbaepark.github.io/blog/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jungbaepark.github.io/blog/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jungbaepark.github.io/blog/favicon-32x32.png><link rel=apple-touch-icon href=https://jungbaepark.github.io/blog/apple-touch-icon.png><link rel=mask-icon href=https://jungbaepark.github.io/blog/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet><meta property="og:url" content="https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/"><meta property="og:site_name" content="Jungbae Park"><meta property="og:title" content="Prompt-Aware Speech Scoring System for Second Language Learners"><meta property="og:description" content="Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app."><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="projects"><meta property="article:published_time" content="2023-01-15T00:00:00+00:00"><meta property="article:modified_time" content="2023-01-15T00:00:00+00:00"><meta property="article:tag" content="Industrial"><meta property="article:tag" content="Speech-Processing"><meta property="article:tag" content="Deep-Learning"><meta property="article:tag" content="Published"><meta property="article:tag" content="Riiid"><meta property="article:tag" content="Interspeech"><meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png"><meta name=twitter:title content="Prompt-Aware Speech Scoring System for Second Language Learners"><meta name=twitter:description content="Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Projects","item":"https://jungbaepark.github.io/blog/projects/"},{"@type":"ListItem","position":2,"name":"Prompt-Aware Speech Scoring System for Second Language Learners","item":"https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Prompt-Aware Speech Scoring System for Second Language Learners","name":"Prompt-Aware Speech Scoring System for Second Language Learners","description":"Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.","keywords":["industrial","speech-processing","deep-learning","published","riiid","interspeech","cold-start"],"articleBody":"Overview At RIIID (뤼이드), developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start item problem by incorporating prompt awareness. Proposed prompt embeddings combined with question context (BERT/CLIP) to enable reliable scoring even for unseen prompts. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.\nKey Achievements Publication: Accepted to InterSpeech 2023 (top conference on speech and audio processing) Production Deployment: Integrated into SANTA Say TOEIC Speaking App Cold-Start Solution: Proposed prompt embeddings + question context (BERT/CLIP) to address the cold-start item problem Real-World Impact: Enabling thousands of language learners to improve their speaking skills Technical Approach Traditional speech scoring systems struggle when encountering new prompts (questions) they have not seen during training. This is the cold-start item problem. Our approach incorporates:\nPrompt Embeddings: Learned representations of question prompts that capture their semantic content Question Context via BERT/CLIP: Leveraging pre-trained language and vision-language models to encode prompt text and images End-to-End Architecture: Joint optimization of prompt understanding and speech scoring components This allows the system to provide accurate scores even for new, unseen prompts by understanding the context of what learners are responding to.\nTech Stack Domain: Speech Scoring, TOEIC Speaking Models: PyTorch, BERT, CLIP Problem: Cold-start Item Problem Deployment: Production-grade serving for mobile app Period October 2022 - January 2023\nImpact Enables fair and consistent scoring for speaking practice, helping language learners track their progress and identify areas for improvement, even as new practice questions are added to the platform.\nPublications Jungbae Park, Seungtaek Choi - “Addressing Cold Start Problem for End-to-end Automatic Speech Scoring” (InterSpeech 2023, DOI: 10.21437/Interspeech.2023-533) ","wordCount":"269","inLanguage":"en","image":"https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png","datePublished":"2023-01-15T00:00:00Z","dateModified":"2023-01-15T00:00:00Z","author":{"@type":"Person","name":"Jungbae Park"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/"},"publisher":{"@type":"Organization","name":"Jungbae Park","logo":{"@type":"ImageObject","url":"https://jungbaepark.github.io/blog/favicon.ico"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://jungbaepark.github.io/blog/ accesskey=h title="Jungbae Park (Alt + H)">Jungbae Park</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
-<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jungbaepark.github.io/blog/projects/ title=Projects><span>Projects</span></a></li><li><a href=https://jungbaepark.github.io/blog/resume.pdf title=Resume><span>Resume</span></a></li><li><a href=https://jungbaepark.github.io/blog/contact/ title=Contact><span>Contact</span></a></li><li><a href=https://jungbaepark.github.io/blog/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://jungbaepark.github.io/blog/>Home</a>&nbsp;»&nbsp;<a href=https://jungbaepark.github.io/blog/projects/>Projects</a></div><h1 class="post-title entry-hint-parent">Prompt-Aware Speech Scoring System for Second Language Learners</h1><div class=post-meta><span title='2023-01-15 00:00:00 +0000 UTC'>January 15, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span></div></header><figure class=entry-cover><a href=https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png target=_blank rel="noopener noreferrer"><img loading=eager src=https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png alt="Figure 3: End-to-end speech scoring model architecture from InterSpeech paper"></a></figure><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><ul><li><a href=#overview aria-label=Overview>Overview</a></li><li><a href=#key-achievements aria-label="Key Achievements">Key Achievements</a></li><li><a href=#technical-approach aria-label="Technical Approach">Technical Approach</a></li><li><a href=#tech-stack aria-label="Tech Stack">Tech Stack</a></li><li><a href=#period aria-label=Period>Period</a></li><li><a href=#impact aria-label=Impact>Impact</a></li><li><a href=#publications aria-label=Publications>Publications</a></li></ul></div></details></div><div class=post-content><h2 id=overview>Overview<a hidden class=anchor aria-hidden=true href=#overview>#</a></h2><p>At <strong>RIIID (뤼이드)</strong>, developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start item problem by incorporating prompt awareness. Proposed prompt embeddings combined with question context (BERT/CLIP) to enable reliable scoring even for unseen prompts. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.</p><h2 id=key-achievements>Key Achievements<a hidden class=anchor aria-hidden=true href=#key-achievements>#</a></h2><ul><li><strong>Publication</strong>: Accepted to <strong>InterSpeech 2023</strong> (top conference on speech and audio processing)</li><li><strong>Production Deployment</strong>: Integrated into SANTA Say TOEIC Speaking App</li><li><strong>Cold-Start Solution</strong>: Proposed prompt embeddings + question context (BERT/CLIP) to address the cold-start item problem</li><li><strong>Real-World Impact</strong>: Enabling thousands of language learners to improve their speaking skills</li></ul><h2 id=technical-approach>Technical Approach<a hidden class=anchor aria-hidden=true href=#technical-approach>#</a></h2><p><img alt="Figure 1: Cold start problem visualization" loading=lazy src=/blog/images/projects/speech_scoring_problem-1.png></p><p>Traditional speech scoring systems struggle when encountering new prompts (questions) they have not seen during training. This is the cold-start item problem. Our approach incorporates:</p><ul><li><strong>Prompt Embeddings</strong>: Learned representations of question prompts that capture their semantic content</li><li><strong>Question Context via BERT/CLIP</strong>: Leveraging pre-trained language and vision-language models to encode prompt text and images</li><li><strong>End-to-End Architecture</strong>: Joint optimization of prompt understanding and speech scoring components</li></ul><p>This allows the system to provide accurate scores even for new, unseen prompts by understanding the context of what learners are responding to.</p><h2 id=tech-stack>Tech Stack<a hidden class=anchor aria-hidden=true href=#tech-stack>#</a></h2><ul><li><strong>Domain</strong>: Speech Scoring, TOEIC Speaking</li><li><strong>Models</strong>: PyTorch, BERT, CLIP</li><li><strong>Problem</strong>: Cold-start Item Problem</li><li><strong>Deployment</strong>: Production-grade serving for mobile app</li></ul><h2 id=period>Period<a hidden class=anchor aria-hidden=true href=#period>#</a></h2><p>October 2022 - January 2023</p><h2 id=impact>Impact<a hidden class=anchor aria-hidden=true href=#impact>#</a></h2><p>Enables fair and consistent scoring for speaking practice, helping language learners track their progress and identify areas for improvement, even as new practice questions are added to the platform.</p><h2 id=publications>Publications<a hidden class=anchor aria-hidden=true href=#publications>#</a></h2><ul><li>Jungbae Park, Seungtaek Choi - &ldquo;Addressing Cold Start Problem for End-to-end Automatic Speech Scoring&rdquo; (InterSpeech 2023, DOI: 10.21437/Interspeech.2023-533)</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://jungbaepark.github.io/blog/tags/industrial/>Industrial</a></li><li><a href=https://jungbaepark.github.io/blog/tags/speech-processing/>Speech-Processing</a></li><li><a href=https://jungbaepark.github.io/blog/tags/deep-learning/>Deep-Learning</a></li><li><a href=https://jungbaepark.github.io/blog/tags/published/>Published</a></li><li><a href=https://jungbaepark.github.io/blog/tags/riiid/>Riiid</a></li><li><a href=https://jungbaepark.github.io/blog/tags/interspeech/>Interspeech</a></li><li><a href=https://jungbaepark.github.io/blog/tags/cold-start/>Cold-Start</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://jungbaepark.github.io/blog/>Jungbae Park</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
-</a><script type=module>
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Prompt-Aware Speech Scoring System for Second Language Learners | Jungbae Park</title>
+<meta name="keywords" content="industrial, speech-processing, deep-learning, published, riiid, interspeech, cold-start">
+<meta name="description" content="Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.">
+<meta name="author" content="Jungbae Park">
+<link rel="canonical" href="https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.2225a1a09957fcb93392ff4941cd658f0e05d6f50249b8b803ea578c4c1f8951.css" integrity="sha256-IiWhoJlX/Lkzkv9JQc1ljw4F1vUCSbi4A&#43;pXjEwfiVE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://jungbaepark.github.io/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://jungbaepark.github.io/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://jungbaepark.github.io/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://jungbaepark.github.io/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://jungbaepark.github.io/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/">
+  <meta property="og:site_name" content="Jungbae Park">
+  <meta property="og:title" content="Prompt-Aware Speech Scoring System for Second Language Learners">
+  <meta property="og:description" content="Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2023-01-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-01-15T00:00:00+00:00">
+    <meta property="article:tag" content="Industrial">
+    <meta property="article:tag" content="Speech-Processing">
+    <meta property="article:tag" content="Deep-Learning">
+    <meta property="article:tag" content="Published">
+    <meta property="article:tag" content="Riiid">
+    <meta property="article:tag" content="Interspeech">
+    <meta property="og:image" content="https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png">
+<meta name="twitter:title" content="Prompt-Aware Speech Scoring System for Second Language Learners">
+<meta name="twitter:description" content="Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://jungbaepark.github.io/blog/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Prompt-Aware Speech Scoring System for Second Language Learners",
+      "item": "https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Prompt-Aware Speech Scoring System for Second Language Learners",
+  "name": "Prompt-Aware Speech Scoring System for Second Language Learners",
+  "description": "Developed a prompt-aware automatic speech scoring system at RIIID that solves the cold-start item problem using BERT/CLIP prompt embeddings. Published at InterSpeech 2023 and deployed to SANTA Say TOEIC Speaking app.",
+  "keywords": [
+    "industrial", "speech-processing", "deep-learning", "published", "riiid", "interspeech", "cold-start"
+  ],
+  "articleBody": "Overview At RIIID (뤼이드), developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start item problem by incorporating prompt awareness. Proposed prompt embeddings combined with question context (BERT/CLIP) to enable reliable scoring even for unseen prompts. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.\nKey Achievements Publication: Accepted to InterSpeech 2023 (top conference on speech and audio processing) Production Deployment: Integrated into SANTA Say TOEIC Speaking App Cold-Start Solution: Proposed prompt embeddings + question context (BERT/CLIP) to address the cold-start item problem Real-World Impact: Enabling thousands of language learners to improve their speaking skills Technical Approach Traditional speech scoring systems struggle when encountering new prompts (questions) they have not seen during training. This is the cold-start item problem. Our approach incorporates:\nPrompt Embeddings: Learned representations of question prompts that capture their semantic content Question Context via BERT/CLIP: Leveraging pre-trained language and vision-language models to encode prompt text and images End-to-End Architecture: Joint optimization of prompt understanding and speech scoring components This allows the system to provide accurate scores even for new, unseen prompts by understanding the context of what learners are responding to.\nTech Stack Domain: Speech Scoring, TOEIC Speaking Models: PyTorch, BERT, CLIP Problem: Cold-start Item Problem Deployment: Production-grade serving for mobile app Period October 2022 - January 2023\nImpact Enables fair and consistent scoring for speaking practice, helping language learners track their progress and identify areas for improvement, even as new practice questions are added to the platform.\nPublications Jungbae Park, Seungtaek Choi - “Addressing Cold Start Problem for End-to-end Automatic Speech Scoring” (InterSpeech 2023, DOI: 10.21437/Interspeech.2023-533) ",
+  "wordCount" : "269",
+  "inLanguage": "en",
+  "image":"https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png","datePublished": "2023-01-15T00:00:00Z",
+  "dateModified": "2023-01-15T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jungbae Park"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jungbaepark.github.io/blog/projects/speech-scoring-interspeech/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jungbae Park",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://jungbaepark.github.io/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://jungbaepark.github.io/blog/" accesskey="h" title="Jungbae Park (Alt + H)">Jungbae Park</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://jungbaepark.github.io/blog/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://jungbaepark.github.io/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://jungbaepark.github.io/blog/">Home</a>&nbsp;»&nbsp;<a href="https://jungbaepark.github.io/blog/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Prompt-Aware Speech Scoring System for Second Language Learners
+    </h1>
+    <div class="post-meta"><span title='2023-01-15 00:00:00 +0000 UTC'>January 15, 2023</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Jungbae Park</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <a href="https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png" target="_blank" rel="noopener noreferrer">
+        <img loading="eager" src="https://jungbaepark.github.io/blog/images/projects/speech_scoring_arch-3.png" alt="Figure 3: End-to-end speech scoring model architecture from InterSpeech paper">
+        </a>
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-achievements" aria-label="Key Achievements">Key Achievements</a></li>
+                <li>
+                    <a href="#technical-approach" aria-label="Technical Approach">Technical Approach</a></li>
+                <li>
+                    <a href="#tech-stack" aria-label="Tech Stack">Tech Stack</a></li>
+                <li>
+                    <a href="#period" aria-label="Period">Period</a></li>
+                <li>
+                    <a href="#impact" aria-label="Impact">Impact</a></li>
+                <li>
+                    <a href="#publications" aria-label="Publications">Publications</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>At <strong>RIIID (뤼이드)</strong>, developed an end-to-end automatic speech scoring system for second language learners that addresses the cold-start item problem by incorporating prompt awareness. Proposed prompt embeddings combined with question context (BERT/CLIP) to enable reliable scoring even for unseen prompts. The system was successfully deployed to SANTA Say, a TOEIC Speaking practice app.</p>
+<h2 id="key-achievements">Key Achievements<a hidden class="anchor" aria-hidden="true" href="#key-achievements">#</a></h2>
+<ul>
+<li><strong>Publication</strong>: Accepted to <strong>InterSpeech 2023</strong> (top conference on speech and audio processing)</li>
+<li><strong>Production Deployment</strong>: Integrated into SANTA Say TOEIC Speaking App</li>
+<li><strong>Cold-Start Solution</strong>: Proposed prompt embeddings + question context (BERT/CLIP) to address the cold-start item problem</li>
+<li><strong>Real-World Impact</strong>: Enabling thousands of language learners to improve their speaking skills</li>
+</ul>
+<h2 id="technical-approach">Technical Approach<a hidden class="anchor" aria-hidden="true" href="#technical-approach">#</a></h2>
+<p><img alt="Figure 1: Cold start problem visualization" loading="lazy" src="/blog/images/projects/speech_scoring_problem-1.png"></p>
+<p>Traditional speech scoring systems struggle when encountering new prompts (questions) they have not seen during training. This is the cold-start item problem. Our approach incorporates:</p>
+<ul>
+<li><strong>Prompt Embeddings</strong>: Learned representations of question prompts that capture their semantic content</li>
+<li><strong>Question Context via BERT/CLIP</strong>: Leveraging pre-trained language and vision-language models to encode prompt text and images</li>
+<li><strong>End-to-End Architecture</strong>: Joint optimization of prompt understanding and speech scoring components</li>
+</ul>
+<p>This allows the system to provide accurate scores even for new, unseen prompts by understanding the context of what learners are responding to.</p>
+<h2 id="tech-stack">Tech Stack<a hidden class="anchor" aria-hidden="true" href="#tech-stack">#</a></h2>
+<ul>
+<li><strong>Domain</strong>: Speech Scoring, TOEIC Speaking</li>
+<li><strong>Models</strong>: PyTorch, BERT, CLIP</li>
+<li><strong>Problem</strong>: Cold-start Item Problem</li>
+<li><strong>Deployment</strong>: Production-grade serving for mobile app</li>
+</ul>
+<h2 id="period">Period<a hidden class="anchor" aria-hidden="true" href="#period">#</a></h2>
+<p>October 2022 - January 2023</p>
+<h2 id="impact">Impact<a hidden class="anchor" aria-hidden="true" href="#impact">#</a></h2>
+<p>Enables fair and consistent scoring for speaking practice, helping language learners track their progress and identify areas for improvement, even as new practice questions are added to the platform.</p>
+<h2 id="publications">Publications<a hidden class="anchor" aria-hidden="true" href="#publications">#</a></h2>
+<ul>
+<li>Jungbae Park, Seungtaek Choi - &ldquo;Addressing Cold Start Problem for End-to-end Automatic Speech Scoring&rdquo; (InterSpeech 2023, DOI: 10.21437/Interspeech.2023-533)</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://jungbaepark.github.io/blog/tags/industrial/">Industrial</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/speech-processing/">Speech-Processing</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/deep-learning/">Deep-Learning</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/published/">Published</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/riiid/">Riiid</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/interspeech/">Interspeech</a></li>
+      <li><a href="https://jungbaepark.github.io/blog/tags/cold-start/">Cold-Start</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://jungbaepark.github.io/blog/">Jungbae Park</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script type="module">
   if (document.querySelector('.mermaid')) {
     const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs');
     mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'loose' });
     await mermaid.run({ querySelector: '.mermaid' });
   }
-</script><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+</script>
+
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

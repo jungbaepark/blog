@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Generative-Ai on Jungbae Park</title><link>https://jungbaepark.github.io/blog/tags/generative-ai/</link><description>Recent content in Generative-Ai on Jungbae Park</description><generator>Hugo -- 0.152.2</generator><language>en-us</language><lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://jungbaepark.github.io/blog/tags/generative-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>AI Music Composition and SM Entertainment Collaboration</title><link>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</link><pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate><guid>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</guid><description>Led AI music composition and rap synthesis at Humelo, presented at SXSW 2019, collaborated with SM Entertainment and rapper Sleepy (KBS Documentary), and received coverage from 10+ national media outlets.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Generative-Ai on Jungbae Park</title>
+    <link>https://jungbaepark.github.io/blog/tags/generative-ai/</link>
+    <description>Recent content in Generative-Ai on Jungbae Park</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jungbaepark.github.io/blog/tags/generative-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Music Composition and SM Entertainment Collaboration</title>
+      <link>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://jungbaepark.github.io/blog/projects/ai-music-composition-sxsw/</guid>
+      <description>Led AI music composition and rap synthesis at Humelo, presented at SXSW 2019, collaborated with SM Entertainment and rapper Sleepy (KBS Documentary), and received coverage from 10+ national media outlets.</description>
+    </item>
+  </channel>
+</rss>
